@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- Title -->
+    
+    <title>
+        webpack-dev-middleware 文档及配置说明 | JackerJay杂记
+    </title>
+    
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+    
+    <!-- Meta & INfo -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="JackerJay">
+    <meta name="description" content="学习成长路">
+    <meta name="keywords" content="null">
+    
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+    
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="JackerJay杂记">
+    
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://jackerjay.github.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="webpack-dev-middleware 文档及配置说明 | JackerJay杂记">
+    <meta property="og:description" content="学习成长路">
+    
+     <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+        
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+    
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+	body, html{
+		font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	}
+	
+    a{
+        color: #00838F
+    }
+    
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important
+    }
+    
+	/* Sidebar User Drop Down Menu Text Color */
+	#scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus{
+        color: #0097A7 !important
+    }
+    
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a{
+        color: #0097A7 !important
+    }
+    
+    .toTop{
+        background: #757575 !important
+    }
+		
+	.material-layout .material-post>.material-nav,
+	.material-layout .material-index>.material-nav,
+	.material-nav a{
+		color: #757575;
+	}
+		
+	#scheme-Paradox .MD-burger-layer {
+		background-color: #757575;
+	}
+
+	#scheme-Paradox #post-toc-trigger-btn{
+		color: #757575;
+	}
+	
+	.post-toc a:hover{
+		color: #00838F;
+		text-decoration: underline;
+	}
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5
+        }
+		
+		/* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+	<script src="/js/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="/css/highlight/solarized-white.css">
+	
+	<!-- UC Browser Compatible-->
+	<script>
+		var agent = navigator.userAgent.toLowerCase();
+		if(agent.indexOf('ucbrowser')>0) {
+			document.write('<link rel="stylesheet" href="/css/uc.css">');
+		   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+		}
+	</script>
+    
+    <!-- Custom Head -->
+    
+</head>
+	
+	
+
+    <body id="scheme-Paradox">
+
+		
+        <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+				
+			
+			
+            <!-- Main Container -->
+            <main class="material-layout__content" id="main">
+				
+                <!-- Top Anchor -->
+                <div id="top"></div>
+				
+				
+                <!-- Hamburger Button -->
+                <button class="MD-burger-icon sidebar-toggle">
+                    <span class="MD-burger-layer"></span>
+                </button>
+				
+				
+                
+	<!-- Back Button -->
+<!--
+	<div class="material-back" id="backhome-div" tabindex="0">
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
+			<i class="material-icons" role="presentation">arrow_back</i>
+			<span class="mdl-button__ripple-container">
+				<span class="mdl-ripple"></span>
+			</span>
+		</a>
+	</div>			
+-->
+	<!-- Left aligned menu below button -->
+	<button id="post-toc-trigger-btn"
+			class="mdl-button mdl-js-button mdl-button--icon">
+	  <i class="material-icons">format_list_numbered</i>
+	</button>
+
+	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+		for="post-toc-trigger-btn">
+			
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#webpack-dev-middleware"><span class="post-toc-number">1.</span> <span class="post-toc-text">webpack-dev-middleware</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#参数"><span class="post-toc-number">2.</span> <span class="post-toc-text">参数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#devServer-clientLogLevel-string"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">devServer.clientLogLevel [string]</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#devServer-compress-boolean"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">devServer.compress [boolean]</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#devServer-contentBase-boolean-string-array"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">devServer.contentBase [boolean] [string] [array]</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#devServer-filename-string"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">devServer.filename [string]</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#devServer-headers-object"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">devServer.headers [object]</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#devServer-historyApiFallback-boolean-object"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">devServer.historyApiFallback [boolean] [object]</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#devServer-host-CLI-only（仅用于CLI）-string"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">devServer.host - CLI only（仅用于CLI）[string]</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#devServer-hot-boolean"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">devServer.hot [boolean]</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#devServer-https-boolean-object"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">devServer.https boolean  object</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#devServer-inline-CLI-only（仅用于CLI）-boolean"><span class="post-toc-number">2.10.</span> <span class="post-toc-text">devServer.inline - CLI only（仅用于CLI） [boolean]</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#devServer-lazy-boolean"><span class="post-toc-number">2.11.</span> <span class="post-toc-text">devServer.lazy [boolean]</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#devServer-noInfo-boolean"><span class="post-toc-number">2.12.</span> <span class="post-toc-text">devServer.noInfo [boolean]</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#devServer-port-CLI-only（仅用于CLI）-number-（待译）"><span class="post-toc-number">2.13.</span> <span class="post-toc-text">devServer.port - CLI only（仅用于CLI） [number] （待译）</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#devServer-proxy-object-（待译）"><span class="post-toc-number">2.14.</span> <span class="post-toc-text">devServer.proxy [object] （待译）</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#devServer-public-CLI-only（仅用于CLI）-string-（待译）"><span class="post-toc-number">2.15.</span> <span class="post-toc-text">devServer.public - CLI only（仅用于CLI） [string] （待译）</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#devServer-publicPath-string"><span class="post-toc-number">2.16.</span> <span class="post-toc-text">devServer.publicPath [string]</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#devServer-quiet-boolean"><span class="post-toc-number">2.17.</span> <span class="post-toc-text">devServer.quiet [boolean]</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#devServer-staticOptions-（待译）"><span class="post-toc-number">2.18.</span> <span class="post-toc-text">devServer.staticOptions （待译）</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#devServer-stats-string-object"><span class="post-toc-number">2.19.</span> <span class="post-toc-text">devServer.stats [string]  [object]</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#devServer-watchContentBase-boolean-（待译）"><span class="post-toc-number">2.20.</span> <span class="post-toc-text">devServer.watchContentBase [boolean] （待译）</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#devServer-watchOptions-object-（待译）"><span class="post-toc-number">2.21.</span> <span class="post-toc-text">devServer.watchOptions [object] （待译）</span></a></li></ol></li></ol>
+		
+<!--			<li class="mdl-menu__item">Some Action</li>-->
+	</ul>
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+		
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+	<!-- Paradox Post Header -->
+	
+		
+			<!-- Random Thumbnail -->
+			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+				<script>
+    
+    var randomNum;
+    randomNum = Math.floor(Math.random() * 5 + 1);
+    
+    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
+    
+</script>
+
+		
+	
+        <p class="article-headline-p">
+            webpack-dev-middleware 文档及配置说明
+        </p>
+    </div>
+
+	
+
+				
+				
+					<!-- Paradox Post Info -->
+					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+    
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>JackerJay</strong>
+        <span>12月 11, 2016</span>
+    </div>
+    
+    <div class="section-spacer"></div>
+	
+    <!-- Favorite -->
+<!--
+    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+        <i class="material-icons" role="presentation">favorite</i>
+        <span class="visuallyhidden">favorites</span>
+    </button>
+-->
+    
+    <!-- Tags (bookmark) -->
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/webpack/">webpack</a>
+    </ul>
+    
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    
+    
+    
+    
+    <!-- Share Twitter -->
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=webpack-dev-middleware 文档及配置说明&url=https://jackerjay.github.io//2016/12/11/webpack-dev-middleware/index.html&via=JackerJay" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Twitter
+        </li>
+    </a>
+    
+    <!-- Share Google+ -->
+    <a class="post_share-link" href="https://plus.google.com/share?url=https://jackerjay.github.io//2016/12/11/webpack-dev-middleware/index.html" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Google+
+        </li>
+    </a>
+    
+    <!-- Share Weibo -->
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=webpack-dev-middleware 文档及配置说明&url=https://jackerjay.github.io//2016/12/11/webpack-dev-middleware/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <li class="mdl-menu__item">
+            分享到微博
+        </li>
+    </a>
+</ul>
+</div>
+				
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+	
+		<h4 id="webpack-dev-middleware"><a href="#webpack-dev-middleware" class="headerlink" title="webpack-dev-middleware"></a><a href="https://webpack.js.org/guides/development/#webpack-dev-middleware" target="_blank" rel="external">webpack-dev-middleware</a></h4><p><code>webpack-dev-middleware</code>作用于级联的中间件堆栈，当你已经有一个<code>Node.js</code>的服务或者你希望当前服务在你的完全掌控下是极其有用的。<br>该中间件将会导致<code>webpack</code>在内存中编译文件。当一个编译正在运行时，它会延迟当前请求直到编译完成。<br><code>该中间件是为高级用户使用的，相对比webpack-dev-server更易用</code><br>从<code>npm</code>安装依赖：<br><code>npm install express webpack-dev-middleware --save-dev</code><br>安装完成之后，你可以像以下样例一样使用当前中间件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var express = require(&quot;express&quot;);</div><div class="line">var webpackDevMiddleware = require(&quot;webpack-dev-middleware&quot;);</div><div class="line">var webpack = require(&quot;webpack&quot;);</div><div class="line">var webpackConfig = require(&quot;./webpack.config&quot;);</div><div class="line"></div><div class="line">var app = express();</div><div class="line">var compiler = webpack(webpackConfig);</div><div class="line"></div><div class="line">app.use(webpackDevMiddleware(compiler, &#123;</div><div class="line">  publicPath: &quot;/&quot; // Same as `output.publicPath` in most cases.</div><div class="line">&#125;));</div><div class="line"></div><div class="line">app.listen(3000, function () &#123;</div><div class="line">  console.log(&quot;Listening on port 3000!&quot;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>取决于你在<code>output.publicPath</code>和<code>output.filename</code>中的设置，你的<code>bundle</code>现在应该可以在<code>http://localhost:3000/bundle.js</code>访问了。<br><em>watch mode</em>在默认情况下会开启，当你只需要在入口请求到来的时候重新编译的情况下，你也可以使用<em>lazy mode</em>。<br>当请求到达入口<code>bundle.js</code>的时候才会编译：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">app.use(webpackDevMiddleware(compiler, &#123;</div><div class="line">     lazy: true,</div><div class="line">     filename: &quot;bundle.js&quot; // Same as `output.filename` in most cases.</div><div class="line">   &#125;));</div></pre></td></tr></table></figure></p>
+<p>参数设置类型与<code>webpack-dev-server</code>是一致的</p>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><h5 id="devServer-clientLogLevel-string"><a href="#devServer-clientLogLevel-string" class="headerlink" title="devServer.clientLogLevel [string]"></a><a href="https://webpack.js.org/configuration/dev-server/#devserver-clientloglevel" target="_blank" rel="external">devServer.clientLogLevel</a> <code>[string]</code></h5><p>在<code>inline</code>模式下，你的<code>DevTools</code>控制台会打印一些信息，比如在重新加载之前、发生错误或者热更新开启时，这可能会非常的冗余。<br>当然你可以使用以下参数来选择所需要的通知类别：<br><code>clientLogLevel: &quot;none&quot;</code><br>可用的值有<code>none</code>,<code>error</code>,<code>warning</code>或<code>info</code>（默认）<br>需要知道的时控制台会始终显示<code>bundle</code>的错误及警告信息。</p>
+<h5 id="devServer-compress-boolean"><a href="#devServer-compress-boolean" class="headerlink" title="devServer.compress [boolean]"></a><a href="https://webpack.js.org/configuration/dev-server/#devserver-compress" target="_blank" rel="external">devServer.compress</a> <code>[boolean]</code></h5><p>在所有服务中开启<a href="https://betterexplained.com/articles/how-to-optimize-your-site-with-gzip-compression/" target="_blank" rel="external"><code>gzip</code>压缩</a><br><code>compress: true</code></p>
+<h5 id="devServer-contentBase-boolean-string-array"><a href="#devServer-contentBase-boolean-string-array" class="headerlink" title="devServer.contentBase [boolean] [string] [array]"></a><a href="https://webpack.js.org/configuration/dev-server/#devserver-contentbase" target="_blank" rel="external">devServer.contentBase</a> <code>[boolean]</code> <code>[string]</code> <code>[array]</code></h5><p>用来告诉服务器所提供服务的内容来源。此参数仅在你想使用静态文件服务的情况下时必须的。<code>devServer.publicPath</code>将会用于优先去确定<code>bundles</code>从哪里加载。<br>在默认情况下它将会加载你的默认工作目录，但你可以通过修改此项参数去更改服务目录：<br><code>contentBase: path.join(__dirname, &quot;public&quot;)</code><br>需要注意的是，这条命令将会使用绝对路径。<br>当然它也可以同时为几个目录提供服务：<br><code>contentBase: [path.join(__dirname, &quot;public&quot;), path.join(__dirname, &quot;assets&quot;)]</code><br>禁用<code>contentBase</code>:<br><code>contentBase: false</code></p>
+<h5 id="devServer-filename-string"><a href="#devServer-filename-string" class="headerlink" title="devServer.filename [string]"></a><a href="https://webpack.js.org/configuration/dev-server/#devserver-filename-" target="_blank" rel="external">devServer.filename</a> <code>[string]</code></h5><p>该参数允许你在<code>lazy</code>模式下减少编译次数。在<code>lazy</code>模式默认情况下，每一次的请求都会进行一次新的编译过程，使用<code>filename</code>，将允许你只有在请求特定文件的时候进行编译。<br>如果<code>output.filename</code>设置为<code>bundle.js</code>，那么<code>filename</code>可以这么用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">lazy: true,</div><div class="line">filename: &quot;bundle.js&quot;</div></pre></td></tr></table></figure></p>
+<p>只有在<code>/bundle.js</code>被请求时，才会编译当前<code>bundle</code></p>
+<blockquote>
+<p><code>filename</code> 在不使用<code>lazy</code>模式的情况下是无效的。  </p>
+</blockquote>
+<h5 id="devServer-headers-object"><a href="#devServer-headers-object" class="headerlink" title="devServer.headers [object]"></a><a href="https://webpack.js.org/configuration/dev-server/#devserver-headers-" target="_blank" rel="external">devServer.headers</a> <code>[object]</code></h5><p>给所有请求添加<code>headers</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">headers: &#123;</div><div class="line">&quot;X-Custom-Foo&quot;: &quot;bar&quot;</div></pre></td></tr></table></figure></p>
+<h5 id="devServer-historyApiFallback-boolean-object"><a href="#devServer-historyApiFallback-boolean-object" class="headerlink" title="devServer.historyApiFallback [boolean] [object]"></a><a href="https://webpack.js.org/configuration/dev-server/#devserver-historyapifallback" target="_blank" rel="external">devServer.historyApiFallback</a> <code>[boolean]</code> <code>[object]</code></h5><p>在使用<a href="https://developer.mozilla.org/en-US/docs/Web/API/History" target="_blank" rel="external"><code>HTML5 History Api</code></a>时，<code>index.html</code>将会替代<code>404</code>页面，通过以下来启用此功能：<br><code>historyApiFallback: true</code><br>通过传递一个对象，可以通过此项的参数例如<code>rewrites</code>来控制更多的行为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">historyApiFallback: &#123;</div><div class="line">  rewrites: [</div><div class="line">    &#123; from: /^\/$/, to: &apos;/views/landing.html&apos; &#125;,</div><div class="line">    &#123; from: /^\/subpage/, to: &apos;/views/subpage.html&apos; &#125;,</div><div class="line">    &#123; from: /./, to: &apos;/views/404.html&apos; &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当你使用圆点路径（通常有<code>Angular</code>）时，你应该使用<code>disableDotRule</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">historyApiFallback: &#123;</div><div class="line">  disableDotRule: true</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>更多的参数及信息，请访问<a href="https://github.com/bripkens/connect-history-api-fallback" target="_blank" rel="external"><code>connect-history-api-fallback</code></a>文档</p>
+<h5 id="devServer-host-CLI-only（仅用于CLI）-string"><a href="#devServer-host-CLI-only（仅用于CLI）-string" class="headerlink" title="devServer.host - CLI only（仅用于CLI）[string]"></a><a href="https://webpack.js.org/configuration/dev-server/#devserver-host-cli-only" target="_blank" rel="external">devServer.host</a> - CLI only（仅用于CLI）<code>[string]</code></h5><p>指定一个主机<code>host</code>来使用，默认情况下使用<code>localhost</code>，如果你想要使用一个外部服务，通过以下来指明：<br><code>host: &quot;0.0.0.0&quot;</code>  </p>
+<h5 id="devServer-hot-boolean"><a href="#devServer-hot-boolean" class="headerlink" title="devServer.hot [boolean]"></a><a href="https://webpack.js.org/configuration/dev-server/#devserver-hot" target="_blank" rel="external">devServer.hot</a> <code>[boolean]</code></h5><p>启用webpack的热更新特性：<br><code>hot: true</code>  </p>
+<blockquote style="background-color:rgb(251, 221, 205);padding:0.75em 1em;border-radius: 5px;border-left:none"><div style="font-size:1rem">在设置此项时需要设置额外步骤。（以我的经验和相关的文档，貌似在此处需要设置其他步骤——并不是在命令行，它仅仅是一个标志？）</div></blockquote>  
+
+<h5 id="devServer-https-boolean-object"><a href="#devServer-https-boolean-object" class="headerlink" title="devServer.https boolean  object"></a><a href="https://webpack.js.org/configuration/dev-server/#devserver-https" target="_blank" rel="external">devServer.https</a> <code>boolean</code>  <code>object</code></h5><p>在默认情况下<code>dev-server</code>会通过<code>HTTP</code>提供服务，它也可配置为<code>HTTP/2</code>协议的<code>HTTPS</code>提供服务。<br><code>https: true</code><br>在上面的设置中会设置一个自有签名证书，但你也可以用你自己的证书进行覆盖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">https: &#123;</div><div class="line">  key: fs.readFileSync(&quot;/path/to/server.key&quot;),</div><div class="line">  cert: fs.readFileSync(&quot;/path/to/server.crt&quot;),</div><div class="line">  ca: fs.readFileSync(&quot;/path/to/ca.pem&quot;),</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>此对象直接传递给<code>Node.js</code>的<code>HTTPS</code>模块，所以通过<a href="https://nodejs.org/api/https.html" target="_blank" rel="external"><code>HTTPS文档</code></a>来获取更多信息。</p>
+<h5 id="devServer-inline-CLI-only（仅用于CLI）-boolean"><a href="#devServer-inline-CLI-only（仅用于CLI）-boolean" class="headerlink" title="devServer.inline - CLI only（仅用于CLI） [boolean]"></a><a href="https://webpack.js.org/configuration/dev-server/#devserver-inline-cli-only" target="_blank" rel="external">devServer.inline</a> - CLI only（仅用于CLI） <code>[boolean]</code></h5><h5 id="devServer-lazy-boolean"><a href="#devServer-lazy-boolean" class="headerlink" title="devServer.lazy [boolean]"></a><a href="https://webpack.js.org/configuration/dev-server/#devserver-lazy-" target="_blank" rel="external">devServer.lazy</a> <code>[boolean]</code></h5><p>当<code>lazy</code>启用时，<code>dev-server</code>仅仅会在<code>bundle</code>被请求时进行编译。这就意味着<code>webpack</code>不会监视任何文件变动，我们可以使用以下方式调用<code>lazy</code>模式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lazy: true</div></pre></td></tr></table></figure></p>
+<blockquote style="background-color:rgb(220, 242, 253);color:rgb(97, 140, 160);border-radius: 3px;padding:0.75em 1em;border-left:none"><div style="font-size:1rem"><code>watchOptions</code>在<strong>lazy模式</strong>下没有效果。</div></blockquote><blockquote style="background-color:rgb(220, 242, 253);color:rgb(97, 140, 160);border-radius: 3px;padding:0.75em 1em;border-left:none"><div style="font-size:1rem">如果你使用CLI，请确定<code>inline</code>模式处于禁用状态。</div></blockquote>
+
+<h5 id="devServer-noInfo-boolean"><a href="#devServer-noInfo-boolean" class="headerlink" title="devServer.noInfo [boolean]"></a><a href="https://webpack.js.org/configuration/dev-server/#devserver-noinfo-" target="_blank" rel="external">devServer.noInfo</a> <code>[boolean]</code></h5><p>当<code>noInfo</code>启用时，譬如<code>webpack</code>的<code>bundle</code>信息将会在项目开始和每次保存后将会隐藏，但是<code>errors</code>及<code>warnings</code>信息将会始终显示。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">noInfo: true</div></pre></td></tr></table></figure></p>
+<h5 id="devServer-port-CLI-only（仅用于CLI）-number-（待译）"><a href="#devServer-port-CLI-only（仅用于CLI）-number-（待译）" class="headerlink" title="devServer.port - CLI only（仅用于CLI） [number] （待译）"></a><a href="https://webpack.js.org/configuration/dev-server/#devserver-port-cli-only" target="_blank" rel="external">devServer.port</a> - CLI only（仅用于CLI） <code>[number]</code> （待译）</h5><h5 id="devServer-proxy-object-（待译）"><a href="#devServer-proxy-object-（待译）" class="headerlink" title="devServer.proxy [object] （待译）"></a><a href="https://webpack.js.org/configuration/dev-server/#devserver-proxy" target="_blank" rel="external">devServer.proxy</a> <code>[object]</code> （待译）</h5><h5 id="devServer-public-CLI-only（仅用于CLI）-string-（待译）"><a href="#devServer-public-CLI-only（仅用于CLI）-string-（待译）" class="headerlink" title="devServer.public - CLI only（仅用于CLI） [string] （待译）"></a><a href="https://webpack.js.org/configuration/dev-server/#devserver-public-cli-only" target="_blank" rel="external">devServer.public</a> - CLI only（仅用于CLI） <code>[string]</code> （待译）</h5><h5 id="devServer-publicPath-string"><a href="#devServer-publicPath-string" class="headerlink" title="devServer.publicPath [string]"></a><a href="https://webpack.js.org/configuration/dev-server/#devserver-publicpath-" target="_blank" rel="external">devServer.publicPath</a> <code>[string]</code></h5><p>当前打包后的文件在浏览器中将会在此路径下可用。<br>想象以下，服务器正在运行在<code>http://localhost:8080</code>并且<code>output.filename</code>设置为<code>bundle.js</code>。在默认中<code>publicPth</code>是<code>&quot;/&quot;</code>，所以你的打包文件的可访问路径为<code>http://localhost:8080/bundle.js</code>。<br><code>publicPath</code>时可被更改的，因此打包后的文件将会放入到一个目录中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">publicPath: &quot;/assets/&quot;</div></pre></td></tr></table></figure></p>
+<p>当前打包后文件的可访问路径更改为<code>http://localhost:8080/assets/bundle.js</code>。</p>
+<blockquote style="background-color:rgb(220, 242, 253);color:rgb(97, 140, 160);border-radius: 3px;padding:0.75em 1em;border-left:none"><div style="font-size:1rem">请确保<code>publicPath</code>在其开始及结尾处使用斜杠<code>“/“</code></div></blockquote>
+
+<p>当然也可以使用完整的<code>URL</code>，若使用热替换则是必须设置的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">publicPath: &quot;http://localhost:8080/assets/&quot;</div></pre></td></tr></table></figure></p>
+<p>当前打包文件可访问路径为：<code>http://localhost:8080/assets/bundle.js</code>。</p>
+<blockquote style="background-color:rgb(220, 242, 253);color:rgb(97, 140, 160);border-radius: 3px;padding:0.75em 1em;border-left:none"><div style="font-size:1rem">建议将<code>devServer.publicPath</code>和<code>output.publicPath</code>设置为同一路径。</div></blockquote>
+
+<h5 id="devServer-quiet-boolean"><a href="#devServer-quiet-boolean" class="headerlink" title="devServer.quiet [boolean]"></a><a href="https://webpack.js.org/configuration/dev-server/#devserver-quiet-" target="_blank" rel="external">devServer.quiet</a> <code>[boolean]</code></h5><p>启用<code>quiet</code>后，除了初始化信息意外将会没有任何内容在控制台输出，这也就意味着<code>errors</code>和<code>warnings</code>信息也是不可见的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">quiet: true</div></pre></td></tr></table></figure></p>
+<h5 id="devServer-staticOptions-（待译）"><a href="#devServer-staticOptions-（待译）" class="headerlink" title="devServer.staticOptions （待译）"></a><a href="https://webpack.js.org/configuration/dev-server/#devserver-staticoptions" target="_blank" rel="external">devServer.staticOptions</a> （待译）</h5><h5 id="devServer-stats-string-object"><a href="#devServer-stats-string-object" class="headerlink" title="devServer.stats [string]  [object]"></a><a href="https://webpack.js.org/configuration/dev-server/#devserver-stats-" target="_blank" rel="external">devServer.stats</a> <code>[string]</code>  <code>[object]</code></h5><p>此参数可以让你精确控制显示哪些打包信息，这将会是你想要获取打包信息的一个非常棒的中间设置位置，当然并不是所有的信息。<br>在你的打包文件中仅允许显示<code>errors</code>信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">stats: &quot;errors-only&quot;</div></pre></td></tr></table></figure></p>
+<p>更多信息，请访问<a href="https://webpack.js.org/configuration/stats" target="_blank" rel="external"><code>stats文档</code></a></p>
+<blockquote style="background-color:rgb(220, 242, 253);color:rgb(97, 140, 160);border-radius: 3px;padding:0.75em 1em;border-left:none"><div style="font-size:1rem">当使用<code>quiet</code>或<code>noInfo</code>时，此项设置没有效果。</div></blockquote>
+
+<h5 id="devServer-watchContentBase-boolean-（待译）"><a href="#devServer-watchContentBase-boolean-（待译）" class="headerlink" title="devServer.watchContentBase [boolean] （待译）"></a><a href="https://webpack.js.org/configuration/dev-server/#devserver-watchcontentbase" target="_blank" rel="external">devServer.watchContentBase</a> <code>[boolean]</code> （待译）</h5><h5 id="devServer-watchOptions-object-（待译）"><a href="#devServer-watchOptions-object-（待译）" class="headerlink" title="devServer.watchOptions [object] （待译）"></a><a href="https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-" target="_blank" rel="external">devServer.watchOptions</a> <code>[object]</code> （待译）</h5><p>更多的参数设置访问<a href="https://webpack.js.org/configuration/dev-server/" target="_blank" rel="external">devServer documentation</a></p>
+
+	
+	
+	
+	
+</div>
+				
+				
+
+                <!-- Post Comments -->
+                
+    <!-- 使用多说评论 -->
+    <link rel="stylesheet" href="/css/duoshuo.min.css">
+<style>
+    #ds-thread #ds-reset .ds-post-button{
+        background-color: #0097A7 !important;
+    }
+    #ds-wrapper #ds-reset .ds-icons-32{
+        background-color: #0097A7 !important;
+    }
+    #ds-reset .ds-highlight {
+        color: #0097A7 !important;
+    }
+</style>
+<div id="comments">
+    <!-- 多说评论框 start -->
+        <div class="ds-thread" 
+            data-thread-key="2016/12/11/webpack-dev-middleware/" 
+            data-url="https://jackerjay.github.io/2016/12/11/webpack-dev-middleware/"
+            data-title="webpack-dev-middleware 文档及配置说明"></div>
+    <!-- 多说评论框 end -->
+</div>
+
+
+
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/12/08/React一些好用的库/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+        </div>
+    </div>
+
+				
+				
+					<!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay "></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored  sidebar-fixed-left" role="navigation">
+	<div id="sidebar-main">
+	    <!-- Sidebar Header -->
+		<div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+    <i class="material-icons">clear_all</i>
+    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="JackerJay's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        jackerjay@hotmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+		<!-- Sidebar Navigation  -->
+		<ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+			
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+						<i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+             主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+<!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+-->
+
+	
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">7</span></a>
+        </ul>
+    </li>
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+             文章总数
+             <span class="sidebar-badge">7</span>
+        </a>
+    </li>
+</ul>
+
+		<!-- Sidebar Divider -->
+		<div class="sidebar-divider"></div>
+
+		<!-- Sidebar Footer -->
+		<!-- 
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持。 :) 
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+	<div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		主题 - Material
+		<span class="sidebar-badge badge-circle">i</span>
+	</div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		sidebar.help
+		<span class="mdl-button__ripple-container">
+			<span class="mdl-ripple"></span>
+		</span>
+	</div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+	</div>
+    
+    <!-- Sidebar Sponsor -->
+    
+
+
+</aside>
+
+				
+				
+				
+					<!-- Footer Top Button -->
+					<div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+				
+				
+				<!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+	
+	
+		<!-- Paradox Footer Left Section -->
+		<div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+    
+    
+    <!-- Facebook -->
+    
+    
+    
+    <!-- Google + -->
+    
+    
+    
+    <!-- Weibo -->
+    
+    
+    
+    <!-- Instagram -->
+    
+    
+    
+    <!-- Tumblr -->
+    
+    
+    
+    <!-- Github -->
+    
+    <a href="http://github.com/jackerjay" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+        <span class="visuallyhidden">Github</span>
+    </button></a>
+    
+</div>
+
+
+		<!--Copyright-->
+		<div id="copyright">Copyright&nbsp;©&nbsp;<script type="text/javascript">var fd = new Date();document.write(fd.getFullYear());</script>&nbsp;JackerJay杂记</div>
+
+		<!-- Paradox Footer Right Section -->
+
+		<!-- 
+		I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+		It will not impact the appearance and can give developers a lot of support :)
+
+		很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+		它不会影响美观并可以给开发者很大的支持。 :) 
+		-->
+
+		<div class="mdl-mini-footer--right-section">
+			<div>
+				<div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+				<div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+			</div>
+		</div>
+	
+    
+</footer>
+                
+				<!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+    <!-- 多说公共 js 代码 start -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = 'https://static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+             || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <!-- 多说公共 js 代码 end -->
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $(".post-toc-wrap").parent(".mdl-menu__container").css("position", "fixed");
+    });
+</script>
+
+<!-- MathJax Load-->
+
+            </main>
+        </div>
+		
+    </body>
+		
+	
+</html>
