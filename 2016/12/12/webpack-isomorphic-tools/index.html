@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- Title -->
+    
+    <title>
+        webpack-isomorphic-tools 用于webpack的同构工具 | JackerJay杂记
+    </title>
+    
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+    
+    <!-- Meta & INfo -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="JackerJay">
+    <meta name="description" content="学习成长路">
+    <meta name="keywords" content="null">
+    
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+    
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="JackerJay杂记">
+    
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://jackerjay.github.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="webpack-isomorphic-tools 用于webpack的同构工具 | JackerJay杂记">
+    <meta property="og:description" content="学习成长路">
+    
+     <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+        
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+    
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+	body, html{
+		font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	}
+	
+    a{
+        color: #00838F
+    }
+    
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important
+    }
+    
+	/* Sidebar User Drop Down Menu Text Color */
+	#scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus{
+        color: #0097A7 !important
+    }
+    
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a{
+        color: #0097A7 !important
+    }
+    
+    .toTop{
+        background: #757575 !important
+    }
+		
+	.material-layout .material-post>.material-nav,
+	.material-layout .material-index>.material-nav,
+	.material-nav a{
+		color: #757575;
+	}
+		
+	#scheme-Paradox .MD-burger-layer {
+		background-color: #757575;
+	}
+
+	#scheme-Paradox #post-toc-trigger-btn{
+		color: #757575;
+	}
+	
+	.post-toc a:hover{
+		color: #00838F;
+		text-decoration: underline;
+	}
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5
+        }
+		
+		/* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+	<script src="/js/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="/css/highlight/solarized-white.css">
+	
+	<!-- UC Browser Compatible-->
+	<script>
+		var agent = navigator.userAgent.toLowerCase();
+		if(agent.indexOf('ucbrowser')>0) {
+			document.write('<link rel="stylesheet" href="/css/uc.css">');
+		   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+		}
+	</script>
+    
+    <!-- Custom Head -->
+    
+</head>
+	
+	
+
+    <body id="scheme-Paradox">
+
+		
+        <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+				
+			
+			
+            <!-- Main Container -->
+            <main class="material-layout__content" id="main">
+				
+                <!-- Top Anchor -->
+                <div id="top"></div>
+				
+				
+                <!-- Hamburger Button -->
+                <button class="MD-burger-icon sidebar-toggle">
+                    <span class="MD-burger-layer"></span>
+                </button>
+				
+				
+                
+	<!-- Back Button -->
+<!--
+	<div class="material-back" id="backhome-div" tabindex="0">
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
+			<i class="material-icons" role="presentation">arrow_back</i>
+			<span class="mdl-button__ripple-container">
+				<span class="mdl-ripple"></span>
+			</span>
+		</a>
+	</div>			
+-->
+	<!-- Left aligned menu below button -->
+	<button id="post-toc-trigger-btn"
+			class="mdl-button mdl-js-button mdl-button--icon">
+	  <i class="material-icons">format_list_numbered</i>
+	</button>
+
+	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+		for="post-toc-trigger-btn">
+			
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#webpack-isomorphic-tools"><span class="post-toc-number">1.</span> <span class="post-toc-text">webpack-isomorphic-tools</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#用来做什么"><span class="post-toc-number">2.</span> <span class="post-toc-text">用来做什么</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#安装"><span class="post-toc-number">3.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用"><span class="post-toc-number">4.</span> <span class="post-toc-text">使用</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#一个样例"><span class="post-toc-number">5.</span> <span class="post-toc-text">一个样例</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#配置文件（Configuration）"><span class="post-toc-number">6.</span> <span class="post-toc-text">配置文件（Configuration）</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#配置文件样例"><span class="post-toc-number">7.</span> <span class="post-toc-text">配置文件样例</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#webpack-assets-json是什么"><span class="post-toc-number">8.</span> <span class="post-toc-text">webpack-assets.json是什么</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#webpack-stats又是什么？"><span class="post-toc-number">9.</span> <span class="post-toc-text">webpack stats又是什么？</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#module又表示什么？"><span class="post-toc-number">10.</span> <span class="post-toc-text">module又表示什么？</span></a></li></ol>
+		
+<!--			<li class="mdl-menu__item">Some Action</li>-->
+	</ul>
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+		
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+	<!-- Paradox Post Header -->
+	
+		
+			<!-- Random Thumbnail -->
+			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+				<script>
+    
+    var randomNum;
+    randomNum = Math.floor(Math.random() * 5 + 1);
+    
+    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
+    
+</script>
+
+		
+	
+        <p class="article-headline-p">
+            webpack-isomorphic-tools 用于webpack的同构工具
+        </p>
+    </div>
+
+	
+
+				
+				
+					<!-- Paradox Post Info -->
+					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+    
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>JackerJay</strong>
+        <span>12月 12, 2016</span>
+    </div>
+    
+    <div class="section-spacer"></div>
+	
+    <!-- Favorite -->
+<!--
+    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+        <i class="material-icons" role="presentation">favorite</i>
+        <span class="visuallyhidden">favorites</span>
+    </button>
+-->
+    
+    <!-- Tags (bookmark) -->
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/webpack/">webpack</a>
+    </ul>
+    
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    
+    
+    
+    
+    <!-- Share Twitter -->
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=webpack-isomorphic-tools 用于webpack的同构工具&url=https://jackerjay.github.io//2016/12/12/webpack-isomorphic-tools/index.html&via=JackerJay" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Twitter
+        </li>
+    </a>
+    
+    <!-- Share Google+ -->
+    <a class="post_share-link" href="https://plus.google.com/share?url=https://jackerjay.github.io//2016/12/12/webpack-isomorphic-tools/index.html" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Google+
+        </li>
+    </a>
+    
+    <!-- Share Weibo -->
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=webpack-isomorphic-tools 用于webpack的同构工具&url=https://jackerjay.github.io//2016/12/12/webpack-isomorphic-tools/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <li class="mdl-menu__item">
+            分享到微博
+        </li>
+    </a>
+</ul>
+</div>
+				
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+	
+		<h5 id="webpack-isomorphic-tools"><a href="#webpack-isomorphic-tools" class="headerlink" title="webpack-isomorphic-tools"></a>webpack-isomorphic-tools</h5><p><code>webpack-isomorphic-tools</code>是一个使用<code>webpack</code>提供基本支持的同构渲染的精简的辅助模块（这是一个可替代使用<code>webpack</code>官方推荐的<code>target:&quot;node&quot;</code>方法的解决方案）。<br>若要使用<code>webpack</code>官方推荐方法<code>target: &quot;node&quot;</code>请访问<a href="https://github.com/halt-hammerzeit/universal-webpack" target="_blank" rel="external"><code>universal-webpack</code></a>库。<code>universal-webpack</code>库使用了推荐的方式去实现。</p>
+<h5 id="用来做什么"><a href="#用来做什么" class="headerlink" title="用来做什么"></a>用来做什么</h5><p>假设你有一个使用<code>webpack</code>构建的应用，它运行在浏览器中。<br>那么它应该是<code>同构（isomorphic）</code> <code>（universal）</code>的么？当然最好是这样。一个很重要的原因就是搜索引擎会索引到你的页面。另外一个原因就是我们生活在一个时刻都处于移动化的时代并与网络延迟作斗争，所以我们最好每次请求数据时都能得到一个提前渲染好的内容。<br>所以，网页应用同构是显而易见的。换言之，在客户端和服务端同时渲染也是可行的，当然这依赖于使用的情况。现如今<code>javascript</code>可以运行在任何地方：浏览器和服务器，所以同构可以完美实现。<br>那么接下来你可以去尝试在<code>Node.js</code>中运行一个网页应用直至它运行完成。但是这里有一个<code>陷阱（gotcha）</code>：一个<code>webpack</code>的应用常常会在你尝试去在<code>Node.js</code>中直接运行之前崩溃（你将会得到很多带有<code>Unexpected token</code>的<code>SyntaxError</code>错误）。<br>造成这个情况的原因就是<code>webpack</code>在原有标准的<code>javascript</code>上引入了它自有的一层。额外的这层如施了魔法似的能够不管从哪里声明都能操作所有的<code>require()</code>调用。举个例子，当使用<code>require()</code>调用<code>CSS</code>样式和<code>SVG</code>图片时，<code>webpack</code>依旧能很好的处理。<br>显然标准的<code>Node.js</code>并不会带有这种黑科技。是否可以使用某种方式使这种行为变成可能？事实证明这是可以实现的，这就是<code>webpack-isomorphic-tools</code>所做的事，在<code>Node.js</code>中他们将<code>require()</code>的魔法层注入到标准<code>javascript</code>之上。<br>现在一种备选的方案就存在了：使用<code>webpack</code>在服务端编译在客户端已经存在的代码。官方推荐使用<code>universal-webpack</code>库去实现这种方案。但是，有些人依旧更喜欢使用这个（更简单）的库，以至于它存在至今。<br><code>webpack-isomorphic-tools</code>当应用的代码运行在不包含<code>webpack</code>的<code>Node.js</code>服务器上时，会模仿（在一定的程度上）<code>webpack</code>的<code>require()</code>魔法。它通常会修补那些因为<code>require()</code>调用资源文件所出现的<code>SyntaxError</code>错误，并使得他们能够正常的运行。当然它并不能提供所有的<code>webpack</code>特性（例如<code>plugins</code>就不能正常运行），但是对于一些基本的东西是可用的。</p>
+<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><p><code>webpack-isomorphic-tools</code>在开发及产品阶段都是需要被调用的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install webpack-isomorphic-tools --save</div></pre></td></tr></table></figure></p>
+<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><p>首先你需要在你的<code>webpack</code>配置文件中加入<code>webpack_isomorphic_tools</code>插件。</p>
+<blockquote>
+<p>webpack.config.js</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">var Webpack_isomorphic_tools_plugin = require(&apos;webpack-isomorphic-tools/plugin&apos;)</div><div class="line"></div><div class="line">var webpack_isomorphic_tools_plugin = </div><div class="line">  // webpack-isomorphic-tools settings reside in a separate .js file </div><div class="line">  // (because they will be used in the web server code too).</div><div class="line">  new Webpack_isomorphic_tools_plugin(require(&apos;./webpack-isomorphic-tools-configuration&apos;))</div><div class="line">  // also enter development mode since it&apos;s a development webpack configuration</div><div class="line">  // (see below for explanation)</div><div class="line">  .development()</div><div class="line"></div><div class="line">// usual Webpack configuration</div><div class="line">module.exports =</div><div class="line">&#123;</div><div class="line">  context: &apos;(required) your project path here&apos;,</div><div class="line"></div><div class="line">  module:</div><div class="line">  &#123;</div><div class="line">    loaders:</div><div class="line">    [</div><div class="line">      ...,</div><div class="line">      &#123;</div><div class="line">        test: webpack_isomorphic_tools_plugin.regular_expression(&apos;images&apos;),</div><div class="line">        loader: &apos;url-loader?limit=10240&apos;, // any image below or equal to 10K will be converted to inline base64 instead</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  plugins:</div><div class="line">  [</div><div class="line">    ...,</div><div class="line"></div><div class="line">    webpack_isomorphic_tools_plugin</div><div class="line">  ]</div><div class="line"></div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>.development()</code>方法时做什么用的呢，它提供了开发模式。简单点说，在开发环境下，它禁用资源缓存（并且开启资源的热加载），并且可选择运行在它自有的<code>dev server</code>工具集上（请查阅<code>port</code>配置说明）。在<code>webpack</code>的<code>开发构建配置</code>中调用它，当然你不能在<code>webpack</code>的<code>产品构建配置</code>中使用它。<br><code>webpack_isomorphic_tools</code>管理的每一种资源类型在<code>webpack</code>配置文件中都应该有相对应的<code>loader</code>。由于此原因<code>webpack_isomorphic_tools</code>提供了<code>.regular_expression(asset_type)</code>方法。<code>asset_type</code>参数是从你的<code>webpack-isomorphic-tools</code>配置中获得的：</p>
+<blockquote>
+<p>webpack-isomorphic-tools-configuration.js</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">import Webpack_isomorphic_tools_plugin from &apos;webpack-isomorphic-tools/plugin&apos;</div><div class="line"></div><div class="line">export default</div><div class="line">&#123;</div><div class="line">  assets:</div><div class="line">  &#123;</div><div class="line">    images:</div><div class="line">    &#123;</div><div class="line">      extensions: [&apos;png&apos;, &apos;jpg&apos;, &apos;gif&apos;, &apos;ico&apos;, &apos;svg&apos;]</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上是客户端的配置，接下来在服务端，在你的主要服务器脚本文件中创建你的<code>webpack-isomorphic-tools</code>服务端实例（并且在底部将会<code>require()</code>调用一些包含你的网页应用代码的<code>server.js</code>文件）</p>
+<blockquote>
+<p>main.js</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">var Webpack_isomorphic_tools = require(&apos;webpack-isomorphic-tools&apos;)</div><div class="line"></div><div class="line">// this must be equal to your Webpack configuration &quot;context&quot; parameter</div><div class="line">var project_base_path = require(&apos;path&apos;).resolve(__dirname, &apos;..&apos;)</div><div class="line"></div><div class="line">// this global variable will be used later in express middleware</div><div class="line">global.webpack_isomorphic_tools = new Webpack_isomorphic_tools(require(&apos;./webpack-isomorphic-tools-configuration&apos;))</div><div class="line">// initializes a server-side instance of webpack-isomorphic-tools</div><div class="line">// (the first parameter is the base path for your project</div><div class="line">//  and is equal to the &quot;context&quot; parameter of you Webpack configuration)</div><div class="line">// (if you prefer Promises over callbacks </div><div class="line">//  you can omit the callback parameter</div><div class="line">//  and then it will return a Promise instead)</div><div class="line">.server(project_base_path, function()</div><div class="line">&#123;</div><div class="line">  // webpack-isomorphic-tools is all set now.</div><div class="line">  // here goes all your web application code:</div><div class="line">  // (it must reside in a separate *.js file </div><div class="line">  //  in order for the whole thing to work)</div><div class="line">  require(&apos;./server&apos;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>接下来，创建一个<code>express</code>中间件在服务器端来渲染你的页面：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">import React from &apos;react&apos;</div><div class="line"></div><div class="line">// html page markup</div><div class="line">import Html from &apos;./html&apos;</div><div class="line"></div><div class="line">// will be used in express_application.use(...)</div><div class="line">export function page_rendering_middleware(request, response)</div><div class="line">&#123;</div><div class="line">  // clear require() cache if in development mode</div><div class="line">  // (makes asset hot reloading work)</div><div class="line">  if (_development_)</div><div class="line">  &#123;</div><div class="line">    webpack_isomorphic_tools.refresh()</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // for react-router example of determining current page by URL take a look at this:</div><div class="line">  // https://github.com/halt-hammerzeit/webapp/blob/master/code/server/webpage%20rendering.js</div><div class="line">  const page_component = [determine your page component here using request.path]</div><div class="line"></div><div class="line">  // for a Redux Flux store implementation you can see the same example:</div><div class="line">  // https://github.com/halt-hammerzeit/webapp/blob/master/code/server/webpage%20rendering.js</div><div class="line">  const flux_store = [initialize and populate your flux store depending on the page being shown]</div><div class="line"></div><div class="line">  // render the page to string and send it to the browser as text/html</div><div class="line">  response.send(&apos;&lt;!doctype html&gt;\n&apos; +</div><div class="line">        React.renderToString(&lt;Html assets=&#123;webpack_isomorphic_tools.assets()&#125; component=&#123;page_component&#125; store=&#123;flux_store&#125;/&gt;))</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>最后在你的<code>Html</code>组件中的<code>render()</code>方法里使用这些<code>资源（assets）</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line">import React, &#123;Component, PropTypes&#125; from &apos;react&apos;</div><div class="line">import serialize from &apos;serialize-javascript&apos;</div><div class="line"></div><div class="line">export default class Html extends Component</div><div class="line">&#123;</div><div class="line">  static propTypes =</div><div class="line">  &#123;</div><div class="line">    assets    : PropTypes.object,</div><div class="line">    component : PropTypes.object,</div><div class="line">    store     : PropTypes.object</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // a sidenote for &quot;advanced&quot; users:</div><div class="line">  // (you may skip this)</div><div class="line">  //</div><div class="line">  // this file is usually not included in your Webpack build</div><div class="line">  // because this React component is only needed for server side React rendering.</div><div class="line">  //</div><div class="line">  // so, if this React component is not `require()`d from anywhere in your client code,</div><div class="line">  // then Webpack won&apos;t ever get here </div><div class="line">  // which means Webpack won&apos;t detect and parse any of the `require()` calls here,</div><div class="line">  // which in turn means that if you `require()` any unique assets here </div><div class="line">  // you should also `require()` those assets somewhere in your client code,</div><div class="line">  // otherwise those assets won&apos;t be present in your Webpack bundle and won&apos;t be found.</div><div class="line">  //</div><div class="line">  render()</div><div class="line">  &#123;</div><div class="line">    const &#123; assets, component, store &#125; = this.props</div><div class="line"></div><div class="line">    // &quot;import&quot; will work here too </div><div class="line">    // but if you want hot reloading to work while developing your project</div><div class="line">    // then you need to use require()</div><div class="line">    // because import will only be executed a single time </div><div class="line">    // (when the application launches)</div><div class="line">    // you can refer to the &quot;Require() vs import&quot; section for more explanation</div><div class="line">    const picture = require(&apos;../assets/images/cat.jpg&apos;)</div><div class="line"></div><div class="line">    // favicon</div><div class="line">    const icon = require(&apos;../assets/images/icon/32x32.png&apos;)</div><div class="line"></div><div class="line">    const html = </div><div class="line">    (</div><div class="line">      &lt;html lang=&quot;en-us&quot;&gt;</div><div class="line">        &lt;head&gt;</div><div class="line">          &lt;meta charSet=&quot;utf-8&quot;/&gt;</div><div class="line">          &lt;title&gt;xHamster&lt;/title&gt;</div><div class="line"></div><div class="line">          &#123;/* favicon */&#125;</div><div class="line">          &lt;link rel=&quot;shortcut icon&quot; href=&#123;icon&#125; /&gt;</div><div class="line"></div><div class="line">          &#123;/* styles (will be present only in production with webpack extract text plugin) */&#125;</div><div class="line">          &#123;Object.keys(assets.styles).map((style, i) =&gt;</div><div class="line">            &lt;link href=&#123;assets.styles[style]&#125; key=&#123;i&#125; media=&quot;screen, projection&quot;</div><div class="line">                  rel=&quot;stylesheet&quot; type=&quot;text/css&quot;/&gt;)&#125;</div><div class="line"></div><div class="line">          &#123;/* resolves the initial style flash (flicker) on page load in development mode */&#125;</div><div class="line">          &#123; Object.keys(assets.styles).is_empty() ? &lt;style dangerouslySetInnerHTML=&#123;&#123;__html: require(&apos;../assets/styles/main_style.css&apos;)&#125;&#125;/&gt; : null &#125;</div><div class="line">        &lt;/head&gt;</div><div class="line"></div><div class="line">        &lt;body&gt;</div><div class="line">          &#123;/* image requiring demonstration */&#125;</div><div class="line">          &lt;img src=&#123;picture&#125;/&gt;</div><div class="line"></div><div class="line">          &#123;/* rendered React page */&#125;</div><div class="line">          &lt;div id=&quot;content&quot; dangerouslySetInnerHTML=&#123;&#123;__html: React.renderToString(component)&#125;&#125;/&gt;</div><div class="line"></div><div class="line">          &#123;/* Flux store data will be reloaded into the store on the client */&#125;</div><div class="line">          &lt;script dangerouslySetInnerHTML=&#123;&#123;__html: `window._flux_store_data=$&#123;serialize(store.getState())&#125;;`&#125;&#125; /&gt;</div><div class="line"></div><div class="line">          &#123;/* javascripts */&#125;</div><div class="line">          &#123;/* (usually one for each &quot;entry&quot; in webpack configuration) */&#125;</div><div class="line">          &#123;/* (for more informations on &quot;entries&quot; see https://github.com/petehunt/webpack-howto/) */&#125;</div><div class="line">          &#123;Object.keys(assets.javascript).map((script, i) =&gt;</div><div class="line">            &lt;script src=&#123;assets.javascript[script]&#125; key=&#123;i&#125;/&gt;</div><div class="line">          )&#125;</div><div class="line">        &lt;/body&gt;</div><div class="line">      &lt;/html&gt;</div><div class="line">    )</div><div class="line"></div><div class="line">    return html</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在上面的代码中<code>资源（assets）</code>仅仅时包含在由<code>webpack-isomorphic-tools</code>生成的<code>webpack-assets.json</code>文件中。<code>webpack-assets.json</code>（在最简单情况下）会与你的资源保持真实的路径：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;javascript&quot;:</div><div class="line">  &#123;</div><div class="line">    &quot;main&quot;: &quot;/assets/main-d8c29e9b2a4623f696e8.js&quot;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  &quot;styles&quot;:</div><div class="line">  &#123;</div><div class="line">    &quot;main&quot;: &quot;/assets/main-d8c29e9b2a4623f696e8.css&quot;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  &quot;assets&quot;:</div><div class="line">  &#123;</div><div class="line">    &quot;./assets/images/cat.jpg&quot;: &quot;http://localhost:3001/assets/9059f094ddb49c2b0fa6a254a6ebf2ad.jpg&quot;,</div><div class="line"></div><div class="line">    &quot;./assets/images/icon/32x32.png&quot;: &quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAQAAADZc7J/AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQffBhcWAg6gFw6bAAAB60lEQVRIx+3UTUjUQRzG8c+u/n2BDe3lIJtQSuYhsPTQG+TFYLulguStoA5dPHYogoKigoi8dIsOCd0iiC4JFYFQBAVZEUgklWVQqam4vu1uF111d1310qWe0/yemfnyzPyG4b8KllQl6jWqNuX3nFNun/0qjJpYGRB1TkyRWu0C76Q0uKhOkT1aDfqSP0uxTpetR1i9e2Iq3HVUCQKt7tuWP0GDmDOGkfJd3GEbhFwzg6T3alR5lg0Ip0fVPhhKV2+UqfNcMu28sjlXggVAXEQoXZVKmlC2aGXETH5Ary3q026zPg8dtGnOKXPIi/x3MCJwUtyUqBN2uarXTi1+Cql1yqibuTKElsCaHBFBn1v6sU67RoGkHl3GciVYDNiuWVSphDEJYaSkRBSbNqLHI7PZgML0qNIFrz3OwqZAuQ6BB8KqRL01nA3YbdCVRW3L1KxGTx1zQMI3p01nAkqN5NnOkBrXJZw1qlOlj5mAlTQuqluXcRGTSrOPsJJeajOQzphaOyDucy47vGrAMvqLgCLlS97HmgH17mgRzFWhbEAq43/M1EYF2p1XoVAgMW8vdKFfmx0+LbO9WJNut3W44Ze4r/MTC6cKHBczutDhJSrxwyWDAntt9cRANoCwqLKcgJApAyZXfV//mP4AWg969geZ6qgAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTUtMDYtMjNUMjI6MDI6MTQrMDI6MDBG88r0AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE1LTA2LTIzVDIyOjAyOjE0KzAyOjAwN65ySAAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAASUVORK5CYII=&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>就是这样，现在你就可以使用<code>require()</code>来<code>同构的（isomorphically）</code>来访问你的资源文件了。</p>
+<h5 id="一个样例"><a href="#一个样例" class="headerlink" title="一个样例"></a>一个样例</h5><p><code>webpack-isomorphic-tools</code>被应用在<a href="https://github.com/erikras/react-redux-universal-hot-example/blob/master/webpack/webpack-isomorphic-tools.js#L64-L96" target="_blank" rel="external"><code>react-redux-universal-hot-example</code></a>中，被用于<code>require()</code>图片和<code>CSS</code>样式文件（用<code>CSS</code>模块化<code>（modules）</code>形式）。<br>你也可以参考<a href="https://github.com/halt-hammerzeit/webapp" target="_blank" rel="external">一个简单的项目</a>，这里被用来<code>require()</code>图片和<code>CSS</code>样式（不使用<code>CSS</code>的模块化<code>（modules）</code>特性）。<br>上述项目中一些源代码导航：</p>
+<ul>
+<li><a href="https://github.com/halt-hammerzeit/webapp/blob/master/frontend/webpack/webpack-isomorphic-tools.js" target="_blank" rel="external">webpack-isomorphic-tools configuration</a></li>
+<li><a href="https://github.com/halt-hammerzeit/webapp/blob/master/frontend/webpack/development%20server.js#L57" target="_blank" rel="external">webpack-isomorphic-tools plugin</a></li>
+<li><a href="https://github.com/halt-hammerzeit/webapp/blob/master/frontend/page-server/entry.es6.js#L13-L18" target="_blank" rel="external">webpack-isomorphic-tools server-side initalization</a><h5 id="配置文件（Configuration）"><a href="#配置文件（Configuration）" class="headerlink" title="配置文件（Configuration）"></a>配置文件（Configuration）</h5>可用的一些配置参数：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  // debug mode.</div><div class="line">  // when set to true, lets you see debugging messages in the console.</div><div class="line">  //</div><div class="line">  debug: true, // is false by default</div><div class="line"></div><div class="line">  // (optional)</div><div class="line">  // (recommended)</div><div class="line">  //</div><div class="line">  // when `port` is set, then this `port` is used</div><div class="line">  // to run an HTTP server serving Webpack assets.</div><div class="line">  // (`express` npm package must be installed in order for this to work)</div><div class="line">  //</div><div class="line">  // this way, in development mode, `webpack-assets.json` won&apos;t ever</div><div class="line">  // be written to disk and instead will always reside in memory</div><div class="line">  // and be served from memory (just as `webpack-dev-server` does).</div><div class="line">  //</div><div class="line">  // this `port` setting will take effect only in development mode.</div><div class="line">  //</div><div class="line">  // port: 8888, // is false by default</div><div class="line"></div><div class="line">  // verbosity.</div><div class="line">  //</div><div class="line">  // when set to &apos;no webpack stats&apos;,</div><div class="line">  // outputs no Webpack stats to the console in development mode.</div><div class="line">  // this also means no Webpack errors or warnings will be output to the console.</div><div class="line">  //</div><div class="line">  // when set to &apos;webpack stats for each build&apos;,</div><div class="line">  // outputs Webpack stats to the console </div><div class="line">  // in development mode on each incremental build.</div><div class="line">  // (i guess no one is gonna ever use this setting)</div><div class="line">  //</div><div class="line">  // when not set (default), outputs Webpack stats to the console </div><div class="line">  // in development mode for the first build only.</div><div class="line">  //</div><div class="line">  // verbosity: ..., // is `undefined` by default</div><div class="line"></div><div class="line">  // enables support for `require.context()` and `require.ensure()` functions.</div><div class="line">  // is turned off by default </div><div class="line">  // to skip unnecessary code instrumentation</div><div class="line">  // because not everyone uses it.</div><div class="line">  //</div><div class="line">  // patch_require: true, // is false by default</div><div class="line"></div><div class="line">  // By default it creates &apos;webpack-assets.json&apos; file at </div><div class="line">  // webpack_configuration.context (which is your project folder).</div><div class="line">  // You can change the assets file path as you wish</div><div class="line">  // (therefore changing both folder and filename).</div><div class="line">  //</div><div class="line">  // (relative to webpack_configuration.context which is your project folder)</div><div class="line">  //</div><div class="line">  webpack_assets_file_path: &apos;webpack-assets.json&apos;,</div><div class="line"></div><div class="line">  // By default, when running in debug mode, it creates &apos;webpack-stats.json&apos; file at </div><div class="line">  // webpack_configuration.context (which is your project folder).</div><div class="line">  // You can change the stats file path as you wish</div><div class="line">  // (therefore changing both folder and filename).</div><div class="line">  //</div><div class="line">  // (relative to webpack_configuration.context which is your project folder)</div><div class="line">  //</div><div class="line">  webpack_stats_file_path: &apos;webpack-stats.json&apos;,</div><div class="line"></div><div class="line">  // Makes `webpack-isomorphic-tools` aware of Webpack aliasing feature</div><div class="line">  // (if you use it)</div><div class="line">  // https://webpack.github.io/docs/resolving.html#aliasing</div><div class="line">  //</div><div class="line">  // The `alias` parameter corresponds to `resolve.alias` </div><div class="line">  // in your Webpack configuration.</div><div class="line">  //</div><div class="line">  alias: webpack_configuration.resolve.alias, // is &#123;&#125; by default</div><div class="line"></div><div class="line">  // if you&apos;re using Webpack&apos;s `resolve.modulesDirectories`</div><div class="line">  // then you should also put them here.</div><div class="line">  //</div><div class="line">  // modulesDirectories: webpack_configuration.resolve.modulesDirectories // is [&apos;node_modules&apos;] by default</div><div class="line"></div><div class="line">  // here you can define all your asset types</div><div class="line">  //</div><div class="line">  assets:</div><div class="line">  &#123;</div><div class="line">    // keys of this object will appear in:</div><div class="line">    //  * webpack-assets.json</div><div class="line">    //  * .assets() method call result</div><div class="line">    //  * .regular_expression(key) method call</div><div class="line">    //</div><div class="line">    png_images: </div><div class="line">    &#123;</div><div class="line">      // which file types belong to this asset type</div><div class="line">      //</div><div class="line">      extension: &apos;png&apos;, // or extensions: [&apos;png&apos;, &apos;jpg&apos;, ...],</div><div class="line"></div><div class="line">      // [optional]</div><div class="line">      // </div><div class="line">      // here you are able to add some file paths </div><div class="line">      // for which the require() call will bypass webpack-isomorphic-tools</div><div class="line">      // (relative to the project base folder, e.g. ./sources/server/kitten.jpg.js)</div><div class="line">      // (also supports regular expressions, e.g. /^\.\/node_modules\/*/, </div><div class="line">      //  and functions(path) &#123; return true / false &#125;)</div><div class="line">      //</div><div class="line">      // exclude: [],</div><div class="line"></div><div class="line">      // [optional]</div><div class="line">      // </div><div class="line">      // here you can specify manually the paths </div><div class="line">      // for which the require() call will be processed by webpack-isomorphic-tools</div><div class="line">      // (relative to the project base folder, e.g. ./sources/server/kitten.jpg.js)</div><div class="line">      // (also supports regular expressions, e.g. /^\.\/node_modules\/*/, </div><div class="line">      //  and functions(path) &#123; return true / false &#125;).</div><div class="line">      // in case of `include` only included paths will be processed by webpack-isomorphic-tools.</div><div class="line">      //</div><div class="line">      // include: [],</div><div class="line"></div><div class="line">      // [optional]</div><div class="line">      // </div><div class="line">      // determines which webpack stats modules </div><div class="line">      // belong to this asset type</div><div class="line">      //</div><div class="line">      // arguments:</div><div class="line">      //</div><div class="line">      //  module             - a webpack stats module</div><div class="line">      //</div><div class="line">      //                       (to understand what a &quot;module&quot; is</div><div class="line">      //                        read the &quot;What&apos;s a &quot;module&quot;?&quot; section of this readme)</div><div class="line">      //</div><div class="line">      //  regular_expression - a regular expression </div><div class="line">      //                       composed of this asset type&apos;s extensions</div><div class="line">      //                       e.g. /\.scss$/, /\.(ico|gif)$/</div><div class="line">      //</div><div class="line">      //  options            - various options</div><div class="line">      //                       (development mode flag,</div><div class="line">      //                        debug mode flag,</div><div class="line">      //                        assets base url,</div><div class="line">      //                        project base folder,</div><div class="line">      //                        regular_expressions&#123;&#125; for each asset type (by name),</div><div class="line">      //                        webpack stats json object)</div><div class="line">      //</div><div class="line">      //  log</div><div class="line">      // </div><div class="line">      // returns: a Boolean</div><div class="line">      //</div><div class="line">      // by default is: &quot;return regular_expression.test(module.name)&quot;</div><div class="line">      //</div><div class="line">      // premade utility filters:</div><div class="line">      //</div><div class="line">      // Webpack_isomorphic_tools_plugin.style_loader_filter</div><div class="line">      //  (for use with style-loader + css-loader)</div><div class="line">      //</div><div class="line">      filter: function(module, regular_expression, options, log)</div><div class="line">      &#123;</div><div class="line">        return regular_expression.test(module.name)</div><div class="line">      &#125;,</div><div class="line"></div><div class="line">      // [optional]</div><div class="line">      //</div><div class="line">      // transforms a webpack stats module name </div><div class="line">      // to an asset path (usually is the same thing)</div><div class="line">      //</div><div class="line">      // arguments:</div><div class="line">      //</div><div class="line">      //  module  - a webpack stats module</div><div class="line">      //</div><div class="line">      //            (to understand what a &quot;module&quot; is</div><div class="line">      //             read the &quot;What&apos;s a &quot;module&quot;?&quot; section of this readme)</div><div class="line">      //</div><div class="line">      //  options - various options</div><div class="line">      //            (development mode flag,</div><div class="line">      //             debug mode flag,</div><div class="line">      //             assets base url,</div><div class="line">      //             project base folder,</div><div class="line">      //             regular_expressions&#123;&#125; for each asset type (by name),</div><div class="line">      //             webpack stats json object)</div><div class="line">      //</div><div class="line">      //  log</div><div class="line">      // </div><div class="line">      // returns: a String</div><div class="line">      //</div><div class="line">      // by default is: &quot;return module.name&quot;</div><div class="line">      //</div><div class="line">      // premade utility path extractors:</div><div class="line">      //</div><div class="line">      // Webpack_isomorphic_tools_plugin.style_loader_path_extractor</div><div class="line">      //  (for use with style-loader + css-loader)</div><div class="line">      //</div><div class="line">      path: function(module, options, log)</div><div class="line">      &#123;</div><div class="line">        return module.name</div><div class="line">      &#125;,</div><div class="line"></div><div class="line">      // [optional]</div><div class="line">      // </div><div class="line">      // parses a webpack stats module object</div><div class="line">      // for an asset of this asset type</div><div class="line">      // to whatever you need to get </div><div class="line">      // when you require() these assets </div><div class="line">      // in your code later on.</div><div class="line">      //</div><div class="line">      // this is what you&apos;ll see as the asset value in webpack-assets.json: </div><div class="line">      // &#123; ..., path(): compile(parser()), ... &#125;</div><div class="line">      //</div><div class="line">      // can be a CommonJS module source code:</div><div class="line">      // module.exports = ...what you export here is </div><div class="line">      //                     what you get when you require() this asset...</div><div class="line">      //</div><div class="line">      // if the returned value is not a CommonJS module source code</div><div class="line">      // (it may be a string, a JSON object, whatever) </div><div class="line">      // then it will be transformed into a CommonJS module source code.</div><div class="line">      //</div><div class="line">      // in other words: </div><div class="line">      //</div><div class="line">      // // making of webpack-assets.json</div><div class="line">      // for each type of configuration.assets</div><div class="line">      //   modules.filter(type.filter).for_each (module)</div><div class="line">      //     assets[type.path()] = compile(type.parser(module))</div><div class="line">      //</div><div class="line">      // // requiring assets in your code</div><div class="line">      // require(path) = (path) =&gt; return assets[path]</div><div class="line">      //</div><div class="line">      // arguments:</div><div class="line">      //</div><div class="line">      //  module  - a webpack stats module</div><div class="line">      //</div><div class="line">      //            (to understand what a &quot;module&quot; is</div><div class="line">      //             read the &quot;What&apos;s a &quot;module&quot;?&quot; section of this readme)</div><div class="line">      //</div><div class="line">      //  options - various options</div><div class="line">      //            (development mode flag,</div><div class="line">      //             debug mode flag,</div><div class="line">      //             assets base url,</div><div class="line">      //             project base folder,</div><div class="line">      //             regular_expressions&#123;&#125; for each asset type (by name),</div><div class="line">      //             webpack stats json object)</div><div class="line">      //</div><div class="line">      //  log</div><div class="line">      // </div><div class="line">      // returns: whatever (could be a filename, could be a JSON object, etc)</div><div class="line">      //</div><div class="line">      // by default is: &quot;return module.source&quot;</div><div class="line">      //</div><div class="line">      // premade utility parsers:</div><div class="line">      //</div><div class="line">      // Webpack_isomorphic_tools_plugin.url_loader_parser</div><div class="line">      //  (for use with url-loader or file-loader)</div><div class="line">      //  require() will return file URL</div><div class="line">      //  (is equal to the default parser, i.e. no parser)</div><div class="line">      //</div><div class="line">      // Webpack_isomorphic_tools_plugin.css_loader_parser</div><div class="line">      //  (for use with css-loader when not using &quot;modules&quot; feature)</div><div class="line">      //  require() will return CSS style text</div><div class="line">      //</div><div class="line">      // Webpack_isomorphic_tools_plugin.css_modules_loader_parser</div><div class="line">      //  (for use with css-loader when using &quot;modules&quot; feature)</div><div class="line">      //  require() will return a JSON object map of style class names</div><div class="line">      //  which will also have a `_style` key containing CSS style text</div><div class="line">      //</div><div class="line">      parser: function(module, options, log)</div><div class="line">      &#123;</div><div class="line">        log.info(&apos;# module name&apos;, module.name)</div><div class="line">        log.info(&apos;# module source&apos;, module.source)</div><div class="line">        log.info(&apos;# project path&apos;, options.project_path)</div><div class="line">        log.info(&apos;# assets base url&apos;, options.assets_base_url)</div><div class="line">        log.info(&apos;# regular expressions&apos;, options.regular_expressions)</div><div class="line">        log.info(&apos;# debug mode&apos;, options.debug)</div><div class="line">        log.info(&apos;# development mode&apos;, options.development)</div><div class="line">        log.debug(&apos;debugging&apos;)</div><div class="line">        log.warning(&apos;warning&apos;)</div><div class="line">        log.error(&apos;error&apos;)</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    ...</div><div class="line">  &#125;,</div><div class="line">  ...]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="配置文件样例"><a href="#配置文件样例" class="headerlink" title="配置文件样例"></a>配置文件样例</h5><p><em>url-loader/file-loader (images, fonts, etc)</em><br><code>url-loader</code>和<code>file-loader</code>不需要额外的配置即可使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  assets:</div><div class="line">  &#123;</div><div class="line">    images:</div><div class="line">    &#123;</div><div class="line">      extensions: [&apos;png&apos;, &apos;jpg&apos;]</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    fonts:</div><div class="line">    &#123;</div><div class="line">      extensions: [&apos;woff&apos;, &apos;ttf&apos;]</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><em>style-loader (standard CSS stylesheets)</em><br>如果你没有使用<code>webpack</code>的<code>CSS modules</code>的特性且在你的<code>webpack</code>产品配置文件中没有对<code>CSS</code>样式使用<code>ExtractTextPlugin</code>，那么你可以像以下方式来配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  assets:</div><div class="line">  &#123;</div><div class="line">    styles:</div><div class="line">    &#123;</div><div class="line">      extensions: [&apos;less&apos;, &apos;scss&apos;],</div><div class="line"></div><div class="line">      // which `module`s to parse CSS from:</div><div class="line">      filter: function(module, regular_expression, options, log)</div><div class="line">      &#123;</div><div class="line">        if (options.development)</div><div class="line">        &#123;</div><div class="line">          // In development mode there&apos;s Webpack &quot;style-loader&quot;,</div><div class="line">          // which outputs `module`s with `module.name == asset_path`,</div><div class="line">          // but those `module`s do not contain CSS text.</div><div class="line">          //</div><div class="line">          // The `module`s containing CSS text are </div><div class="line">          // the ones loaded with Webpack &quot;css-loader&quot;.</div><div class="line">          // (which have kinda weird `module.name`)</div><div class="line">          //</div><div class="line">          // Therefore using a non-default `filter` function here.</div><div class="line">          //</div><div class="line">          return webpack_isomorphic_tools_plugin.style_loader_filter(module, regular_expression, options, log)</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // In production mode there will be no CSS text at all</div><div class="line">        // because all styles will be extracted by Webpack Extract Text Plugin</div><div class="line">        // into a .css file (as per Webpack configuration).</div><div class="line">        //</div><div class="line">        // Therefore in production mode `filter` function always returns non-`true`.</div><div class="line">      &#125;,</div><div class="line"></div><div class="line">      // How to correctly transform kinda weird `module.name`</div><div class="line">      // of the `module` created by Webpack &quot;css-loader&quot; </div><div class="line">      // into the correct asset path:</div><div class="line">      path: webpack_isomorphic_tools_plugin.style_loader_path_extractor,</div><div class="line"></div><div class="line">      // How to extract these Webpack `module`s&apos; javascript `source` code.</div><div class="line">      // basically takes `module.source` and modifies `module.exports` a little.</div><div class="line">      parser: webpack_isomorphic_tools_plugin.css_loader_parser</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><em>style-loader (CSS stylesheets with “CSS modules” feature)</em><br>当你使用<code>webpack</code>的<code>CSS modules</code>特性时，异或时在你的<code>webpack</code>产品阶段配置文件中使用了<code>CSS</code>样式的<code>ExtractTextPlugin</code>插件，你可以像以下这样进行配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  assets:</div><div class="line">  &#123;</div><div class="line">    style_modules:</div><div class="line">    &#123;</div><div class="line">      extensions: [&apos;less&apos;, &apos;scss&apos;],</div><div class="line"></div><div class="line">      // which `module`s to parse CSS style class name maps from:</div><div class="line">      filter: function(module, regex, options, log)</div><div class="line">      &#123;</div><div class="line">        if (options.development)</div><div class="line">        &#123;</div><div class="line">          // In development mode there&apos;s Webpack &quot;style-loader&quot;,</div><div class="line">          // which outputs `module`s with `module.name == asset_path`,</div><div class="line">          // but those `module`s do not contain CSS text.</div><div class="line">          //</div><div class="line">          // The `module`s containing CSS text are </div><div class="line">          // the ones loaded with Webpack &quot;css-loader&quot;.</div><div class="line">          // (which have kinda weird `module.name`)</div><div class="line">          //</div><div class="line">          // Therefore using a non-default `filter` function here.</div><div class="line">          //</div><div class="line">          return webpack_isomorphic_tools_plugin.style_loader_filter(module, regex, options, log)</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // In production mode there&apos;s no Webpack &quot;style-loader&quot;,</div><div class="line">        // so `module.name`s of the `module`s created by Webpack &quot;css-loader&quot;</div><div class="line">        // (those which contain CSS text)</div><div class="line">        // will be simply equal to the correct asset path</div><div class="line">        return regex.test(module.name)</div><div class="line">      &#125;,</div><div class="line"></div><div class="line">      // How to correctly transform `module.name`s</div><div class="line">      // into correct asset paths</div><div class="line">      path: function(module, options, log)</div><div class="line">      &#123;</div><div class="line">        if (options.development)</div><div class="line">        &#123;</div><div class="line">          // In development mode there&apos;s Webpack &quot;style-loader&quot;,</div><div class="line">          // so `module.name`s of the `module`s created by Webpack &quot;css-loader&quot;</div><div class="line">          // (those picked by the `filter` function above)</div><div class="line">          // will be kinda weird, and this path extractor extracts </div><div class="line">          // the correct asset paths from these kinda weird `module.name`s</div><div class="line">          return WebpackIsomorphicToolsPlugin.style_loader_path_extractor(module, options, log);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // in production mode there&apos;s no Webpack &quot;style-loader&quot;,</div><div class="line">        // so `module.name`s will be equal to correct asset paths</div><div class="line">        return module.name</div><div class="line">      &#125;,</div><div class="line"></div><div class="line">      // How to extract these Webpack `module`s&apos; javascript `source` code.</div><div class="line">      // Basically takes `module.source` and modifies its `module.exports` a little.</div><div class="line">      parser: function(module, options, log)</div><div class="line">      &#123;</div><div class="line">        if (options.development)</div><div class="line">        &#123;</div><div class="line">          // In development mode it adds an extra `_style` entry</div><div class="line">          // to the CSS style class name map, containing the CSS text</div><div class="line">          return WebpackIsomorphicToolsPlugin.css_modules_loader_parser(module, options, log);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // In production mode there&apos;s Webpack Extract Text Plugin </div><div class="line">        // which extracts all CSS text away, so there&apos;s</div><div class="line">        // only CSS style class name map left.</div><div class="line">        return module.source</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="webpack-assets-json是什么"><a href="#webpack-assets-json是什么" class="headerlink" title="webpack-assets.json是什么"></a><code>webpack-assets.json</code>是什么</h5><p>当前文件是<code>webpack-isomorphic-tools</code>运行在服务器端的时候所必须的。这个文件是由<code>Webpack</code>的定制插件创建，并且会被<code>webpack-isomorphic-tools</code>服务器实例从文件系统中读取。当你需要从服务器请求一个资源（<code>require(path_to_an_asset</code>）时候，你就会非常简单直接的从<code>webpack-assets.json</code>中读取资源路径键值所对应的文件；  </p>
+<blockquote>
+<p>伪代码：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// requiring assets in your code</div><div class="line">require(path) = (path) =&gt; return assets[path]</div></pre></td></tr></table></figure>
+<blockquote>
+<p>一旦你在控制台得到了如下信息：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[webpack-isomorphic-tools][error] asset not found: ./~/react-toolbox/lib/font_icon/style.scss</div></pre></td></tr></table></figure>
+<p>这就意味着你所请求的资源并不存在于你的<code>webpack-assets.json</code>文件中，也就是说你从一开始就没有将你的资源信息放在<code>webpack-assets.json</code>中。那么怎么把资源放到<code>webpack-assets.json</code>中呢？  </p>
+<blockquote>
+<p>伪代码：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// making of webpack-assets.json inside the Webpack plugin</div><div class="line">for each type of configuration.assets</div><div class="line">    modules.filter(type.filter).for_each (module)</div><div class="line">        assets[type.path()] = compile(type.parser(module))</div></pre></td></tr></table></figure>
+<p>如果你又遇到了<code>asset not found</code>的错误，第一时间检查你的<code>webpack-assets.json</code>文件，然后去检查你的<code>webpack-isomorphic-tools</code>配置文件的资源类型部分：你的<code>filter</code>、<code>path</code>和<code>parser</code>函数设置对了么？</p>
+<h5 id="webpack-stats又是什么？"><a href="#webpack-stats又是什么？" class="headerlink" title="webpack stats又是什么？"></a><code>webpack stats</code>又是什么？</h5><p><a href="https://github.com/webpack/docs/wiki/node.js-api#stats" target="_blank" rel="external">webpack stats</a>是<code>webpack</code>构建模块的说明。当在<code>debug</code>模式下运行<code>webpack stats</code>将会在你的<code>webpack-assets.json</code>文件相同文件夹下生成一个名为<code>webpack-stats.json</code>的文件。当编写一些<code>filter</code>，<code>path</code>或者<code>parser</code>函数的时候，你可能会对此文件的内容感兴趣。此文件并不是运行所必须的，它仅仅是一些调试信息（debugging information）而已。</p>
+<h5 id="module又表示什么？"><a href="#module又表示什么？" class="headerlink" title="module又表示什么？"></a><code>module</code>又表示什么？</h5><p><em>This is an advanced topic on Webpack internals（这是<code>webpack</code>内部的一个高级主题）</em><br>一个<code>module</code>就是一个<code>webpack</code>的入口。<code>webpack</code>的一个主要特性就是代码分割（code splitting）。当<code>webpack</code>编译你的代码时，它将会把代码分割成为<code>chunks</code> - 大部分的代码可以在必要的情况下再去分别下载，以此来减少初始化代码的加载时间。</p>
+
+	
+	
+	
+	
+</div>
+				
+				
+
+                <!-- Post Comments -->
+                
+    <!-- 使用多说评论 -->
+    <link rel="stylesheet" href="/css/duoshuo.min.css">
+<style>
+    #ds-thread #ds-reset .ds-post-button{
+        background-color: #0097A7 !important;
+    }
+    #ds-wrapper #ds-reset .ds-icons-32{
+        background-color: #0097A7 !important;
+    }
+    #ds-reset .ds-highlight {
+        color: #0097A7 !important;
+    }
+</style>
+<div id="comments">
+    <!-- 多说评论框 start -->
+        <div class="ds-thread" 
+            data-thread-key="2016/12/12/webpack-isomorphic-tools/" 
+            data-url="https://jackerjay.github.io/2016/12/12/webpack-isomorphic-tools/"
+            data-title="webpack-isomorphic-tools 用于webpack的同构工具"></div>
+    <!-- 多说评论框 end -->
+</div>
+
+
+
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/12/11/webpack-dev-middleware/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+        </div>
+    </div>
+
+				
+				
+					<!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay "></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored  sidebar-fixed-left" role="navigation">
+	<div id="sidebar-main">
+	    <!-- Sidebar Header -->
+		<div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+    <i class="material-icons">clear_all</i>
+    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="JackerJay's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        jackerjay@hotmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+		<!-- Sidebar Navigation  -->
+		<ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+			
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+						<i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+             主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+<!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+-->
+
+	
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">7</span></a>
+        </ul>
+    </li>
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+             文章总数
+             <span class="sidebar-badge">7</span>
+        </a>
+    </li>
+</ul>
+
+		<!-- Sidebar Divider -->
+		<div class="sidebar-divider"></div>
+
+		<!-- Sidebar Footer -->
+		<!-- 
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持。 :) 
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+	<div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		主题 - Material
+		<span class="sidebar-badge badge-circle">i</span>
+	</div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		sidebar.help
+		<span class="mdl-button__ripple-container">
+			<span class="mdl-ripple"></span>
+		</span>
+	</div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+	</div>
+    
+    <!-- Sidebar Sponsor -->
+    
+
+
+</aside>
+
+				
+				
+				
+					<!-- Footer Top Button -->
+					<div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+				
+				
+				<!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+	
+	
+		<!-- Paradox Footer Left Section -->
+		<div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+    
+    
+    <!-- Facebook -->
+    
+    
+    
+    <!-- Google + -->
+    
+    
+    
+    <!-- Weibo -->
+    
+    
+    
+    <!-- Instagram -->
+    
+    
+    
+    <!-- Tumblr -->
+    
+    
+    
+    <!-- Github -->
+    
+    <a href="http://github.com/jackerjay" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+        <span class="visuallyhidden">Github</span>
+    </button></a>
+    
+</div>
+
+
+		<!--Copyright-->
+		<div id="copyright">Copyright&nbsp;©&nbsp;<script type="text/javascript">var fd = new Date();document.write(fd.getFullYear());</script>&nbsp;JackerJay杂记</div>
+
+		<!-- Paradox Footer Right Section -->
+
+		<!-- 
+		I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+		It will not impact the appearance and can give developers a lot of support :)
+
+		很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+		它不会影响美观并可以给开发者很大的支持。 :) 
+		-->
+
+		<div class="mdl-mini-footer--right-section">
+			<div>
+				<div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+				<div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+			</div>
+		</div>
+	
+    
+</footer>
+                
+				<!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+    <!-- 多说公共 js 代码 start -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = 'https://static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+             || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <!-- 多说公共 js 代码 end -->
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $(".post-toc-wrap").parent(".mdl-menu__container").css("position", "fixed");
+    });
+</script>
+
+<!-- MathJax Load-->
+
+            </main>
+        </div>
+		
+    </body>
+		
+	
+</html>
