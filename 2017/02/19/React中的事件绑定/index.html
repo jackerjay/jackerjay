@@ -4,7 +4,7 @@
     <!-- Title -->
     
     <title>
-        Material design相关 | JackerJay杂记
+        React中的事件绑定 | JackerJay杂记
     </title>
     
     <!-- Favicons -->
@@ -40,7 +40,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://jackerjay.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Material design相关 | JackerJay杂记">
+    <meta property="og:title" content="React中的事件绑定 | JackerJay杂记">
     <meta property="og:description" content="学习成长路">
     
      <!--[if lte IE 9]>
@@ -215,7 +215,7 @@
 	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
 		for="post-toc-trigger-btn">
 			
-			<ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#避免高度冲突"><span class="post-toc-number">1.</span> <span class="post-toc-text">避免高度冲突</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Cards"><span class="post-toc-number">2.</span> <span class="post-toc-text">Cards</span></a></li></ol>
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#bind方法"><span class="post-toc-number">1.</span> <span class="post-toc-text">bind方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#构造器内声明"><span class="post-toc-number">2.</span> <span class="post-toc-text">构造器内声明</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#箭头函数"><span class="post-toc-number">3.</span> <span class="post-toc-text">箭头函数</span></a></li></ol>
 		
 <!--			<li class="mdl-menu__item">Some Action</li>-->
 	</ul>
@@ -248,7 +248,7 @@
 		
 	
         <p class="article-headline-p">
-            Material design相关
+            React中的事件绑定
         </p>
     </div>
 
@@ -266,7 +266,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>JackerJay</strong>
-        <span>12月 03, 2016</span>
+        <span>2月 19, 2017</span>
     </div>
     
     <div class="section-spacer"></div>
@@ -286,7 +286,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Material-Design/">Material Design</a>
+        <a class="post_tag-link" href="/tags/React学习/">React学习</a>
     </ul>
     
     <!-- Share -->
@@ -301,21 +301,21 @@
     
     
     <!-- Share Twitter -->
-    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Material design相关&url=https://jackerjay.github.io//2016/12/03/Material-design相关/index.html&via=JackerJay" target="_blank">
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=React中的事件绑定&url=https://jackerjay.github.io//2017/02/19/React中的事件绑定/index.html&via=JackerJay" target="_blank">
         <li class="mdl-menu__item">
             分享到 Twitter
         </li>
     </a>
     
     <!-- Share Google+ -->
-    <a class="post_share-link" href="https://plus.google.com/share?url=https://jackerjay.github.io//2016/12/03/Material-design相关/index.html" target="_blank">
+    <a class="post_share-link" href="https://plus.google.com/share?url=https://jackerjay.github.io//2017/02/19/React中的事件绑定/index.html" target="_blank">
         <li class="mdl-menu__item">
             分享到 Google+
         </li>
     </a>
     
     <!-- Share Weibo -->
-    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Material design相关&url=https://jackerjay.github.io//2016/12/03/Material-design相关/index.html&pic=&searchPic=false&style=simple" target="_blank">
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=React中的事件绑定&url=https://jackerjay.github.io//2017/02/19/React中的事件绑定/index.html&pic=&searchPic=false&style=simple" target="_blank">
         <li class="mdl-menu__item">
             分享到微博
         </li>
@@ -327,67 +327,14 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
 	
-		<h4 id="避免高度冲突"><a href="#避免高度冲突" class="headerlink" title="避免高度冲突"></a>避免高度冲突</h4><table>
-<thead>
-<tr>
-<th>高度(dp)</th>
-<th>组件</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>24</td>
-<td>选择器(Picker)、对话框(Dialog)</td>
-</tr>
-<tr>
-<td>16</td>
-<td>导航抽屉(Nav drawer)、右侧抽屉(Right drawer)、模态底部动作条(Modal Bottom Sheet)</td>
-</tr>
-<tr>
-<td>12</td>
-<td>悬浮事件按钮[按下状态] (Floating action button[FAB - pressed])</td>
-</tr>
-<tr>
-<td>9</td>
-<td>子项菜单(为每项子菜单+1dp)</td>
-</tr>
-<tr>
-<td>8</td>
-<td>底部导航栏(Bottom navigation bar)、菜单(Menu)、浮起的卡片(when picked up)、浮动按钮[按压或点击状态] (Raised button(pressed state)</td>
-</tr>
-<tr>
-<td>6</td>
-<td>悬浮事件按钮[默认高度，未触发高度] (FAB-[resting elevation])</td>
-</tr>
-<tr>
-<td>4</td>
-<td>App Bar</td>
-</tr>
-<tr>
-<td>3</td>
-<td>刷新指示器(Refresh indicator)、快速入口/搜索栏[滚动状态] (Quick entry/Search bar[scrolled state])</td>
-</tr>
-<tr>
-<td>2</td>
-<td>卡片[默认高度，未触发高度] (Card[resting elevation])、浮动按钮[默认高度] (Raised button[resting elevation])、快速入口/搜索栏[默认高度] (Quick entry/Search bar[resting elevation])</td>
-</tr>
-<tr>
-<td>1</td>
-<td>开关(Switch)</td>
-</tr>
-</tbody>
-</table>
-<h4 id="Cards"><a href="#Cards" class="headerlink" title="Cards"></a><code>Cards</code></h4><p><code>Cards</code>用来显示一些不同元素所组成的内容，它的大小和所支持的操作也不同。</p>
-<blockquote>
-<p>何时去使用<br>当显示以下内容的时候使用<code>Card</code>：</p>
-<ul>
-<li>作为一个集合，由多种数据类型所组成，例如图片、视频以及文本</li>
-<li>不需要进行直接的对比（用户不需要直接比较图片或文本）</li>
-<li>提供内容长度的高变化性，比如评论列表</li>
-<li>包含一些可交互的内容，例如<code>+1</code>按钮或评论</li>
-<li>亦或是在一个网格列表中，但需要去显示图片的一些补充内容</li>
-</ul>
-</blockquote>
+		<p>在ES6 classes或者纯函数中，自动绑定就不复存在了，我们需要手动实现this的绑定。</p>
+<h4 id="bind方法"><a href="#bind方法" class="headerlink" title="bind方法"></a>bind方法</h4><p>bind方法可以帮助我们绑定事件处理器内的this，并可以向事件处理器中传递参数，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">import React, &#123; Component &#125; from &apos;react&apos;;</div><div class="line"></div><div class="line">class App extends Component &#123;</div><div class="line">    handleClick(e, arg) &#123;</div><div class="line">        console.log(e, arg);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    render() &#123;</div><div class="line">        return &lt;button onClick=&#123;this.handleClick.bind(this, &apos;test&apos;)&#125;&gt;Test&lt;/button&gt;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果方法只需要绑定而不需要传入参数，在ES6的<code>stage 0</code>草案中提供了一个更加便捷的方案——双冒号语法，其作用与<code>this.handleClick.bind(this)</code>一致，并且Babel已经实现了该提案。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">import React, &#123; Component &#125; from &apos;react&apos;;</div><div class="line"></div><div class="line">class App extends Component &#123;</div><div class="line">    handleClick(e) &#123;</div><div class="line">        console.log(e);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    render() &#123;</div><div class="line">        return &lt;button onClick=&#123;::this.handleClick&#125;&gt;Test&lt;/button&gt;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="构造器内声明"><a href="#构造器内声明" class="headerlink" title="构造器内声明"></a>构造器内声明</h4><p>在组件的构造器内完成this的绑定，这种绑定方法的好处在于仅需要进行一次绑定，而不需要每次调用事件监听器时去执行绑定操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">import React, &#123; Component &#125; from &apos;react&apos;;</div><div class="line"></div><div class="line">class App extends Component &#123;</div><div class="line">    </div><div class="line">    //原书此处错误</div><div class="line">    constructor(props) &#123;</div><div class="line">        super(props);</div><div class="line">        this.handleClick = this.handleClick.bind(this);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    handleClick(e) &#123;</div><div class="line">        console.log(e);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    render() &#123;</div><div class="line">        return &lt;button onClick=&#123;this.handleClick&#125;&gt;Test&lt;/button&gt;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><p>箭头函数不仅是函数的“语法糖”，它还自动绑定了定义次函数作用域的this，因此我们不需要再对它使用bind方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">import React, &#123; Component &#125; from &apos;react&apos;;</div><div class="line"></div><div class="line">class App extends Component &#123;</div><div class="line">    const handleClick = (e) =&gt; &#123;</div><div class="line">        console.log(e);</div><div class="line">    &#125;;</div><div class="line">    </div><div class="line">    render() &#123;</div><div class="line">        return &lt;button onClick=&#123;this.handleClick&#125;&gt;Test&lt;/button&gt;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>或<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">import React, &#123; Component &#125; from &apos;react&apos;;</div><div class="line"></div><div class="line">class App extends Component &#123;</div><div class="line">    handleClick(e) &#123;</div><div class="line">        console.log(e);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    render() &#123;</div><div class="line">        return &lt;button onClick=&#123;() =&gt; this.handleClick()&#125;&gt;Test&lt;/button&gt;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上述内容 摘自《深入React技术栈》第一版～</p>
+<p>以上方式都能实现在类定义的组件中绑定this上下文的效果，不过个人最经常使用的是构造器内声明的方式。</p>
 
 	
 	
@@ -415,9 +362,9 @@
 <div id="comments">
     <!-- 多说评论框 start -->
         <div class="ds-thread" 
-            data-thread-key="2016/12/03/Material-design相关/" 
-            data-url="https://jackerjay.github.io/2016/12/03/Material-design相关/"
-            data-title="Material design相关"></div>
+            data-thread-key="2017/02/19/React中的事件绑定/" 
+            data-url="https://jackerjay.github.io/2017/02/19/React中的事件绑定/"
+            data-title="React中的事件绑定"></div>
     <!-- 多说评论框 end -->
 </div>
 
@@ -430,21 +377,13 @@
     
     <!-- Prev Nav -->
     
-        <a href="/2016/12/06/js获取元素offsetXXX问题/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2016/12/03/JS原型及属性/" id="post_nav-older" class="next-content">
+        <a href="/2016/12/13/npm里一些好用的东东/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
