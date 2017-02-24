@@ -358,6 +358,9 @@
 <li><code>vivus</code>不支持虚线动画。<br>那么，如何利用<code>stroke-dasharray</code>来实现虚线动画呢？<br><code>stroke-dasharray</code>，顾名思义，其值是一个数组。因此，我们可以利用这一特性逐渐改变这个数组的长度，如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">1px, 0px;</div><div class="line">2px, 0px;</div><div class="line">2px, 1px;</div><div class="line">2px, 2px, 1px;</div><div class="line">2px, 2px, 2px;</div><div class="line">2px, 2px, 2px, 1px;</div><div class="line">2px, 2px, 2px, 2px;</div><div class="line">...</div></pre></td></tr></table></figure>
 </li>
 </ul>
+<blockquote>
+<p>以上内容摘选自<a href="http://www.ituring.com.cn/book/1898" target="_blank" rel="external">《深入React技术栈》</a>——陈屹 P111+</p>
+</blockquote>
 
 	
 	
