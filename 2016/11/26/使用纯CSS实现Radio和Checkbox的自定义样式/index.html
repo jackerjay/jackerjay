@@ -4,7 +4,7 @@
     <!-- Title -->
     
     <title>
-        npm里一些好用的东东 | JackerJay杂记
+        使用纯CSS实现Radio和Checkbox的自定义样式 | JackerJay杂记
     </title>
     
     <!-- Favicons -->
@@ -40,7 +40,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://jackerjay.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="npm里一些好用的东东 | JackerJay杂记">
+    <meta property="og:title" content="使用纯CSS实现Radio和Checkbox的自定义样式 | JackerJay杂记">
     <meta property="og:description" content="学习成长路">
     
      <!--[if lte IE 9]>
@@ -215,7 +215,7 @@
 	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
 		for="post-toc-trigger-btn">
 			
-			<ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#better-npm-run"><span class="post-toc-number">1.</span> <span class="post-toc-text">better-npm-run</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#serialize-javascript"><span class="post-toc-number">2.</span> <span class="post-toc-text">serialize-javascript</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#安装"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#使用"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">使用</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#HTML字符自动转义"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">HTML字符自动转义</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#配置"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">配置</span></a></li></ol></li></ol>
+			
 		
 <!--			<li class="mdl-menu__item">Some Action</li>-->
 	</ul>
@@ -248,7 +248,7 @@
 		
 	
         <p class="article-headline-p">
-            npm里一些好用的东东
+            使用纯CSS实现Radio和Checkbox的自定义样式
         </p>
     </div>
 
@@ -266,7 +266,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>JackerJay</strong>
-        <span>12月 13, 2016</span>
+        <span>11月 26, 2016</span>
     </div>
     
     <div class="section-spacer"></div>
@@ -286,7 +286,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/node/">node</a>
+        <a class="post_tag-link" href="/tags/CSS/">CSS</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/页面美化/">页面美化</a>
     </ul>
     
     <!-- Share -->
@@ -301,21 +301,21 @@
     
     
     <!-- Share Twitter -->
-    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=npm里一些好用的东东&url=https://jackerjay.github.io//2016/12/13/npm里一些好用的东东/index.html&via=JackerJay" target="_blank">
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=使用纯CSS实现Radio和Checkbox的自定义样式&url=https://jackerjay.github.io//2016/11/26/使用纯CSS实现Radio和Checkbox的自定义样式/index.html&via=JackerJay" target="_blank">
         <li class="mdl-menu__item">
             分享到 Twitter
         </li>
     </a>
     
     <!-- Share Google+ -->
-    <a class="post_share-link" href="https://plus.google.com/share?url=https://jackerjay.github.io//2016/12/13/npm里一些好用的东东/index.html" target="_blank">
+    <a class="post_share-link" href="https://plus.google.com/share?url=https://jackerjay.github.io//2016/11/26/使用纯CSS实现Radio和Checkbox的自定义样式/index.html" target="_blank">
         <li class="mdl-menu__item">
             分享到 Google+
         </li>
     </a>
     
     <!-- Share Weibo -->
-    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=npm里一些好用的东东&url=https://jackerjay.github.io//2016/12/13/npm里一些好用的东东/index.html&pic=&searchPic=false&style=simple" target="_blank">
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=使用纯CSS实现Radio和Checkbox的自定义样式&url=https://jackerjay.github.io//2016/11/26/使用纯CSS实现Radio和Checkbox的自定义样式/index.html&pic=&searchPic=false&style=simple" target="_blank">
         <li class="mdl-menu__item">
             分享到微博
         </li>
@@ -327,19 +327,24 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
 	
-		<h5 id="better-npm-run"><a href="#better-npm-run" class="headerlink" title="better-npm-run"></a><a href="https://www.npmjs.com/package/better-npm-run" target="_blank" rel="external">better-npm-run</a></h5><p>用来解决在<code>package.json</code>定义复杂命令行的好工具，简易来说就是让你的<code>package.json</code>中的代码变得更优雅。<br>在你没使用<code>better-npm-run</code>之前你的<code>package.json</code>文件中的脚本命令肯定是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">    &quot;build:dist&quot;: &quot;NODE_ENV=development webpack --config $npm_package_webpack --progress --colors&quot;,</div><div class="line">    &quot;test&quot;: &quot;NODE_ENV=production karma start&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>当你使用<code>better-npm-run</code>之后，代码变得就优雅多了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;devDependencies&quot;: &#123;</div><div class="line">    &quot;better-npm-run&quot;: &quot;~0.0.1&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">    &quot;build:dist&quot;: &quot;better-npm-run build:dist&quot;,</div><div class="line">    &quot;build:prod&quot;: &quot;better-npm-run build:prod&quot;,</div><div class="line">    &quot;test&quot;: &quot;better-npm-run test&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;betterScripts&quot;: &#123;</div><div class="line">    &quot;build:dist&quot;: &quot;webpack --config $npm_package_webpack --progress --colors&quot;,</div><div class="line">    &quot;build:prod&quot;: &#123;</div><div class="line">      &quot;command&quot;: &quot;webpack --config $npm_package_webpack --progress --colors&quot;,</div><div class="line">      &quot;env&quot;: &#123;</div><div class="line">        &quot;NODE_ENV&quot;: &quot;production&quot;</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    &quot;test&quot;: &#123;</div><div class="line">      &quot;command&quot;: &quot;karma start&quot;,</div><div class="line">      &quot;env&quot;: &#123;</div><div class="line">        &quot;NODE_ENV&quot;: &quot;test&quot;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><code>betterScripts</code>脚本定义的时候可以使用全字符串，也可以使用一个包含<code>command</code>和<code>env</code>属性的对象来包裹。定义在<code>env</code>中的值会覆盖之前命令中出现的环境变量。<br>如果在你的项目根目录里包含<code>.env</code>文件，那么在每条命令中都会加载：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NODE_PATH=./:./lib</div><div class="line">NODE_ENV=development</div><div class="line">PORT=5000</div></pre></td></tr></table></figure></p>
-<p>但是在<code>betterScripts</code>中定义的环境变量值优先权是高于<code>.env</code>文件中的～<br>更多的使用方法请参考 <a href="https://www.npmjs.com/package/better-npm-run" target="_blank" rel="external">better-npm-run</a> 的<code>NPM</code>页面介绍</p>
-<h5 id="serialize-javascript"><a href="#serialize-javascript" class="headerlink" title="serialize-javascript"></a><a href="https://www.npmjs.com/package/serialize-javascript" target="_blank" rel="external">serialize-javascript</a></h5><p>用于将<code>javascript</code>序列化为包含正则表达式和函数的<code>JSON</code>超集。<br><em>简介</em><br>此包中的代码开始是作为<a href=""><code>express-state</code></a>的一个内部模块，为了扩展其用途，现在将其以<code>serialize-javascript</code>发布在<code>npm</code>上。<br>你可能会想，<em>为什么不直接使用<code>JSON.stringify()</code>!?</em> 我们发现在很多时候我们需要将<code>JavaScript</code>的 <em>函数</em> 和 <em>正则表达式</em> 也进行序列化。一个很好的例子就是在客户端<code>Web App</code>的<code>URL</code>路由中我们经常会从服务端定义一些正则表达式去匹配这些路径并发送到客户端。<br>从当前包里导出的函数字符串仅仅会以原意的<code>JavaScript</code>转换为字符串，并且可以将其保存到<code>.js</code>文件中，或者直接植入到<code>HTML</code>的<code>&lt;script&gt;</code>标签中。*<code>HTML</code>字符和<code>JavaScript</code>中的换行符等都会自动转义。</p>
-<h6 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h6><p>使用<code>npm</code>进行安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install serialize-javascript</div></pre></td></tr></table></figure></p>
-<h6 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var serialize = require(&apos;serialize-javascript&apos;);</div><div class="line"> </div><div class="line">serialize(&#123;</div><div class="line">    str  : &apos;string&apos;,</div><div class="line">    num  : 0,</div><div class="line">    obj  : &#123;foo: &apos;foo&apos;&#125;,</div><div class="line">    arr  : [1, 2, 3],</div><div class="line">    bool : true,</div><div class="line">    nil  : null,</div><div class="line">    undef: undefined,</div><div class="line"> </div><div class="line">    fn: function echo(arg) &#123; return arg; &#125;,</div><div class="line">    re: /([^\s]+)/g</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>以上代码会输出以下字符串：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;&#123;&quot;str&quot;:&quot;string&quot;,&quot;num&quot;:0,&quot;obj&quot;:&#123;&quot;foo&quot;:&quot;foo&quot;&#125;,&quot;arr&quot;:[1,2,3],&quot;bool&quot;:true,&quot;nil&quot;:null,&quot;fn&quot;:function echo(arg) &#123; return arg; &#125;,&quot;re&quot;:/([^\\s]+)/g&#125;&apos;</div></pre></td></tr></table></figure></p>
-<p>Note: 为了能产出更优美的代码，你可以通过<code>serialize()</code>可选的第二个参数来定义缩进的空格数目。</p>
-<h6 id="HTML字符自动转义"><a href="#HTML字符自动转义" class="headerlink" title="HTML字符自动转义"></a><code>HTML</code>字符自动转义</h6><p>当前包的一个最主要功能就是可以将序列化的原生<code>JavaScript</code>直接嵌入到<code>HTML</code>的<code>&lt;script&gt;</code>标签中。为了确保此项的安全性，<code>HTML</code>字符和<code>JavaScript</code>的换行符都会自动被转义。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">serialize(&#123;</div><div class="line">    haxorXSS: &apos;&lt;/script&gt;&apos;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>上述代码将会输出以下产品化字符串。将会使用安全的<code>HTML</code>转义字符插入到<code>HTMl</code>文档中，以防止内嵌的脚本元素发生错误或终止。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;&#123;&quot;haxorXSS&quot;:&quot;\\u003C\\u002Fscript\\u003E&quot;&#125;&apos;</div></pre></td></tr></table></figure></p>
-<h6 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h6><p><code>serialize()</code>函数接受第二个参数进行配置，这里共有两种可配置参数，在默认情况下均为<code>undefined</code>:<br><em><code>options.space</code></em><br>此项配置与<code>JSON.stringify</code>的<code>space</code>参数相同，它可用来在序列化输出中添加空白字符和缩进以保证序列化后的代码更易读。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">serialize(obj, &#123;space: 2&#125;);</div></pre></td></tr></table></figure></p>
-<p><em><code>options.isJSON</code></em></p>
+		<p>在学习的时候，想要给定<code>radio</code>或者<code>checkbox</code>一些样式，对我这个对<code>CSS</code>还不是很熟的菜鸟来说，确实一下不知道该如何下手，通过网络帮助，发现原来需要通过使用<code>before</code>和<code>after</code>伪选择器来完成重绘工作。<br>先看下对比吧：</p>
+<ul>
+<li>未选中状态<br><img src="/2016/11/26/使用纯CSS实现Radio和Checkbox的自定义样式/normal.png" alt="">  </li>
+<li>选中状态<br><img src="/2016/11/26/使用纯CSS实现Radio和Checkbox的自定义样式/Rerender.png" alt="">  </li>
+</ul>
+<p>那么这是如何做到的呢？其实并没有什么魔法，只不过很巧妙的使用了<code>:before</code>和<code>:after</code>伪选择器以及<code>label</code>，这只是其中一种重绘方式，其他方式也是类似，其实可以这么理解重绘过程：</p>
+<ul>
+<li>将原有的<code>radio</code>或<code>checkbox</code> 元素进行隐藏，也就是将<code>display</code>设置为<code>none</code></li>
+<li>此时还需要一个与当前<code>radio</code>或<code>checkbox</code>绑定的<code>label</code>元素，也就是将<code>label</code>的<code>for</code>属性设置为需要绑定的<code>radio</code>或<code>checkbox</code>的<code>id</code>值</li>
+<li>使用<code>:before</code>在<code>label</code>文字之前绘制<code>radio</code>圆形边框或<code>checkbox</code>的矩形边框</li>
+<li>使用<code>:after</code>选择器绘制选中状态</li>
+</ul>
+<p>初始化<code>radio</code>或<code>checkbox</code>的状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.poker-form input[type=&quot;checkbox&quot;],</div><div class="line">.poker-form input[type=&quot;radio&quot;] &#123;</div><div class="line">    display: none;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>设置<code>label</code>的左边距，以空余出绘制<code>box</code>的空间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">.poker-form input[type=&quot;checkbox&quot;] + label,</div><div class="line">.poker-form input[type=&quot;radio&quot;] + label &#123;</div><div class="line">    position: relative;</div><div class="line">    display: inline-block;</div><div class="line">    padding-left: 1.5em;</div><div class="line">    cursor: pointer;</div><div class="line">    vertical-align: middle;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用<code>:before</code>选择器绘制边框，此时要使用绝对定位才可以，统一<code>box-sizing</code>为<code>border-box</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">.poker-form input[type=&quot;checkbox&quot;] + label:before,</div><div class="line">.poker-form input[type=&quot;radio&quot;] + label:before &#123;</div><div class="line">    border:1px solid #e2e2e2;</div><div class="line">    width: 1em;</div><div class="line">    height: 1em;</div><div class="line">    display: inline-block;</div><div class="line">    position: absolute;</div><div class="line">    -webkit-box-sizing: border-box;</div><div class="line">    -moz-box-sizing: border-box;</div><div class="line">    box-sizing: border-box;</div><div class="line">    top: 0;</div><div class="line">    left: 0;</div><div class="line">    content: &apos;&apos;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.poker-form input[type=&quot;radio&quot;]:checked + label:before &#123;</div><div class="line">    border-color: #0CB4CC;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.poker-form input[type=&quot;checkbox&quot;]:checked + label:before &#123;</div><div class="line">    border-color: #0CB4CC;</div><div class="line">    background-color: #0CB4CC;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>为其加入<code>hover</code>时的外观<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.poker-form input[type=&quot;checkbox&quot;] + label:hover:before,</div><div class="line">.poker-form input[type=&quot;radio&quot;] + label:hover:before &#123;</div><div class="line">    border-color: #0CB4CC;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用<code>:after</code>选择器设置后续的效果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">//共同属性</div><div class="line">.poker-form input[type=&quot;checkbox&quot;] + label:after,</div><div class="line">.poker-form input[type=&quot;radio&quot;] + label:after &#123;</div><div class="line">    position: absolute;</div><div class="line">    display: none;</div><div class="line">    content: &apos;&apos;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.poker-form input[type=&quot;radio&quot;] + label:after &#123;</div><div class="line">    top: 0.2em;</div><div class="line">    left: 0.2em;</div><div class="line">    height: 0.6em;</div><div class="line">    width: 0.6em;</div><div class="line">    background: #0CB4CC;</div><div class="line">    -webkit-border-radius: 50%;</div><div class="line">    -moz-border-radius: 50%;</div><div class="line">    border-radius: 50%;</div><div class="line">    -webkit-box-sizing: border-box;</div><div class="line">    -moz-box-sizing: border-box;</div><div class="line">    box-sizing: border-box;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//在checkbox这里使用了部分边框来当做选中的对号</div><div class="line">.poker-form input[type=&quot;checkbox&quot;] + label:after &#123;</div><div class="line">    top: 0.2em;</div><div class="line">    left: 0.35em;</div><div class="line">    border-width: 0.15em;</div><div class="line">    border-color: #fff;</div><div class="line">    border-top:0;</div><div class="line">    border-left:0;</div><div class="line">    border-style:solid;</div><div class="line">    width: 0.3em;</div><div class="line">    height: 0.6em;</div><div class="line">    -webkit-transform: rotate(45deg);</div><div class="line">    -moz-transform: rotate(45deg);</div><div class="line">    -ms-transform: rotate(45deg);</div><div class="line">    -o-transform: rotate(45deg);</div><div class="line">    transform: rotate(45deg);</div><div class="line">    -webkit-box-sizing: border-box;</div><div class="line">    -moz-box-sizing: border-box;</div><div class="line">    box-sizing: border-box;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//checkbox选中之后会将之前的绘制显示</div><div class="line">.poker-form input[type=&quot;checkbox&quot;]:checked + label:after,</div><div class="line">.poker-form input[type=&quot;radio&quot;]:checked + label:after &#123;</div><div class="line">    display: block;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样就完成了基本的重绘工作～<br>通过分析<code>antd</code>的重绘，原理基本相同，只不过它使用了<code>label</code>进行包裹<code>input</code>元素，在包裹内容中使用<code>span</code>元素来进行绘制的。</p>
 
 	
 	
@@ -367,9 +372,9 @@
 <div id="comments">
     <!-- 多说评论框 start -->
         <div class="ds-thread" 
-            data-thread-key="2016/12/13/npm里一些好用的东东/" 
-            data-url="https://jackerjay.github.io/2016/12/13/npm里一些好用的东东/"
-            data-title="npm里一些好用的东东"></div>
+            data-thread-key="2016/11/26/使用纯CSS实现Radio和Checkbox的自定义样式/" 
+            data-url="https://jackerjay.github.io/2016/11/26/使用纯CSS实现Radio和Checkbox的自定义样式/"
+            data-title="使用纯CSS实现Radio和Checkbox的自定义样式"></div>
     <!-- 多说评论框 end -->
 </div>
 
@@ -382,7 +387,7 @@
     
     <!-- Prev Nav -->
     
-        <a href="/2017/02/19/React中的事件绑定/" id="post_nav-newer" class="prev-content">
+        <a href="/2016/12/03/JS原型及属性/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -395,14 +400,6 @@
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
-    
-        <a href="/2016/12/12/webpack-isomorphic-tools/" id="post_nav-older" class="next-content">
-            旧篇
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_forward</i>
-            </button>
-        </a>
     
 </nav>
         </div>
