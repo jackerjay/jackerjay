@@ -4,7 +4,7 @@
     <!-- Title -->
     
     <title>
-        Material design相关 | JackerJay杂记
+        HTML5 Canvas合成 | JackerJay杂记
     </title>
     
     <!-- Favicons -->
@@ -40,7 +40,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://jackerjay.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Material design相关 | JackerJay杂记">
+    <meta property="og:title" content="HTML5 Canvas合成 | JackerJay杂记">
     <meta property="og:description" content="学习成长路">
     
      <!--[if lte IE 9]>
@@ -215,7 +215,7 @@
 	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
 		for="post-toc-trigger-btn">
 			
-			<ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#避免高度冲突"><span class="post-toc-number">1.</span> <span class="post-toc-text">避免高度冲突</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Cards"><span class="post-toc-number">2.</span> <span class="post-toc-text">Cards</span></a></li></ol>
+			
 		
 <!--			<li class="mdl-menu__item">Some Action</li>-->
 	</ul>
@@ -248,7 +248,7 @@
 		
 	
         <p class="article-headline-p">
-            Material design相关
+            HTML5 Canvas合成
         </p>
     </div>
 
@@ -266,7 +266,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>JackerJay</strong>
-        <span>12月 03, 2016</span>
+        <span>11月 24, 2016</span>
     </div>
     
     <div class="section-spacer"></div>
@@ -286,7 +286,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Material-Design/">Material Design</a>
+        
     </ul>
     
     <!-- Share -->
@@ -301,21 +301,21 @@
     
     
     <!-- Share Twitter -->
-    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Material design相关&url=https://jackerjay.github.io//2016/12/03/Material-design相关/index.html&via=JackerJay" target="_blank">
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=HTML5 Canvas合成&url=https://jackerjay.github.io//2016/11/24/HTML5-Canvas合成/index.html&via=JackerJay" target="_blank">
         <li class="mdl-menu__item">
             分享到 Twitter
         </li>
     </a>
     
     <!-- Share Google+ -->
-    <a class="post_share-link" href="https://plus.google.com/share?url=https://jackerjay.github.io//2016/12/03/Material-design相关/index.html" target="_blank">
+    <a class="post_share-link" href="https://plus.google.com/share?url=https://jackerjay.github.io//2016/11/24/HTML5-Canvas合成/index.html" target="_blank">
         <li class="mdl-menu__item">
             分享到 Google+
         </li>
     </a>
     
     <!-- Share Weibo -->
-    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Material design相关&url=https://jackerjay.github.io//2016/12/03/Material-design相关/index.html&pic=&searchPic=false&style=simple" target="_blank">
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=HTML5 Canvas合成&url=https://jackerjay.github.io//2016/11/24/HTML5-Canvas合成/index.html&pic=&searchPic=false&style=simple" target="_blank">
         <li class="mdl-menu__item">
             分享到微博
         </li>
@@ -327,67 +327,20 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
 	
-		<h4 id="避免高度冲突"><a href="#避免高度冲突" class="headerlink" title="避免高度冲突"></a>避免高度冲突</h4><table>
-<thead>
-<tr>
-<th>高度(dp)</th>
-<th>组件</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>24</td>
-<td>选择器(Picker)、对话框(Dialog)</td>
-</tr>
-<tr>
-<td>16</td>
-<td>导航抽屉(Nav drawer)、右侧抽屉(Right drawer)、模态底部动作条(Modal Bottom Sheet)</td>
-</tr>
-<tr>
-<td>12</td>
-<td>悬浮事件按钮[按下状态] (Floating action button[FAB - pressed])</td>
-</tr>
-<tr>
-<td>9</td>
-<td>子项菜单(为每项子菜单+1dp)</td>
-</tr>
-<tr>
-<td>8</td>
-<td>底部导航栏(Bottom navigation bar)、菜单(Menu)、浮起的卡片(when picked up)、浮动按钮[按压或点击状态] (Raised button(pressed state)</td>
-</tr>
-<tr>
-<td>6</td>
-<td>悬浮事件按钮[默认高度，未触发高度] (FAB-[resting elevation])</td>
-</tr>
-<tr>
-<td>4</td>
-<td>App Bar</td>
-</tr>
-<tr>
-<td>3</td>
-<td>刷新指示器(Refresh indicator)、快速入口/搜索栏[滚动状态] (Quick entry/Search bar[scrolled state])</td>
-</tr>
-<tr>
-<td>2</td>
-<td>卡片[默认高度，未触发高度] (Card[resting elevation])、浮动按钮[默认高度] (Raised button[resting elevation])、快速入口/搜索栏[默认高度] (Quick entry/Search bar[resting elevation])</td>
-</tr>
-<tr>
-<td>1</td>
-<td>开关(Switch)</td>
-</tr>
-</tbody>
-</table>
-<h4 id="Cards"><a href="#Cards" class="headerlink" title="Cards"></a><code>Cards</code></h4><p><code>Cards</code>用来显示一些不同元素所组成的内容，它的大小和所支持的操作也不同。</p>
-<blockquote>
-<p>何时去使用<br>当显示以下内容的时候使用<code>Card</code>：</p>
+		<p>将透明度与<code>globalCompositeOperation</code>属性结合使用，可以用来控制图形和文本在画布上绘制的方式，合成<code>globalCompositeOperation</code>允许的值有：<br><code>copy</code>、<code>destination-atop</code>、<code>destination-in</code>、<code>destination-in</code>、<code>destination-over</code>、<code>destination-out</code>、<code>lighter</code>、<code>source-atop</code>、<code>source-in</code>、<code>source-out</code>、<code>source-over</code>、<code>source-over</code>、<code>xor</code><br>实例代码选自《HTML5权威指南》<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;title&gt;&lt;/title&gt;</div><div class="line">	&lt;style type=&quot;text/css&quot;&gt;</div><div class="line">		select &#123;</div><div class="line">			border: #eee solid 0.5px;</div><div class="line">			background-color: transparent;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		canvas &#123;</div><div class="line">			border: #eee solid 1px;</div><div class="line">		&#125;</div><div class="line">	&lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;canvas id=&quot;canvas&quot; width=&quot;300&quot; height=&quot;120&quot;&gt;</div><div class="line">	</div><div class="line">&lt;/canvas&gt;</div><div class="line"></div><div class="line">&lt;label&gt;Composition Value&lt;/label&gt;</div><div class="line">&lt;select id=&quot;list&quot;&gt;</div><div class="line">	&lt;option&gt;copy&lt;/option&gt;</div><div class="line">	&lt;option&gt;destination-atop&lt;/option&gt;</div><div class="line">	&lt;option&gt;destination-in&lt;/option&gt;</div><div class="line">	&lt;option&gt;destination-over&lt;/option&gt;</div><div class="line">	&lt;option&gt;destination-out&lt;/option&gt;</div><div class="line">	&lt;option&gt;lighter&lt;/option&gt;</div><div class="line">	&lt;option&gt;source-atop&lt;/option&gt;</div><div class="line">	&lt;option&gt;source-in&lt;/option&gt;</div><div class="line">	&lt;option&gt;source-out&lt;/option&gt;</div><div class="line">	&lt;option&gt;source-over&lt;/option&gt;</div><div class="line">	&lt;option&gt;xor&lt;/option&gt;</div><div class="line">&lt;/select&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">	var ctx = document.getElementById(&quot;canvas&quot;).getContext(&quot;2d&quot;);</div><div class="line">	ctx.fillStyle = &quot;lightgrey&quot;;</div><div class="line">	ctx.strokeStyle = &quot;black&quot;;</div><div class="line">	ctx.lineWidth = 3;</div><div class="line"></div><div class="line">	var compVal = &quot;copy&quot;;</div><div class="line"></div><div class="line">	document.getElementById(&quot;list&quot;).onchange = function(e) &#123;</div><div class="line">		compVal = e.target.value;</div><div class="line">		draw();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	draw();</div><div class="line"></div><div class="line">	function draw() &#123;</div><div class="line">		ctx.clearRect(0, 0, 300, 120);</div><div class="line">		ctx.globAlpha = 1.0;</div><div class="line">		ctx.font = &quot;100px sans-serif&quot;;</div><div class="line">		ctx.fillText(&quot;Hello&quot;, 10, 100);</div><div class="line">		ctx.strokeText(&quot;Hello&quot;, 10, 100);</div><div class="line"></div><div class="line">		ctx.globalCompositeOperation = compVal;</div><div class="line"></div><div class="line">		ctx.fillStyle = &quot;red&quot;;</div><div class="line">		ctx.globalAlpha = 0.5;</div><div class="line">		ctx.fillRect(100, 10, 150, 100);</div><div class="line">	&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>代码默认效果<br><img src="/2016/11/24/HTML5-Canvas合成/default.png" alt=""></p>
 <ul>
-<li>作为一个集合，由多种数据类型所组成，例如图片、视频以及文本</li>
-<li>不需要进行直接的对比（用户不需要直接比较图片或文本）</li>
-<li>提供内容长度的高变化性，比如评论列表</li>
-<li>包含一些可交互的内容，例如<code>+1</code>按钮或评论</li>
-<li>亦或是在一个网格列表中，但需要去显示图片的一些补充内容</li>
+<li><code>copy</code>  效果时将来源绘制在目标上，忽略一切透明度设置，类似直接覆盖的效果，即将<br><img src="/2016/11/24/HTML5-Canvas合成/copy.png" alt="">  </li>
+<li><code>destination-atop</code> 使用目标图像来代替原图像，也就时保留透明度并叠加可见部分<br><img src="/2016/11/24/HTML5-Canvas合成/destination-atop.png" alt="">  </li>
+<li><code>destination-in</code> 来源图像和目标图像都不透明处显示来源图像，来源图像应用了透明度，<code>Hello</code>应用了透明度，只显示与目标图像交集的地方<br><img src="/2016/11/24/HTML5-Canvas合成/destination-in-1.png" alt="">  </li>
+<li><code>destination-over</code> 来源图像覆盖在目标图像上，即<code>Hello</code>覆盖在红色矩形上<br><img src="/2016/11/24/HTML5-Canvas合成/destination-over-1.png" alt="">  </li>
+<li><code>lighter</code>来源图像与目标图像的总和，可以看出来源图像和目标图像都有了透明效果<br><img src="/2016/11/24/HTML5-Canvas合成/11/lighter.png" alt="">    </li>
+<li><code>source-atop</code>  目标图像图像颜色叠加到源图像<code>Hello</code>上<br><img src="/2016/11/24/HTML5-Canvas合成/source-atop.png" alt="">  </li>
+<li><code>source-in</code> 来源图像与目标图像叠加处显示来源图像和目标图像色彩<br><img src="/2016/11/24/HTML5-Canvas合成/source-in.png" alt="">  </li>
+<li><code>source-out</code> 来源图像与目标图像叠加部分，来源图像<code>Hello</code>不透明处使其透明显示，其他位置显示目标图像<br><img src="/2016/11/24/HTML5-Canvas合成/source-out.png" alt="">  </li>
+<li><code>source-over</code> 目标图像个叠加到来源图像上<br><img src="/2016/11/24/HTML5-Canvas合成/source-over.png" alt="">  </li>
+<li><code>xor</code> 叠加出图像执行异或运算<br><img src="/2016/11/24/HTML5-Canvas合成/xor.png" alt="">  </li>
 </ul>
-</blockquote>
 
 	
 	
@@ -415,9 +368,9 @@
 <div id="comments">
     <!-- 多说评论框 start -->
         <div class="ds-thread" 
-            data-thread-key="2016/12/03/Material-design相关/" 
-            data-url="https://jackerjay.github.io/2016/12/03/Material-design相关/"
-            data-title="Material design相关"></div>
+            data-thread-key="2016/11/24/HTML5-Canvas合成/" 
+            data-url="https://jackerjay.github.io/2016/11/24/HTML5-Canvas合成/"
+            data-title="HTML5 Canvas合成"></div>
     <!-- 多说评论框 end -->
 </div>
 
@@ -430,7 +383,7 @@
     
     <!-- Prev Nav -->
     
-        <a href="/2016/12/06/js获取元素offsetXXX问题/" id="post_nav-newer" class="prev-content">
+        <a href="/2016/11/26/使用纯CSS实现Radio和Checkbox的自定义样式/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -443,14 +396,6 @@
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
-    
-        <a href="/2016/12/03/JS原型及属性/" id="post_nav-older" class="next-content">
-            旧篇
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_forward</i>
-            </button>
-        </a>
     
 </nav>
         </div>
