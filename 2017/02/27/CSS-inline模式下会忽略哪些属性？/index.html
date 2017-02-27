@@ -4,7 +4,7 @@
     <!-- Title -->
     
     <title>
-        React受控组件与非受控组件 | JackerJay杂记
+        CSS inline模式下会忽略哪些属性？ | JackerJay杂记
     </title>
     
     <!-- Favicons -->
@@ -40,7 +40,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://jackerjay.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="React受控组件与非受控组件 | JackerJay杂记">
+    <meta property="og:title" content="CSS inline模式下会忽略哪些属性？ | JackerJay杂记">
     <meta property="og:description" content="学习成长路">
     
      <!--[if lte IE 9]>
@@ -215,7 +215,7 @@
 	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
 		for="post-toc-trigger-btn">
 			
-			<ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#受控组件"><span class="post-toc-number">1.</span> <span class="post-toc-text">受控组件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#非受控组件"><span class="post-toc-number">2.</span> <span class="post-toc-text">非受控组件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#对比受控组件与非受控组件"><span class="post-toc-number">3.</span> <span class="post-toc-text">对比受控组件与非受控组件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1、性能上的问题"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">1、性能上的问题</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2、是否需要事件绑定"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">2、是否需要事件绑定</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#表单组件的几个重要属性"><span class="post-toc-number">4.</span> <span class="post-toc-text">表单组件的几个重要属性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1、状态属性"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">1、状态属性</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2、事件属性"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">2、事件属性</span></a></li></ol></li></ol>
+			
 		
 <!--			<li class="mdl-menu__item">Some Action</li>-->
 	</ul>
@@ -248,7 +248,7 @@
 		
 	
         <p class="article-headline-p">
-            React受控组件与非受控组件
+            CSS inline模式下会忽略哪些属性？
         </p>
     </div>
 
@@ -266,7 +266,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>JackerJay</strong>
-        <span>2月 20, 2017</span>
+        <span>2月 27, 2017</span>
     </div>
     
     <div class="section-spacer"></div>
@@ -286,7 +286,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/React系统学习/">React系统学习</a>
+        
     </ul>
     
     <!-- Share -->
@@ -301,21 +301,21 @@
     
     
     <!-- Share Twitter -->
-    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=React受控组件与非受控组件&url=https://jackerjay.github.io//2017/02/20/React受控组件与非受控组件/index.html&via=JackerJay" target="_blank">
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=CSS inline模式下会忽略哪些属性？&url=https://jackerjay.github.io//2017/02/27/CSS-inline模式下会忽略哪些属性？/index.html&via=JackerJay" target="_blank">
         <li class="mdl-menu__item">
             分享到 Twitter
         </li>
     </a>
     
     <!-- Share Google+ -->
-    <a class="post_share-link" href="https://plus.google.com/share?url=https://jackerjay.github.io//2017/02/20/React受控组件与非受控组件/index.html" target="_blank">
+    <a class="post_share-link" href="https://plus.google.com/share?url=https://jackerjay.github.io//2017/02/27/CSS-inline模式下会忽略哪些属性？/index.html" target="_blank">
         <li class="mdl-menu__item">
             分享到 Google+
         </li>
     </a>
     
     <!-- Share Weibo -->
-    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=React受控组件与非受控组件&url=https://jackerjay.github.io//2017/02/20/React受控组件与非受控组件/index.html&pic=&searchPic=false&style=simple" target="_blank">
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=CSS inline模式下会忽略哪些属性？&url=https://jackerjay.github.io//2017/02/27/CSS-inline模式下会忽略哪些属性？/index.html&pic=&searchPic=false&style=simple" target="_blank">
         <li class="mdl-menu__item">
             分享到微博
         </li>
@@ -327,31 +327,20 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
 	
-		<h4 id="受控组件"><a href="#受控组件" class="headerlink" title="受控组件"></a>受控组件</h4><p>每当表单的状态发生变化时，都会被写入到组件的<code>state</code>中，也就是说在受控组件中，组件渲染出的状态与它的<code>value</code>或<code>checked prop</code>相对应。<code>React</code>通过这种方式消除了组件的局部状态，使得应用的整个状态更加可控。<code>React</code>官方同样推荐使用受控表单组件。<br><code>React</code>受控组件更新<code>state</code>的流程：</p>
+		<p>在学习<code>CSS</code>过程中，发现在行内显示模式时会忽略较多的属性，特别是在<code>《HTML5权威指南》P498页</code>的介绍<code>transform 2d</code>变换的样例中，原书代码是为了实现行内元素<code>&lt;span&gt;</code>的变换，源代码如下（因为此书在编写时还只有<code>firefox</code>完整实现了<code>transform</code>，我已补充了其他兼容方式）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE HTML&gt;</div><div class="line">&lt;html&gt;</div><div class="line">    &lt;head&gt;</div><div class="line">        &lt;title&gt;Example&lt;/title&gt;</div><div class="line">        &lt;meta name=&quot;author&quot; content=&quot;Adam Freeman&quot;/&gt;</div><div class="line">        &lt;meta name=&quot;description&quot; content=&quot;A simple example&quot;/&gt;</div><div class="line">        &lt;link rel=&quot;shortcut icon&quot; href=&quot;favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;</div><div class="line">        &lt;style&gt;</div><div class="line">            p &#123;</div><div class="line">                padding: 5px;</div><div class="line">                border: medium double black;</div><div class="line">                background-color: lightgrey;</div><div class="line">                font-family: sans-serif;</div><div class="line">            &#125;</div><div class="line">            #banana &#123;</div><div class="line">                font-size: x-large;</div><div class="line">                border: medium solid white;</div><div class="line">                background-color: green;</div><div class="line">                color: white;</div><div class="line">                padding: 4px;</div><div class="line">                transform: rotate(-45deg);</div><div class="line">                -webkit-transform: rotate(-45deg);</div><div class="line">                -o-transfrom: rotate(-45deg) scaleX(1.2);</div><div class="line">                -ms-transfrom: rotate(-45deg) scaleX(1.2);</div><div class="line">            &#125;</div><div class="line">        &lt;/style&gt;</div><div class="line">    &lt;/head&gt;</div><div class="line">    &lt;body&gt;</div><div class="line">        &lt;p id=&quot;fruittext&quot;&gt;</div><div class="line">            There are lots of different kinds of fruit - there are over 500</div><div class="line">            varieties of &lt;span id=&quot;banana&quot;&gt;banana&lt;/span&gt; alone. By the time we add the</div><div class="line">            countless types of apples, oranges, and other</div><div class="line">            well-known fruit, we are faced with thousands of choices.</div><div class="line">        &lt;/p&gt;</div><div class="line">    &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>在使用原书代码进行测试时，显示效果如下：<br><img src="/2017/02/27/CSS-inline模式下会忽略哪些属性？/transform-scr-nochange.png" alt=""><br>没有任何效果的嘛<code>transform</code>没有起作用，后来考虑是不是<code>&lt;span&gt;</code>作为<code>inline</code>元素，将这些属性给忽略了？<br>当设置<code>&lt;span&gt;</code>作为<code>inline-block</code>元素时，<code>transform</code>才会有作用：<br><img src="/2017/02/27/CSS-inline模式下会忽略哪些属性？/transform-src-changed.png" alt=""><br>所以才有了现在的问题，作为行内<code>inline</code>元素，到底会忽略哪些常用的属性呢？<br>测试后的结果如下（使用<code>Chrome</code>测试，后续会加入其他浏览器测试）：</p>
 <ul>
-<li>可以通过在初始<code>state</code>中设置表单的默认值。</li>
-<li>每当表单的值发生变化时，调用<code>onChange</code>事件处理器。</li>
-<li>事件处理器通过合成事件对象<code>e</code>拿到改变后的状态，并更新应用的<code>state</code>。</li>
-<li><code>setState</code>触发视图的重新渲染，完成表单组件值的更新。<br>在<code>React</code>中，数据是单向流动的。表单的数据源于组件的<code>state</code>，并通过<code>props</code>传入，这也称为单向数据绑定。然后，我们又通过<code>onChange</code>事件处理器将新的表单数据写回到组件的<code>state</code>，完成了双向数据绑定。<br>与原生表单组件相比，受控组件的模式确实复杂了很多。每次表单值发生变化时，都会执行上面几步，这样统一了内部状态，使得表单的状态更加可靠。这也意味着我们可以在执行最后一步<code>setState</code>前，对表单值进行清洗和校验。示例如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">handleChange(e) &#123;</div><div class="line">    this.setState(&#123;</div><div class="line">        value: e.target.value.substring(0, 140).toUpperCase(),</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li><code>忽略</code>的属性<ul>
+<li><code>margin-top</code>，<code>margin-bottom</code>：<code>margin</code>的上下外边距是会被忽略的</li>
+<li><code>transform</code>：测试过，变换属性也会被忽略  </li>
+</ul>
+</li>
+<li><code>不会忽略</code>的<code>需要注意</code>的属性<ul>
+<li><code>margin-left</code>，<code>margin-right</code>：这两个属性是不会忽略的，在<code>inline</code>中依旧可以让元素与其他行内内容保持左右外边距</li>
+<li><code>padding</code>：<code>padding</code>的全家都不会被忽略，而且在设置<code>padding</code>时会对其他元素造成影响，主要表现在垂直方向，左右内边距会使元素拉长，其他行内元素自动适应，但是上下内边距的拉长并不会让行高增加以至于会覆盖到上部已渲染的元素和被下部元素覆盖，如下图：<img src="/2017/02/27/CSS-inline模式下会忽略哪些属性？/inline-effect-padding.png" alt=""></li>
+</ul>
 </li>
 </ul>
-<p>上面的代码做到了截取用户输入的前140个字符，并转换为大写。实际上，在<code>React</code>内部拦截了浏览器的原生事件，这得益于<code>Virtual DOM</code>以及合成事件系统。</p>
-<h4 id="非受控组件"><a href="#非受控组件" class="headerlink" title="非受控组件"></a>非受控组件</h4><p>如果一个表单组件没有<code>value props</code>（单选按钮和复选框对应的是<code>checked prop</code>）时，就可以称为非受控组件。相应的，你可以使用<code>defaultValue</code>和<code>defaultChecked prop</code>来表示组件的默认状态。下面通过一个简单的示例来描述非受控组件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">import React, &#123; Component &#125; from &apos;react&apos;;</div><div class="line"></div><div class="line">class App extends Component &#123;</div><div class="line">    </div><div class="line">    constructor(props) &#123;</div><div class="line">        super(props);</div><div class="line">        this.handleSubmit = this.handleSubmit.bind(this);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    handleSubmit(e) &#123;</div><div class="line">        e.preventDefault();</div><div class="line">        const &#123; value &#125; = this.refs.name;</div><div class="line">        console.log(value);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    render() &#123;</div><div class="line">        return (</div><div class="line">            &lt;form onSubmit=&#123;this.handleSubmit&#125;&gt;</div><div class="line">                &lt;input ref=&quot;name&quot; type=&quot;text&quot; defaultValue=&quot;Hangzhou&quot; /&gt;</div><div class="line">                &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;</div><div class="line">            &lt;/form&gt;</div><div class="line">        )</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在<code>React</code>中，非受控组件是一种反模式，它的值不受组件自身的<code>state</code>或<code>props</code>控制。通常需要通过为其添加<code>ref prop</code>来访问渲染后的底层<code>DOM</code>元素。</p>
-<h4 id="对比受控组件与非受控组件"><a href="#对比受控组件与非受控组件" class="headerlink" title="对比受控组件与非受控组件"></a>对比受控组件与非受控组件</h4><p>受控组件与非受控组件的特点及适用场景：<br>我们刚才看到通过<code>defaultValue</code>或者<code>defaultChecked</code>来设置表单的默认值，它仅会被渲染一次，在后续的渲染时并不起作用。下面对比两个示例：<br>将输入的字母转化为大写展示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;input</div><div class="line">    value=&#123;this.state.value&#125;</div><div class="line">    onChange=&#123;e =&gt; &#123;</div><div class="line">        this.setState(&#123; value: e.target.value.toUpperCase() &#125;)</div><div class="line">    &#125;&#125;</div><div class="line">/&gt;</div></pre></td></tr></table></figure></p>
-<p>直接展示输入的字母：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;input</div><div class="line">    defaultValue=&#123;this.state.value&#125;</div><div class="line">    onChange=&#123;e =&gt; &#123;</div><div class="line">        this.setState(&#123; value: e.target.value.toUpperCase() &#125;)</div><div class="line">    &#125;&#125;</div><div class="line">/&gt;</div></pre></td></tr></table></figure></p>
-<p>在受控组建中，可以将用户输入的英文字母转化为大写后输出展示，而在非受控组件中则不会。而如果不对受控组件绑定<code>change</code>事件，我们在文本框中输入任何值都不会起作用。多数情况下，对于非受控组件，我们并不需要提供<code>change</code>事件。通过上面的示例可以看出，受控组件和非受控组件的最大区别是：<strong>非受控组件的状态并不会受应用状态的控制，应用中也多了局部组件状态，而受控组件的值来自于组件的<code>state</code></strong>。</p>
-<h5 id="1、性能上的问题"><a href="#1、性能上的问题" class="headerlink" title="1、性能上的问题"></a>1、性能上的问题</h5><p>在受控组件中，每次表单的值发生变化时，都会调用一次<code>onChange</code>事件处理器，这确实会有一些性能上的损耗。虽然使用非受控组件不会出现这些问题，但仍然不提倡在<code>React</code>中使用非受控组件。这个问题可以通过<code>Flux/Redux</code>应用架构等方式来达到统一组件状态的目的。</p>
-<h5 id="2、是否需要事件绑定"><a href="#2、是否需要事件绑定" class="headerlink" title="2、是否需要事件绑定"></a>2、是否需要事件绑定</h5><p>使用受控组件最令人头疼的就是，我们需要为每个组件绑定一个<code>change</code>事件，并定义一个事件处理器来同步表单值和组件的状态，这是一个必要条件。当然，在某些简单的情况下，也可以使用一个事件处理器来处理多个表单域。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">import React, &#123; Component &#125; from &apos;react&apos;;</div><div class="line"></div><div class="line">class FormApp extends Component &#123;</div><div class="line">    constructor(props) &#123;</div><div class="line">        super(props);</div><div class="line">        this.state = &#123;</div><div class="line">            name: &apos;&apos;,</div><div class="line">            age: 18</div><div class="line">        &#125;;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    handleChange(name, e) &#123;</div><div class="line">        const &#123; value &#125; = e.target;</div><div class="line">        this.setState(&#123;</div><div class="line">            [name]: value,</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    render() &#123;</div><div class="line">    return (</div><div class="line">        &lt;div&gt;</div><div class="line">            &lt;input value=&#123;name&#125; onChange=&#123;this.handleChange.bind(this, &apos;name&apos;) /&gt;</div><div class="line">            &lt;input value=&#123;age&#125; onChange=&#123;this.handleChange.bind(this, &apos;age&apos;) /&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    );</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="表单组件的几个重要属性"><a href="#表单组件的几个重要属性" class="headerlink" title="表单组件的几个重要属性"></a>表单组件的几个重要属性</h4><h5 id="1、状态属性"><a href="#1、状态属性" class="headerlink" title="1、状态属性"></a>1、状态属性</h5><p><code>React</code>的<code>Form</code>组件提供了几个重要的属性，用于展示组件的状态。</p>
-<ul>
-<li><code>value</code>: 类型为<code>text</code>的<code>input</code>组件、<code>textarea</code>组件以及<code>select</code>组件都借助<code>value prop</code>来展示应用的状态。</li>
-<li><code>checked</code>: 类型为<code>radio</code>或<code>checkbox</code>的组件借助值为<code>boolean</code>类型的<code>selected prop</code>来展示应用的状态。</li>
-<li><code>selected</code>: 该属性可作用于<code>select</code>组件下面的<code>option</code>上，<code>React</code>并不建议使用这种方法来展示状态，而推荐在<code>select</code>组件上使用<code>value</code>的方式。<h5 id="2、事件属性"><a href="#2、事件属性" class="headerlink" title="2、事件属性"></a>2、事件属性</h5>在状态属性发生变化的时候，会触发<code>onChange</code>事件属性，实际上，受控组件中的<code>change</code>事件与<code>HTML DOM</code>中提供的<code>input</code>事件更为类似（<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/oninput" target="_blank" rel="external">GlobalEventHandlers.oninput</a>）。同样，<code>React</code>支持<code>DOM Level3</code>中定义的所有表单事件。</li>
-</ul>
-<blockquote>
-<p>以上内容摘选自<a href="http://www.ituring.com.cn/book/1898" target="_blank" rel="external">《深入React技术栈》</a>——陈屹 P60-P64</p>
-</blockquote>
 
 	
 	
@@ -379,9 +368,9 @@
 <div id="comments">
     <!-- 多说评论框 start -->
         <div class="ds-thread" 
-            data-thread-key="2017/02/20/React受控组件与非受控组件/" 
-            data-url="https://jackerjay.github.io/2017/02/20/React受控组件与非受控组件/"
-            data-title="React受控组件与非受控组件"></div>
+            data-thread-key="2017/02/27/CSS-inline模式下会忽略哪些属性？/" 
+            data-url="https://jackerjay.github.io/2017/02/27/CSS-inline模式下会忽略哪些属性？/"
+            data-title="CSS inline模式下会忽略哪些属性？"></div>
     <!-- 多说评论框 end -->
 </div>
 
@@ -394,21 +383,13 @@
     
     <!-- Prev Nav -->
     
-        <a href="/2017/02/21/与React同生的Immutable/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/02/19/React中的事件绑定/" id="post_nav-older" class="next-content">
+        <a href="/2017/02/24/CSS动画与JavaScript动画/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
