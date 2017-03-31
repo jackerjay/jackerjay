@@ -327,10 +327,7 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
 	
-		<h3 id="window-open-方法"><a href="#window-open-方法" class="headerlink" title="window.open 方法"></a>window.open 方法</h3><p><code>window.open()</code>方法用于打开一个新的浏览器窗口或查找一个已命名的窗口。<br>语法：</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; var windowObjectReference = window.open(strUrl, strWindowName, [strWindowFeatures]);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
+		<h3 id="window-open-方法"><a href="#window-open-方法" class="headerlink" title="window.open 方法"></a>window.open 方法</h3><p><code>window.open()</code>方法用于打开一个新的浏览器窗口或查找一个已命名的窗口。<br>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var windowObjectReference = </div><div class="line">window.open(strUrl, strWindowName, [strWindowFeatures]);</div></pre></td></tr></table></figure></p>
 <p>详细的参数介绍可以移步<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/open" target="_blank" rel="external">MDN window.open</a>。<br>在此处记录一个关于其参数<code>location</code>的问题：<br>在古老IE年代，设置<code>location=no</code>的情况下是不会显示地址栏的，但是现代浏览器中，此属性已经在基于安全性的情况下被忽略，但如果设置<code>location=no</code>的情况下，地址栏是<code>只读</code>状态，不可编辑。<br>以下摘自<a href="http://stackoverflow.com/questions/2909645/open-new-popup-window-without-address-bars-in-firefox-ie" target="_blank" rel="external"><code>stackoverflow-Open new popup window without address bars in firefox &amp; IE</code></a>  </p>
 <ul>
 <li>Firefox<br>In Firefox 3, dom.disable_window_open_feature.location now defaults to true, forcing the presence of the Location Bar much like in IE7. See bug 337344 for more information.</li>
