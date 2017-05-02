@@ -4,7 +4,7 @@
     <!-- Title -->
     
     <title>
-        CSS动画与JavaScript动画 | JackerJay杂记
+        Webpack打包一些好用的插件 | JackerJay杂记
     </title>
     
     <!-- Favicons -->
@@ -40,7 +40,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://jackerjay.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="CSS动画与JavaScript动画 | JackerJay杂记">
+    <meta property="og:title" content="Webpack打包一些好用的插件 | JackerJay杂记">
     <meta property="og:description" content="学习成长路">
     
      <!--[if lte IE 9]>
@@ -226,7 +226,7 @@
 	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
 		for="post-toc-trigger-btn">
 			
-			<ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#CSS动画的局限性"><span class="post-toc-number">1.</span> <span class="post-toc-text">CSS动画的局限性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#CSS-animation"><span class="post-toc-number">2.</span> <span class="post-toc-text">CSS animation</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#用JavaScript包装过的CSS动画"><span class="post-toc-number">3.</span> <span class="post-toc-text">用JavaScript包装过的CSS动画</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#JavaScript动画"><span class="post-toc-number">4.</span> <span class="post-toc-text">JavaScript动画</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#缓动函数部分"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">缓动函数部分</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#缓动函数用户体验"><span class="post-toc-number">4.1.1.</span> <span class="post-toc-text">缓动函数用户体验</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#物理缓动"><span class="post-toc-number">4.1.2.</span> <span class="post-toc-text">物理缓动</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#cubic-bezier-缓动"><span class="post-toc-number">4.1.3.</span> <span class="post-toc-text">cubic-bezier 缓动</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#渲染部分"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">渲染部分</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#SVG线条动画"><span class="post-toc-number">5.</span> <span class="post-toc-text">SVG线条动画</span></a></li></ol>
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#strip-loader-在产品期分离你在开发中需要的函数的插件"><span class="post-toc-number">1.</span> <span class="post-toc-text">strip-loader 在产品期分离你在开发中需要的函数的插件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#html-webpack-plugin-用来简化创建服务于webpack-bundle的HTML文件，特别是当bundles中含有hash值，且这个值在每次编译后都会发生变化时尤为有用。也可以使用loadsh或你自己的loader来加载模板来生成HTML文件。"><span class="post-toc-number">2.</span> <span class="post-toc-text">html-webpack-plugin 用来简化创建服务于webpack bundle的HTML文件，特别是当bundles中含有hash值，且这个值在每次编译后都会发生变化时尤为有用。也可以使用loadsh或你自己的loader来加载模板来生成HTML文件。</span></a></li></ol>
 		
 <!--			<li class="mdl-menu__item">Some Action</li>-->
 	</ul>
@@ -259,7 +259,7 @@
 		
 	
         <p class="article-headline-p">
-            CSS动画与JavaScript动画
+            Webpack打包一些好用的插件
         </p>
     </div>
 
@@ -277,7 +277,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>JackerJay</strong>
-        <span>2月 24, 2017</span>
+        <span>5月 02, 2017</span>
     </div>
     
     <div class="section-spacer"></div>
@@ -297,7 +297,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/CSS动画/">CSS动画</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/JavaScript动画/">JavaScript动画</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/React系统学习/">React系统学习</a>
+        <a class="post_tag-link" href="/tags/React/">React</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/webpack/">webpack</a>
     </ul>
     
     <!-- Share -->
@@ -312,21 +312,21 @@
     
     
     <!-- Share Twitter -->
-    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=CSS动画与JavaScript动画&url=https://jackerjay.github.io//2017/02/24/CSS动画与JavaScript动画/index.html&via=JackerJay" target="_blank">
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Webpack打包一些好用的插件&url=https://jackerjay.github.io//2017/05/02/Webpack打包一些好用的插件/index.html&via=JackerJay" target="_blank">
         <li class="mdl-menu__item">
             分享到 Twitter
         </li>
     </a>
     
     <!-- Share Google+ -->
-    <a class="post_share-link" href="https://plus.google.com/share?url=https://jackerjay.github.io//2017/02/24/CSS动画与JavaScript动画/index.html" target="_blank">
+    <a class="post_share-link" href="https://plus.google.com/share?url=https://jackerjay.github.io//2017/05/02/Webpack打包一些好用的插件/index.html" target="_blank">
         <li class="mdl-menu__item">
             分享到 Google+
         </li>
     </a>
     
     <!-- Share Weibo -->
-    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=CSS动画与JavaScript动画&url=https://jackerjay.github.io//2017/02/24/CSS动画与JavaScript动画/index.html&pic=&searchPic=false&style=simple" target="_blank">
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Webpack打包一些好用的插件&url=https://jackerjay.github.io//2017/05/02/Webpack打包一些好用的插件/index.html&pic=&searchPic=false&style=simple" target="_blank">
         <li class="mdl-menu__item">
             分享到微博
         </li>
@@ -338,41 +338,48 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
 	
-		<h4 id="CSS动画的局限性"><a href="#CSS动画的局限性" class="headerlink" title="CSS动画的局限性"></a>CSS动画的局限性</h4><p>CSS动画的局限性如下所示：</p>
+		<h4 id="strip-loader-在产品期分离你在开发中需要的函数的插件"><a href="#strip-loader-在产品期分离你在开发中需要的函数的插件" class="headerlink" title="strip-loader 在产品期分离你在开发中需要的函数的插件"></a><a href="https://github.com/yahoo/strip-loader" target="_blank" rel="external">strip-loader</a> 在产品期分离你在开发中需要的函数的插件</h4><blockquote>
+<p>来源：<code>github</code>同构项目<a href="https://github.com/erikras/react-redux-universal-hot-example" target="_blank" rel="external"><code>react-redux-universal-hot-example</code></a> </p>
+</blockquote>
+<p>此插件的作用是分离你代码中的一些函数，这个插件在你开发过程中想要<code>debug</code>你的<code>APP</code>却有不想这些信息出现在你的发布版本时尤为有用。  </p>
 <ul>
-<li><code>CSS</code>只支持<code>cubic-bezier</code>的缓动，如果你的动画对缓动函数有要求，就必须用<code>JavaScript</code>动画。</li>
-<li><code>CSS</code>动画智能针对一些特有的CSS属性。仍然有一些属性<code>CSS</code>动画不支持的，例如<code>SVG</code>中<code>path</code>的<code>d</code>属性。</li>
-<li><code>CSS</code>把<code>translate</code>、<code>rotate</code>、<code>skew</code>等都归结为一个属性——<code>transform</code>。因此，这些属性只能共用同一个缓动函数。例如，我们想要动画的轨迹是一条贝塞尔曲线，可以通过给<code>left</code>和<code>top</code>这两个属性加两个不同的<code>cubic-bezier</code>缓动来实现，但是<code>left</code>和<code>top</code>实现的动画性能不如<code>translateX</code>和<code>translateY</code>。</li>
+<li>安装</li>
 </ul>
-<h4 id="CSS-animation"><a href="#CSS-animation" class="headerlink" title="CSS animation"></a>CSS animation</h4><p><code>CSS transition</code>设计的非常简洁，因此适用于比较简单的动画。而<code>CSS animation</code>弥补了<code>transition</code>在控制上的不足。利用<code>CSS animation</code>，我们可以：</p>
+<p><code>npm install --save-dev strip-loader</code>  </p>
 <ul>
-<li>使用多步动画（多关键帧动画）；</li>
-<li>弥补<code>CSS transition</code>在控制上的不足，设置动画的反转、暂停、次数（可以设置为永久）等。</li>
+<li>使用</li>
 </ul>
-<h4 id="用JavaScript包装过的CSS动画"><a href="#用JavaScript包装过的CSS动画" class="headerlink" title="用JavaScript包装过的CSS动画"></a>用JavaScript包装过的CSS动画</h4><p>有些文章也把用<code>JavaScript</code>包装过的<code>CSS</code>动画归结为<code>JavaScript</code>动画，这样<code>CSS</code>动画的范畴就太小了。原生的<code>CSS</code>动画可以很方便地实现一些微互动，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">el &#123;</div><div class="line">    opacity: 1;</div><div class="line">    </div><div class="line">    &amp;:hover &#123;</div><div class="line">        opacity: 0.8,</div><div class="line">        transition: opacity .4s ease;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>但是对于大多数情况而言，使用原生<code>CSS</code>动画，流程比较繁琐。首先，我们要给<code>DOM</code>节点在不同状态下加不同的复杂的<code>className</code>。然后在<code>CSS</code>中给不同的<code>className</code>写不同的样式以及动画逻辑。这里就有必要用<code>JavaScript</code>做一些包装，来做一些共同的逻辑，简化动画的开发。<br>这里我们介绍使用<code>react-smooth</code>库来写动画。它不仅支持<code>CSS</code>动画，也支持各种缓动类型的<code>JavaScript</code>动画，并且提供定制化缓动函数的插件入口：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;Animate from=&#123;1&#125; to=&#123;0.8&#125; attributeName=&quot;opacity&quot;&gt;</div><div class="line">    // ...</div><div class="line">&lt;/Animate&gt;</div></pre></td></tr></table></figure></p>
-<h4 id="JavaScript动画"><a href="#JavaScript动画" class="headerlink" title="JavaScript动画"></a>JavaScript动画</h4><p>这里将<code>JavaScript</code>动画定义为缓动函数用<code>JavaScript</code>实现的动画，因此<code>JavaScript</code>动画包含<strong>缓动函数部分</strong>和<strong>渲染部分</strong>。</p>
-<h5 id="缓动函数部分"><a href="#缓动函数部分" class="headerlink" title="缓动函数部分"></a>缓动函数部分</h5><p>虽然<code>CSS</code>动画简单易用而且性能高，但是<code>JavaScript</code>动画依然有其必要性，而且也非常重要。而谈到<code>JavaScript</code>动画，不得不说一说缓动函数。</p>
-<h6 id="缓动函数用户体验"><a href="#缓动函数用户体验" class="headerlink" title="缓动函数用户体验"></a>缓动函数用户体验</h6><p>从动画体验的角度来说，不同的缓动函数会带给用户不同的缓动体验。以我们常见的缓动函数<code>linear</code>、<code>ease</code>和<code>spring</code>为例，缓动体验一般为<code>linear</code>&lt;<code>ease</code>&lt;<code>spring</code>。<br>为什么这么说呢？<code>linear</code>、<code>ease</code>和<code>spring</code>其实刚好代表3种缓动函数类型。其中，<code>linear</code>是一种匀速运动，给人的感觉是机械、呆板、没有生机，只有工厂里的机器是保持速度一成不变的。人们喜欢有生命的运动。<br><code>ease</code>、<code>spring</code>都是变速运动，那么为什么<code>spring</code>的缓动体验要比<code>ease</code>更好呢？物理原则是优秀用户体验（UX）的核心原则之一，界面设计遵从物体在真实世界中的运动规律，会让人们感觉更加自然、舒适。<br><code>spring</code>是最经典、最常用的物理缓动过程。而<code>cubic-bezier</code>（三次贝塞尔曲线）因为具有很强的控制能力，人们可以非常简单、直观地配置一条<code>y - t</code>曲线作为缓动过程。因此，<code>spring</code>和<code>cubic-bezier</code>（如<code>ease</code>、<code>ease-in</code>、<code>ease-out</code>、<code>ease-in-out</code>、<code>linear</code>）在动画中最为常用。所以下面以<code>spring</code>为例探讨一种通用的物理缓动的实现方法，然后谈谈如何实现<code>cubic-bezier</code>的缓动过程。</p>
-<h6 id="物理缓动"><a href="#物理缓动" class="headerlink" title="物理缓动"></a>物理缓动</h6><p>根据经典力学的观点，世界上所有的原子每时每刻仿佛都会根据当前速度、受力和位置计算出下一刻的速度、受力和位置。上帝有一台超级计算机吗？非也，计算机反而是我们利用原子的这些特征拼装出来的。不过现在，我们要用计算机，像上帝那样再创造一个世界。<br>物理缓动是模仿现实世界物理运动的缓动，我们可以先模拟物理规律，然后用最简洁的物理法则的表达式——物理公式来计算物理状态。一个简单的思路跃然纸上：  </p>
+<p>在你的客户端源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var debug = require(&apos;debug&apos;)(&apos;MyFile&apos;);</div><div class="line"> </div><div class="line">var makeFoo = function () &#123;</div><div class="line">    // The following two lines of code will be stripped with our webpack loader </div><div class="line">    debug(&apos;makeFoo called&apos;);</div><div class="line">    debug(&apos;makeFoo args&apos;, arguments);</div><div class="line">    // This code would remain </div><div class="line">    return &apos;Foo&apos;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <ul>
-<li>在每一帧中对动画对象进行受力分析，计算该帧动画对象的加速度；</li>
-<li>如果知道该帧的速度、位置，就可以根据该帧的加速度、速度、位置，计算下一帧的速度、位置；</li>
-<li>当我们知道第一帧的速度和位置，就可以像多米诺骨牌那样计算出动画对象每一帧的位置，任何物理缓动都可以这样完成。</li>
+<li>分离单个函数</li>
 </ul>
-<h6 id="cubic-bezier-缓动"><a href="#cubic-bezier-缓动" class="headerlink" title="cubic-bezier 缓动"></a>cubic-bezier 缓动</h6><p>物理缓动固然酷炫，但是<code>cubic-bezier</code>同样时一个非常优秀的缓动过程。<br><code>cubic-bezier</code>可以非常直观、方便地配置一条匀速运动的缓动曲线。由于<code>CSS</code>原生提供<code>cubic-bezier</code>的缓动函数，所以<code>cubic-bezier</code>在<code>Web</code>动画中得到大量使用。<br>或许<code>CSS</code>只提供了<code>cubic-bezier</code>也是考虑到了其实现较为复杂，属于计算密集型，并不适合用<code>JavaScript</code>来实现。但经我们实验统计后发现，<code>JavaScript</code>版的<code>cubic-bezier</code>函数平均时间仅为<code>0.33ms</code>。<br>利用<a href="https://github.com/recharts/react-smooth" target="_blank" rel="external"><code>react-smooth</code></a>实现<code>cubic-bezier</code>动画的代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;Animate from=&#123;&#123;left: 0&#125;&#125; to=&#123;&#123;left: 10&#125;&#125; ease=&quot;ease&quot;&gt;</div><div class="line">    &#123;style =&gt; &lt;div style=&#123;style&#125;&gt;test&lt;/div&gt;&#125;</div><div class="line">&lt;/Animate&gt;</div></pre></td></tr></table></figure></p>
-<p><a href="http://cubic-bezier.com/" target="_blank" rel="external">英文版在线生成</a><br><a href="http://yisibl.github.io/cubic-bezier/#.17,.67,.83,.67" target="_blank" rel="external">中文版</a><br><a href="http://blog.csdn.net/joogle/article/details/7975118" target="_blank" rel="external"><code>cubic-bezier</code>原理</a></p>
-<h5 id="渲染部分"><a href="#渲染部分" class="headerlink" title="渲染部分"></a>渲染部分</h5><p>渲染部分，可以在<code>View</code>层利用强大的<code>React</code>来帮助我们渲染。这样只要在缓动函数中执行<code>setState</code>来更新动画进度，从而触发页面重绘。</p>
-<h4 id="SVG线条动画"><a href="#SVG线条动画" class="headerlink" title="SVG线条动画"></a>SVG线条动画</h4><p>说起<code>SVG</code>线条动画，最出名的恐怕是<a href="http://maxwellito.github.io/vivus/" target="_blank" rel="external"><code>vivus.js</code></a>，它巧妙的利用了<code>SVG path</code>的<code>stroke-dasharray</code>属性和<code>getTotalLength</code>方法。<br><code>stroke-dasharray</code>是设置<code>SVG path</code>虚线的属性。因此，要做一个简单的线条动画，只需：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">el &#123;</div><div class="line">    stroke-dasharray: 0, 1px;</div><div class="line">    </div><div class="line">    &amp;.active &#123;</div><div class="line">        stroke-dashoffset: totalLength, 0;</div><div class="line">        transition: stroke-dasharray .4s ease;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>然而<code>vivus</code>有两个缺陷：</p>
+<p>在你的<code>webpack</code>配置文件中，加入以下<code>loader</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    module: &#123;</div><div class="line">        loaders: [</div><div class="line">            &#123; test: /\.js$/, loader: &quot;strip-loader?strip[]=debug&quot; &#125;https://github.com/ampedandwired/html-webpack-plugin</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <ul>
-<li>它用<code>JavaScript</code>动画实现<code>stroke-dasharray</code>的缓动，而实际上<code>CSS</code>动画是支持<code>stroke-dasharray</code>属性的；</li>
-<li><code>vivus</code>不支持虚线动画。<br>那么，如何利用<code>stroke-dasharray</code>来实现虚线动画呢？<br><code>stroke-dasharray</code>，顾名思义，其值是一个数组。因此，我们可以利用这一特性逐渐改变这个数组的长度，如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">1px, 0px;</div><div class="line">2px, 0px;</div><div class="line">2px, 1px;</div><div class="line">2px, 2px, 1px;</div><div class="line">2px, 2px, 2px;</div><div class="line">2px, 2px, 2px, 1px;</div><div class="line">2px, 2px, 2px, 2px;</div><div class="line">...</div></pre></td></tr></table></figure>
+<li>分离多个函数</li>
+</ul>
+<p>在你的<code>webpack</code>配置文件中，加入以下<code>loader</code>，直接使用<code>，</code>分割就可以了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    module: &#123;</div><div class="line">        loaders: [</div><div class="line">            &#123; test: /\.js$/, loader: &quot;strip-loader?strip[]=debug,strip[]=console.log&quot; &#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>以库方式使用</li>
+</ul>
+<p>在你的<code>webpack</code>配置文件中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var WebpackStrip = require(&apos;strip-loader&apos;);</div><div class="line"> </div><div class="line">var webpackConfig = &#123;</div><div class="line">    module: &#123;</div><div class="line">        loaders: [</div><div class="line">            &#123; test: /\.js$/, loader: WebpackStrip.loader(&apos;debug&apos;, &apos;console.log&apos;) &#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>替换不使用的包<code>module</code></li>
+</ul>
+<p>尽管我们移除了<code>debug</code>函数的一些调用，但是你的<code>app</code>在最后打包中中依旧引入了<code>debug</code>组件，使用<a href="http://webpack.github.io/docs/list-of-plugins.html#normalmodulereplacementplugin" target="_blank" rel="external"><code>NormalModuleReplacementPlugin</code></a>用一个空函数来替换：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// webpack config </div><div class="line">&#123;</div><div class="line">    plugins: [</div><div class="line">        new webpack.NormalModuleReplacementPlugin(/debug/, process.cwd() + &apos;/emptyDebug.js&apos;),</div><div class="line">    ]</div><div class="line">&#125;</div><div class="line"> </div><div class="line">// emptyDebug.js </div><div class="line">module.exports = function() &#123; return new Function(); &#125;;</div></pre></td></tr></table></figure></p>
+<h4 id="html-webpack-plugin-用来简化创建服务于webpack-bundle的HTML文件，特别是当bundles中含有hash值，且这个值在每次编译后都会发生变化时尤为有用。也可以使用loadsh或你自己的loader来加载模板来生成HTML文件。"><a href="#html-webpack-plugin-用来简化创建服务于webpack-bundle的HTML文件，特别是当bundles中含有hash值，且这个值在每次编译后都会发生变化时尤为有用。也可以使用loadsh或你自己的loader来加载模板来生成HTML文件。" class="headerlink" title="html-webpack-plugin 用来简化创建服务于webpack bundle的HTML文件，特别是当bundles中含有hash值，且这个值在每次编译后都会发生变化时尤为有用。也可以使用loadsh或你自己的loader来加载模板来生成HTML文件。"></a><a href="https://github.com/ampedandwired/html-webpack-plugin" target="_blank" rel="external">html-webpack-plugin</a> 用来简化创建服务于<code>webpack bundle</code>的HTML文件，特别是当<code>bundles</code>中含有<code>hash</code>值，且这个值在每次编译后都会发生变化时尤为有用。也可以使用<code>loadsh</code>或你自己的<code>loader</code>来加载模板来生成<code>HTML</code>文件。</h4><ul>
+<li><p>安装<br>使用<code>npm</code>进行安装本插件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install html-webpack-plugin --save-dev</div></pre></td></tr></table></figure>
+</li>
+<li><p>基本使用<br>当前插件会生成一个<code>HTML5</code>文件，在此文件<code>body</code>中由<code>script</code>标签包含着由你的<code>webpack</code>打包出来的<code>bundles</code>。使用当前插件仅仅需要在<code>webpack</code>配置文件中添加以下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);</div><div class="line">var webpackConfig = &#123;</div><div class="line">  entry: &apos;index.js&apos;,</div><div class="line">  output: &#123;</div><div class="line">    path: &apos;dist&apos;,</div><div class="line">    filename: &apos;index_bundle.js&apos;</div><div class="line">  &#125;,</div><div class="line">  plugins: [new HtmlWebpackPlugin()]</div><div class="line">&#125;;</div><div class="line">```  </div><div class="line">使用当前配置将会生成一个`dist/index.html`文件，文件包含以下内容：</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>要开发出好的动画，我们不仅要懂动画的设计，要有基本的数值分析及图形图像学知识，更重要的还是要能写出优雅的、可维护的、易扩展的代码。</p>
+<p>&lt;!DOCTYPE html&gt;</p>
+<p><html><br>  <head><br>    <meta charset="UTF-8"><br>    <title>Webpack App</title><br>  </head><br>  <body><br>    <script src="index_bundle.js"></script><br>  </body><br></html><br><code>``  
+如果你有多个</code>webpack<code>入口，他们都将会包含在生成的</code>HTML script<code>标签中。  
+如果你在</code>webpack<code>输出中还有一些</code>CSS<code>文件资源（例如，由[ExtractTextPlugin](https://github.com/webpack/extract-text-webpack-plugin)提取出来的</code>CSS<code>），那么他们将会被包含在</code>HTML<code>头部的</code><link>`标签中。   </p>
 <blockquote>
-<p>以上内容摘选自<a href="http://www.ituring.com.cn/book/1898" target="_blank" rel="external">《深入React技术栈》</a>——陈屹 P111+</p>
+<p>更详细的介绍及配置介绍请前往 <a href="https://github.com/ampedandwired/html-webpack-plugin" target="_blank" rel="external">html-webpack-plugin</a></p>
 </blockquote>
 
 	
@@ -401,9 +408,9 @@
 <div id="comments">
     <!-- 多说评论框 start -->
         <div class="ds-thread" 
-            data-thread-key="2017/02/24/CSS动画与JavaScript动画/" 
-            data-url="https://jackerjay.github.io/2017/02/24/CSS动画与JavaScript动画/"
-            data-title="CSS动画与JavaScript动画"></div>
+            data-thread-key="2017/05/02/Webpack打包一些好用的插件/" 
+            data-url="https://jackerjay.github.io/2017/05/02/Webpack打包一些好用的插件/"
+            data-title="Webpack打包一些好用的插件"></div>
     <!-- 多说评论框 end -->
 </div>
 
@@ -416,21 +423,13 @@
     
     <!-- Prev Nav -->
     
-        <a href="/2017/03/31/BOM中的一些Tip/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/02/21/与React同生的Immutable/" id="post_nav-older" class="next-content">
+        <a href="/2017/03/31/BOM中的一些Tip/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
