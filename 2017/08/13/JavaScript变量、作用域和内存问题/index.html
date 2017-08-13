@@ -4,7 +4,7 @@
     <!-- Title -->
     
     <title>
-        CSS中的一些小知识 | JackerJay杂记
+        JavaScript变量、作用域和内存问题 | JackerJay杂记
     </title>
     
     <!-- Favicons -->
@@ -40,7 +40,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://jackerjay.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="CSS中的一些小知识 | JackerJay杂记">
+    <meta property="og:title" content="JavaScript变量、作用域和内存问题 | JackerJay杂记">
     <meta property="og:description" content="学习成长路">
     
      <!--[if lte IE 9]>
@@ -226,7 +226,7 @@
 	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
 		for="post-toc-trigger-btn">
 			
-			<ol class="post-toc"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#css中百分数计算参考对象"><span class="post-toc-number">1.</span> <span class="post-toc-text">css中百分数计算参考对象</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#浏览器对box-sizing的支持"><span class="post-toc-number">2.</span> <span class="post-toc-text">浏览器对box-sizing的支持</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#行内元素（inline）"><span class="post-toc-number">3.</span> <span class="post-toc-text">行内元素（inline）</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#盒类型（display）"><span class="post-toc-number">4.</span> <span class="post-toc-text">盒类型（display）</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#设置float属性"><span class="post-toc-number">5.</span> <span class="post-toc-text">设置float属性</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#定位类型（position）"><span class="post-toc-number">6.</span> <span class="post-toc-text">定位类型（position）</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#CSS中table布局的一些问题"><span class="post-toc-number">7.</span> <span class="post-toc-text">CSS中table布局的一些问题</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#text-justify属性值的适用情况"><span class="post-toc-number">8.</span> <span class="post-toc-text">text-justify属性值的适用情况</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#自适应首行缩进两个字符"><span class="post-toc-number">9.</span> <span class="post-toc-text">自适应首行缩进两个字符</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#animation动画"><span class="post-toc-number">10.</span> <span class="post-toc-text">animation动画</span></a></li></ol>
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本类型和引用类型的值"><span class="post-toc-number">1.</span> <span class="post-toc-text">基本类型和引用类型的值</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#动态的属性"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">动态的属性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#复制变量值"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">复制变量值</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#传递参数"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">传递参数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#检测类型"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">检测类型</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#执行环境及作用域"><span class="post-toc-number">2.</span> <span class="post-toc-text">执行环境及作用域</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#延长作用域链"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">延长作用域链</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#没有块级作用域"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">没有块级作用域</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#声明变量"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">声明变量</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#查询标识符"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">查询标识符</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#垃圾收集"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">垃圾收集</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#标记清除"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">标记清除</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#引用计数"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">引用计数</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#管理内存"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">管理内存</span></a></li></ol></li></ol></li></ol>
 		
 <!--			<li class="mdl-menu__item">Some Action</li>-->
 	</ul>
@@ -259,7 +259,7 @@
 		
 	
         <p class="article-headline-p">
-            CSS中的一些小知识
+            JavaScript变量、作用域和内存问题
         </p>
     </div>
 
@@ -277,7 +277,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>JackerJay</strong>
-        <span>12月 04, 2016</span>
+        <span>8月 13, 2017</span>
     </div>
     
     <div class="section-spacer"></div>
@@ -297,7 +297,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/CSS/">CSS</a>
+        <a class="post_tag-link" href="/tags/JavaScript基础/">JavaScript基础</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/基础学习/">基础学习</a>
     </ul>
     
     <!-- Share -->
@@ -312,21 +312,21 @@
     
     
     <!-- Share Twitter -->
-    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=CSS中的一些小知识&url=https://jackerjay.github.io//2016/12/04/CSS中的一些小知识/index.html&via=JackerJay" target="_blank">
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=JavaScript变量、作用域和内存问题&url=https://jackerjay.github.io//2017/08/13/JavaScript变量、作用域和内存问题/index.html&via=JackerJay" target="_blank">
         <li class="mdl-menu__item">
             分享到 Twitter
         </li>
     </a>
     
     <!-- Share Google+ -->
-    <a class="post_share-link" href="https://plus.google.com/share?url=https://jackerjay.github.io//2016/12/04/CSS中的一些小知识/index.html" target="_blank">
+    <a class="post_share-link" href="https://plus.google.com/share?url=https://jackerjay.github.io//2017/08/13/JavaScript变量、作用域和内存问题/index.html" target="_blank">
         <li class="mdl-menu__item">
             分享到 Google+
         </li>
     </a>
     
     <!-- Share Weibo -->
-    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=CSS中的一些小知识&url=https://jackerjay.github.io//2016/12/04/CSS中的一些小知识/index.html&pic=&searchPic=false&style=simple" target="_blank">
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=JavaScript变量、作用域和内存问题&url=https://jackerjay.github.io//2017/08/13/JavaScript变量、作用域和内存问题/index.html&pic=&searchPic=false&style=simple" target="_blank">
         <li class="mdl-menu__item">
             分享到微博
         </li>
@@ -338,59 +338,58 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
 	
-		<h6 id="css中百分数计算参考对象"><a href="#css中百分数计算参考对象" class="headerlink" title="css中百分数计算参考对象"></a>css中百分数计算参考对象</h6><ul>
-<li><code>padding</code> 百分数总是跟包含块的宽度有关，高度不考虑在内  </li>
-<li><code>margin</code> 百分数的取值规则与<code>padding</code>内边距时一样的，与包含块的宽度有关。（Tap:外编剧在<code>display</code>设置为<code>inline</code>时，顶边和底边的外边距时不会显示的）  </li>
-<li><code>width&amp;height</code> 百分数值是根据包含块的宽度来计算的（处理元素的高度也是按照这个宽度来计算） <h6 id="浏览器对box-sizing的支持"><a href="#浏览器对box-sizing的支持" class="headerlink" title="浏览器对box-sizing的支持"></a>浏览器对box-sizing的支持</h6></li>
-<li>现代浏览器都能支持<code>box-sizing</code>属性，基本支持<code>content-box</code>和<code>border-box</code></li>
-<li>IE家族&gt;=8， 其中在<code>IE8</code>中，若设置了<code>min/max-width/height</code>属性值，那么<code>box-sizing</code>的值将会被忽略</li>
-<li><code>Safari 6.0.x</code>在<code>diaplay:table</code>显示模式中不会使用<code>box-sizing</code>属性  </li>
-<li><code>IE9</code>中，当设置<code>position:absolute/fixed</code>,<code>overflow:auto/overflow-y:scroll</code>时，将会从元素的宽度减去滚动条的宽度  </li>
-<li>安卓浏览器在<code>HTML</code>的<code>select</code>元素上并不会计算精确的尺寸（<code>width</code>和<code>height</code>）<h6 id="行内元素（inline）"><a href="#行内元素（inline）" class="headerlink" title="行内元素（inline）"></a>行内元素（<code>inline</code>）</h6></li>
-<li>使用行内元素显示<code>inline</code>时，浏览器会忽略当前元素的某些属性，如<code>width</code>、<code>height</code>、<code>margin-top</code>、<code>margin-bottom</code>，经测试，<code>margin-left</code>和<code>margin-right</code>还是有效的</li>
-<li>若使用行内-块级元素<code>inline-block</code>，那么<code>width</code>、<code>height</code>、<code>margin</code>的属性军可以应用到盒子上  <h6 id="盒类型（display）"><a href="#盒类型（display）" class="headerlink" title="盒类型（display）"></a>盒类型（<code>display</code>）</h6></li>
-<li><code>run-in</code>:其盒子类型取决于周围元素，目前测试主流浏览器已经舍弃了该属性值<ul>
-<li>如果插入元素包含一个<code>display</code>属性为<code>block</code>的元素，那么插入元素就是块级元素。</li>
-<li>如果插入元素的相邻兄弟元素时块级元素，那么插入元素就是兄弟元素中的第一个行内元素。</li>
-<li>其他情况下，插入元素均作为块级元素来对待。   <h6 id="设置float属性"><a href="#设置float属性" class="headerlink" title="设置float属性"></a>设置<code>float</code>属性</h6></li>
+		<blockquote>
+<p>以下内容是在学习《JavaScript高级程序设计》以及《你不知道的JavaScript》（上卷）中提取的重点部分  </p>
+</blockquote>
+<h3 id="基本类型和引用类型的值"><a href="#基本类型和引用类型的值" class="headerlink" title="基本类型和引用类型的值"></a>基本类型和引用类型的值</h3><p><strong>基本类型值指的是简单的数据段，而引用类型值指那些可能由多个值构成的对象</strong>。<br><strong>5种基本数据类型：<code>Undefined</code>、<code>Null</code>、<code>Boolean</code>、<code>Number</code>和<code>String</code>，按值访问</strong><br><strong>引用类型的值是保存在内存中的对象，<code>JavaScript</code>不允许直接访问内存中的未知，也就是说不能直接操作对象的内存空间。在操作对象时，实际上在操作对象的<em>引用</em>而不是实际的对象</strong> </p>
+<blockquote>
+<p>在很多语言中，字符串以对象的形式来表示，因此被认为是引用类型的。<code>ECMAScript</code>放弃了这一传统。  </p>
+</blockquote>
+<h4 id="动态的属性"><a href="#动态的属性" class="headerlink" title="动态的属性"></a>动态的属性</h4><p>只能给引用类型值动态地添加属性。</p>
+<h4 id="复制变量值"><a href="#复制变量值" class="headerlink" title="复制变量值"></a>复制变量值</h4><p>基本类型在复制变量值的时候，会在变量对象上创建一个新值，然后把该值复制到为新变量分配的位置上。<br><img src="/2017/08/13/JavaScript变量、作用域和内存问题/基本类型复制.png" alt=""><br>当从一个变量向另一个变量复制引用类型的值时，同样也会将存储在变量对象中的值复制一份放到为新变量分配的空间中。不同的是，这个值的副本实际上是一个指针，而这个指针指向存储在堆中的一个对象。复制操作结束后，两个变量实际上将引用同一个对象。因此，改变其中一个变量，就会影响另一个变量。<br><img src="/2017/08/13/JavaScript变量、作用域和内存问题/引用类型复制.png" alt="">  </p>
+<h4 id="传递参数"><a href="#传递参数" class="headerlink" title="传递参数"></a>传递参数</h4><p><code>ECMAScript</code>中所有函数的参数都是按值传递的。<strong>也就是说，把函数外部的值复制给函数内部的参数，就和把值从一个变量复制到另一个变量一样（参考上述<code>复制变量值</code>）</strong><br>主要部分是关于对象的<strong>按值</strong>传递：<br>例子：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function setName(obj) &#123;</div><div class="line">    obj.name = &apos;Nicholas&apos;;</div><div class="line">    obj = new Object();</div><div class="line">    obj.name = &quot;Greg&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var person = new Object();</div><div class="line">setName(person);</div><div class="line">alert(person.name); // &quot;Nicholas&quot;</div></pre></td></tr></table></figure>
+<p>如果<code>person</code>是按照引用传递的，那么<code>person</code>就会自动被修改为指向其<code>name</code>属性值为”Greg”的新对象。但是，当接下来再访问<code>person.name</code>时，显示的值仍然是”Nicholas”。这说明即使在函数内部修改了参数的值，但原始的引用仍然保持未变。<strong>实际上，当在函数内部重写<code>obj</code>时，这个变量引用的就是一个局部对象了。而这个局部对象会在函数执行完毕后立即被销毁</strong>。</p>
+<blockquote>
+<p>可以把<code>ECMAScript</code>函数的参数想象成局部变量。  </p>
+</blockquote>
+<h4 id="检测类型"><a href="#检测类型" class="headerlink" title="检测类型"></a>检测类型</h4><p><code>typeof</code>操作符是确定一个变量是字符串、数值、布尔值，还是<code>undefined</code>的最佳工具。如果变量的值是一个对象或<code>null</code>，则<code>typeof</code>操作符会返回”object”。<br>在检测基本数据类型时<code>typeof</code>是非常得力的助手，但是在检测引用类型的值时，我们需要使用<code>instanceof</code>操作符：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result = variable instanceof constructor</div></pre></td></tr></table></figure>
+<p><strong>根据规定，所有引用类型的值都是<code>Object</code>的实例，因此在检测一个引用类型值和<code>Object</code>构造函数时，<code>instanceof</code>操作符始终会返回<code>true</code>。当然，如果使用<code>instanceof</code>操作符检测基本类型的值，则该操作符始终会返回<code>false</code>，因为基本类型不是对象。</strong>  </p>
+<blockquote>
+<p>使用<code>typeof</code>操作符检测函数时，该操作符会返回<code>function</code>。在<code>Safari 5</code>及之前版本和<code>Chrome 7</code>以及之前版本中使用<code>typeof</code>检测正则表达式时，由于规范的原因，这个操作符也返回<code>function</code>。<code>ECMA-262</code>规定任何在内部实现<code>[[Call]]</code>方法的对象都应该在应用<code>typeof</code>操作符时返回<code>function</code>。如今现代浏览器返回的都是<code>object</code>  </p>
+</blockquote>
+<h3 id="执行环境及作用域"><a href="#执行环境及作用域" class="headerlink" title="执行环境及作用域"></a>执行环境及作用域</h3><p>执行环境（execution context）定义了变量或函数有权访问的其他数据，决定了它们各自的行为。每个执行环境都有一个与之关联的变量对象（variable object），环境中定义的所有变量和函数都保存在这个对象中。<br>每个函数都有自己的执行环境。当执行流进入一个函数式，函数的环境就会被推入一个环境栈中。而在函数执行之后，栈将其环境弹出，把控制权返回给之前的执行环境。<code>ECMAScript</code>程序中的执行流正是由这个方便的机制控制着。<br><strong>作用域链的用途，是保证对执行环境有权访问的所有变量和函数的有序访问。作用域链的前端，始终都是当前执行的代码所在环境的变量对象。</strong><br><strong>标识符解析是沿着作用域链一级一级地搜索标识符的过程。搜索过程始终从作用域链的前端开始，然后逐级地向后回溯，直至找到标识符为止（如果找不到标识符，通常会导致错误发生）</strong>  </p>
+<blockquote>
+<p>函数参数也被当做变量来对待，因此其访问规则与执行环境中的其他变量相同。  </p>
+</blockquote>
+<h4 id="延长作用域链"><a href="#延长作用域链" class="headerlink" title="延长作用域链"></a>延长作用域链</h4><p>虽然执行环境的类型总共只有两种——<strong>全局和局部（函数）</strong>，但还是有其他办法来延长作用域链。<strong>这么说是因为有些语句可以在作用域链的前端临时增加一个变量对象，该变量对象会在代码执行后被移除。</strong> 当执行流进入下列任何一个语句时，作用域链就会得到加长：  </p>
+<ul>
+<li><code>try-catch</code>语句的<code>catch</code>块；</li>
+<li><code>with</code>语句。  </li>
 </ul>
-</li>
-<li>在<code>JavaScript</code>中设置元素的<code>float</code>属性需要使用<code>cssFloat</code>，即<code>element.style.cssFloat = left/right/none</code><h6 id="定位类型（position）"><a href="#定位类型（position）" class="headerlink" title="定位类型（position）"></a>定位类型（<code>position</code>）</h6></li>
-<li><code>static</code>： 元素为普通布局，为默认值</li>
-<li><code>relative</code>：元素位置相对于普通位置而定</li>
-<li><code>absolute</code>：元素位置相对于<code>position</code>不为<code>static</code>的第一位祖先元素来定位</li>
-<li><p><code>fixed</code>：元素相对于浏览器窗口来定位</p>
-<h6 id="CSS中table布局的一些问题"><a href="#CSS中table布局的一些问题" class="headerlink" title="CSS中table布局的一些问题"></a>CSS中table布局的一些问题</h6><p>css table布局与html中table元素的对应关系</p>
-</li>
-<li><p><code>table</code> 类似<code>&lt;table&gt;</code>元素</p>
-</li>
-<li><code>inline-table</code> 类似<code>&lt;table&gt;</code>元素，但是创建一个行内元素</li>
-<li><code>table-caption</code> 类似<code>&lt;caption&gt;</code>元素</li>
-<li><code>table-column</code> 类似<code>&lt;col&gt;</code>元素</li>
-<li><code>table-column-group</code> 类似<code>&lt;colgroup&gt;</code>元素</li>
-<li><code>table-header-group</code> 类似<code>&lt;thead&gt;</code>元素</li>
-<li><code>table-row-group</code> 类似<code>&lt;tbody&gt;</code>元素</li>
-<li><code>table-footer-group</code> 类似<code>&lt;tfoot&gt;</code>元素</li>
-<li><code>table-row</code> 类似<code>tr</code>元素</li>
-<li><code>table-cell</code> 类似td元素  </li>
-</ul>
-<p>关于<code>table-column</code>的使用 在 <a href="http://stackoverflow.com/questions/7617418/how-is-a-css-display-table-column-supposed-to-work" target="_blank" rel="external">stackoverflow查看更详细内容</a></p>
-<p>在使用<code>HTML</code>表格元素时的布局大致如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;table ..&gt;</div><div class="line">  &lt;col .. /&gt;</div><div class="line">  &lt;col .. /&gt;</div><div class="line">  &lt;tr ..&gt;</div><div class="line">    &lt;td ..&gt;&lt;/td&gt;</div><div class="line">    &lt;td ..&gt;&lt;/td&gt;</div><div class="line">  &lt;/tr&gt;</div><div class="line">  &lt;tr ..&gt;</div><div class="line">    &lt;td ..&gt;&lt;/td&gt;</div><div class="line">    &lt;td ..&gt;&lt;/td&gt;</div><div class="line">  &lt;/tr&gt;</div><div class="line">&lt;/table&gt;</div></pre></td></tr></table></figure></p>
-<p>相对应，使用CSS中的<code>display</code>来替代  </p>
-<p> <code>HTML</code>布局如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;mytable&quot;&gt;</div><div class="line">  &lt;div class=&quot;column1&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;column2&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;myrow&quot;&gt;</div><div class="line">    &lt;div class=&quot;mycell&quot;&gt;contents of first cell in row 1&lt;/div&gt;</div><div class="line">    &lt;div class=&quot;mycell&quot;&gt;contents of second cell in row 1&lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">  &lt;div class=&quot;myrow&quot;&gt;</div><div class="line">    &lt;div class=&quot;mycell&quot;&gt;contents of first cell in row 2&lt;/div&gt;</div><div class="line">    &lt;div class=&quot;mycell&quot;&gt;contents of second cell in row 2&lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
-<p>相对应<code>CSS</code>设置如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">.mytable &#123;</div><div class="line">  display: table;</div><div class="line">  ...</div><div class="line">&#125;</div><div class="line">.myrow &#123;</div><div class="line">  display: table-row;</div><div class="line">  ...</div><div class="line">&#125;</div><div class="line">.mycell &#123;</div><div class="line">  display: table-cell;</div><div class="line">  ...</div><div class="line">&#125;</div><div class="line">.column1 &#123;</div><div class="line">  display: table-column;</div><div class="line">  background-color: green;</div><div class="line">&#125;</div><div class="line">.column2 &#123;</div><div class="line">  display: table-column;</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h6 id="text-justify属性值的适用情况"><a href="#text-justify属性值的适用情况" class="headerlink" title="text-justify属性值的适用情况"></a><code>text-justify</code>属性值的适用情况</h6><ul>
-<li><code>auto</code> 浏览器选择对其规则，这是最简单的方法，不过，不同浏览器之间的呈现方式会有微小的差别</li>
-<li><code>none</code> 禁用文本对齐</li>
-<li><code>inter-word</code> 空白分布在单词之间，适用于英语等词间有间隔的语言</li>
-<li><code>inter-ideograph</code> 空白分布在单词、表意字之间，且文本两端对齐，适用于汉语、日文和韩文等语言</li>
-<li><code>inter-cluster</code> 空白分布在单词、字形集的边界，适用于泰文等无词间空格的语言</li>
-<li><code>distribute</code> 空白分布在单词、字形集的边界，但连续文本或者草体除外</li>
-<li><code>kashida</code> 通过拉长选定字符调整对齐方式（仅适用于草体）<h6 id="自适应首行缩进两个字符"><a href="#自适应首行缩进两个字符" class="headerlink" title="自适应首行缩进两个字符"></a>自适应首行缩进两个字符</h6></li>
-<li>设置<code>text-indent</code>的属性值为<code>2em</code>就OK了～<h6 id="animation动画"><a href="#animation动画" class="headerlink" title="animation动画"></a><code>animation</code>动画</h6></li>
-<li>当给同一个元素同时使用两个动画关键帧时，浏览器会<code>同时应用</code>两个关键帧</li>
-<li><code>animation-play-state</code>用来控制动画的<code>playing</code>播放与<code>paused</code>暂停</li>
-</ul>
+<p>对于<code>with</code>语句来说，会将指定的对象添加到作用域链中。对<code>catch</code>语句来说，会创建一个新的变量对象，其中包含的是被抛出的错误对象的声明。  </p>
+<blockquote>
+<p>在<code>IE8</code>及之前版本的<code>JavaScript</code>实现中，存在一个与标准不一致的地方，即在<code>catch</code>语句中捕获的错误对象会被添加到执行环境的变量对象，而不是<code>catch</code>语句的变量对象中。换句话说，即使是在<code>catch</code>块外部也能访问到错误对象。<code>IE9</code>修复了这个问题。  </p>
+</blockquote>
+<h4 id="没有块级作用域"><a href="#没有块级作用域" class="headerlink" title="没有块级作用域"></a>没有块级作用域</h4><p>在<code>JavaScript</code>中，<code>if</code>、<code>for</code>等语句中的变量声明会将变量添加到当前的执行环境中。  </p>
+<h5 id="声明变量"><a href="#声明变量" class="headerlink" title="声明变量"></a>声明变量</h5><p><strong>使用<code>var</code>声明的变量会自动被添加到最接近的环境中。</strong> 在函数内部，最接近的环境就是函数的局部环境；在<code>with</code>语句中，最接近的环境是函数环境。<strong>如果初始化变量时没有使用<code>var</code>声明，该变量会自动被添加到全局环境。</strong>  </p>
+<blockquote>
+<p>在严格模式下，初始化未经声明的变量会导致错误。  </p>
+</blockquote>
+<h5 id="查询标识符"><a href="#查询标识符" class="headerlink" title="查询标识符"></a>查询标识符</h5><p>当在某个环境中为了读取或写入而引入一个标识符时，必须通过搜索来确定该标识符实际代表什么。搜索过程从作用域链的前端开始，向上逐级查询与给定名字匹配的标识符。如果在局部环境中找到了该标识符，搜索过程停止，变量就绪。如果在局部环境中没有找到该变量名，则继续沿作用域链向上搜索。搜索过程将一直追溯到全局环境的变量对象。如果在全局环境中也没有找到这个标识符，则意味着该变量尚未声明。  </p>
+<blockquote>
+<p><em>作用于查找会在找到第一个匹配的标识符时停止。在多层的嵌套作用于中可以定义同名的标识符，这叫做“遮蔽效应”。间接地通过对全局对象属性的引用来访问那些被同名变量所遮蔽的全局变量。但非全局变量如果被遮蔽了，无论如何都无法被访问到</em>。  </p>
+<h4 id="垃圾收集"><a href="#垃圾收集" class="headerlink" title="垃圾收集"></a>垃圾收集</h4><p>垃圾收集器会按照固定的时间间隔（或代码执行中预定的收集时间），周期性地执行回收操作。垃圾回收机制的实现策略：</p>
+</blockquote>
+<h5 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h5><p><code>JavaScript</code>中最常用的垃圾收集方式是标记清除（mark-and-sweep）。当变量进入环境时，就将这个变量标记为“进入环境”。从逻辑上讲，永远不能释放进入环境的变量所占用的内存，因为只要执行流进入相应的环境，就可能会用到它们。而当变量离开环境时，则将其标记为“离开环境”。<br>垃圾收集器在运行的时候会给存储在内存中的所有变量都加上标记。然后它会去掉环境中的变量以及被环境中的变量引用的变量的标记。而在此之后再被加上标记的变量将被视为准备删除的变量，原因是环境中的变量已经无法访问到这些变量了。最后，垃圾收集器完成内存清除工作，销毁那些带标记的值并回收它们所占用的内存空间。  </p>
+<h5 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h5><p>另一种不太常见的垃圾收集策略叫做引用计数（reference counting）。引用计数的含义是跟踪记录每个值被引用的次数。当声明了一个变量并将一个引用类型值赋给该变量时，则这个值的引用次数就是 1。如果同一个值又被赋给另一个变量，则该值的次数加 1.相反，如果包含对这个值引用的变量又取得了另外一个值，则这个值的引用次数减 1.当这个值的引用次数变成 0 时，则说明没有办法再访问到这个值了，因而就可以将其占用的内存空间回收回来。这样，当垃圾收集器下次再运行时，它就会释放那些引用次数为零的值所占用的内存。<br>在下述这个例子中，永远不会被回收：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function problem() &#123;</div><div class="line">    var objectA = new Object();</div><div class="line">    var objectB = new Object();</div><div class="line">    </div><div class="line">    objectA.someOtherObject = objectB;</div><div class="line">    objectB.anotherObject = objectA;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>objectA</code>和<code>objectB</code>相互引用，这样两个对象的引用次数都是2.一直都不会被清除。</p>
+<blockquote>
+<p><code>IE8</code>及之前由于其<code>BOM</code>和<code>DOM</code>中的对象是使用C++以<code>COM</code>（Component Object Model，组件对象模型）对象形式实现的，而<code>COM</code>对象的垃圾收集机制采用的就是应用计数策略，因此<code>IE</code>中使用<code>BOM</code>和<code>DOM</code>时要注意此问题，为了避免循环引用问题，最好是在不使用它们的时候手工断开原生<code>JavaScript</code>对象与<code>DOM</code>元素之间的连接。将变量设置为<code>null</code>意味着切断变量与它此前引用的值之间的连接。<code>IE9</code>之后问题得以修复。  </p>
+</blockquote>
+<h5 id="管理内存"><a href="#管理内存" class="headerlink" title="管理内存"></a>管理内存</h5><p><strong>确保占用最少的内存可以让页面获得更好的性能，而优化内存占用的最佳方式，就是为执行中的代码只保存必要的数据。一旦数据不再有用，最好通过将其值设置为<code>null</code>来释放其引用——这个做法叫做 <em>解除引用</em>（dereferencing） 。这一做法适用于大多数全局变量和全局对象的属性。局部变量会在它们离开执行环境时自动被解除引用</strong>。<br><strong>解除一个值的引用并不意味着自动回收该值所占用的内存。解除引用的真正作用是让值脱离执行环境，以便垃圾收集器下次运行时将其回收</strong>。</p>
 
 	
 	
@@ -418,9 +417,9 @@
 <div id="comments">
     <!-- 多说评论框 start -->
         <div class="ds-thread" 
-            data-thread-key="2016/12/04/CSS中的一些小知识/" 
-            data-url="https://jackerjay.github.io/2016/12/04/CSS中的一些小知识/"
-            data-title="CSS中的一些小知识"></div>
+            data-thread-key="2017/08/13/JavaScript变量、作用域和内存问题/" 
+            data-url="https://jackerjay.github.io/2017/08/13/JavaScript变量、作用域和内存问题/"
+            data-title="JavaScript变量、作用域和内存问题"></div>
     <!-- 多说评论框 end -->
 </div>
 
@@ -433,21 +432,13 @@
     
     <!-- Prev Nav -->
     
-        <a href="/2016/12/06/js获取元素offsetXXX问题/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2016/12/03/Material-design相关/" id="post_nav-older" class="next-content">
+        <a href="/2017/08/12/JavaScript基础/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
