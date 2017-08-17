@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- Title -->
+    
+    <title>
+        JavaScript引用类型 | JackerJay杂记
+    </title>
+    
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+    
+    <!-- Meta & INfo -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="JackerJay">
+    <meta name="description" content="学习成长路">
+    <meta name="keywords" content="null">
+    
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+    
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="JackerJay杂记">
+    
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://jackerjay.github.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="JavaScript引用类型 | JackerJay杂记">
+    <meta property="og:description" content="学习成长路">
+    
+     <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+        
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+    
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+	body, html{
+		font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	}
+	
+    a{
+        color: #00838F
+    }
+    
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important
+    }
+    
+	/* Sidebar User Drop Down Menu Text Color */
+	#scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus{
+        color: #0097A7 !important
+    }
+    
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a{
+        color: #0097A7 !important
+    }
+    
+    .toTop{
+        background: #757575 !important
+    }
+		
+	.material-layout .material-post>.material-nav,
+	.material-layout .material-index>.material-nav,
+	.material-nav a{
+		color: #757575;
+	}
+		
+	#scheme-Paradox .MD-burger-layer {
+		background-color: #757575;
+	}
+
+	#scheme-Paradox #post-toc-trigger-btn{
+		color: #757575;
+	}
+	
+	.post-toc a:hover{
+		color: #00838F;
+		text-decoration: underline;
+	}
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5
+        }
+		
+		/* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+	<script src="/js/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="/css/highlight/solarized-white.css">
+	
+	<!-- UC Browser Compatible-->
+	<script>
+		var agent = navigator.userAgent.toLowerCase();
+		if(agent.indexOf('ucbrowser')>0) {
+			document.write('<link rel="stylesheet" href="/css/uc.css">');
+		   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+		}
+	</script>
+    <!-- Hotjar Tracking Code for http://jackerjay.cc -->
+    <script>
+			(function(h,o,t,j,a,r){
+				h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+				h._hjSettings={hjid:478398,hjsv:5};
+				a=o.getElementsByTagName('head')[0];
+				r=o.createElement('script');r.async=1;
+				r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+				a.appendChild(r);
+			})(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+    
+    <!-- Custom Head -->
+    
+</head>
+	
+	
+
+    <body id="scheme-Paradox">
+
+		
+        <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+				
+			
+			
+            <!-- Main Container -->
+            <main class="material-layout__content" id="main">
+				
+                <!-- Top Anchor -->
+                <div id="top"></div>
+				
+				
+                <!-- Hamburger Button -->
+                <button class="MD-burger-icon sidebar-toggle">
+                    <span class="MD-burger-layer"></span>
+                </button>
+				
+				
+                
+	<!-- Back Button -->
+<!--
+	<div class="material-back" id="backhome-div" tabindex="0">
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
+			<i class="material-icons" role="presentation">arrow_back</i>
+			<span class="mdl-button__ripple-container">
+				<span class="mdl-ripple"></span>
+			</span>
+		</a>
+	</div>			
+-->
+	<!-- Left aligned menu below button -->
+	<button id="post-toc-trigger-btn"
+			class="mdl-button mdl-js-button mdl-button--icon">
+	  <i class="material-icons">format_list_numbered</i>
+	</button>
+
+	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+		for="post-toc-trigger-btn">
+			
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引用类型"><span class="post-toc-number">1.</span> <span class="post-toc-text">引用类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Object类型"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Object类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#舍入方法"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">舍入方法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#random-方法"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">random()方法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#其他方法"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">其他方法</span></a></li></ol></li></ol></li></ol>
+		
+<!--			<li class="mdl-menu__item">Some Action</li>-->
+	</ul>
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+		
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+	<!-- Paradox Post Header -->
+	
+		
+			<!-- Random Thumbnail -->
+			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+				<script>
+    
+    var randomNum;
+    randomNum = Math.floor(Math.random() * 5 + 1);
+    
+    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
+    
+</script>
+
+		
+	
+        <p class="article-headline-p">
+            JavaScript引用类型
+        </p>
+    </div>
+
+	
+
+				
+				
+					<!-- Paradox Post Info -->
+					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+    
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>JackerJay</strong>
+        <span>8月 17, 2017</span>
+    </div>
+    
+    <div class="section-spacer"></div>
+	
+    <!-- Favorite -->
+<!--
+    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+        <i class="material-icons" role="presentation">favorite</i>
+        <span class="visuallyhidden">favorites</span>
+    </button>
+-->
+    
+    <!-- Tags (bookmark) -->
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    
+    
+    
+    
+    <!-- Share Twitter -->
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=JavaScript引用类型&url=https://jackerjay.github.io//2017/08/17/JavaScript引用类型/index.html&via=JackerJay" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Twitter
+        </li>
+    </a>
+    
+    <!-- Share Google+ -->
+    <a class="post_share-link" href="https://plus.google.com/share?url=https://jackerjay.github.io//2017/08/17/JavaScript引用类型/index.html" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Google+
+        </li>
+    </a>
+    
+    <!-- Share Weibo -->
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=JavaScript引用类型&url=https://jackerjay.github.io//2017/08/17/JavaScript引用类型/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <li class="mdl-menu__item">
+            分享到微博
+        </li>
+    </a>
+</ul>
+</div>
+				
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+	
+		<h3 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h3><h4 id="Object类型"><a href="#Object类型" class="headerlink" title="Object类型"></a><code>Object</code>类型</h4><p>在使用<strong>对象字面量</strong>表示法来定义对象的时候，在最后一个属性后面添加逗号，会在**<code>IE7</code>及更早版本和<code>Opera</code>中导致错误`。<br>其中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 以下两种声明方式是等价的</div><div class="line">var person = &#123;&#125;;</div><div class="line">var person = new Object();</div></pre></td></tr></table></figure>
+<blockquote>
+<p>在通过对象字面量定义对象时，实际上不会调用<code>Object</code>构造函数。  </p>
+</blockquote>
+<p>对象字面量也是向函数传递大量可选参数的首选方式。<br>从功能上来看，以下两种访问对象属性的方式没有任何区别：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">alert(person[&quot;name&quot;]);</div><div class="line">alert(person.name);</div><div class="line">```  </div><div class="line"></div><div class="line">但方括号语法的最主要优点是可以通过变量来访问属性。如果属性名中包含会导致语法错误的字符，或者属性名使用的是关键字或保留字，也可以使用方括号表示法。  </div><div class="line"></div><div class="line">&gt; 通常，除非必须使用变量来访问属性，否则我们建议使用点表示法。</div><div class="line"></div><div class="line">#### `Array`类型</div><div class="line">`ECMAScript`中数组的每一项都可以保存任何类型的数据。而且，`ECMAScript`数组的大小是可以动态调整的，即可以随着数据的添加自动增长以容纳新增数据。</div></pre></td></tr></table></figure>
+<p>// 使用<code>Array</code>构造函数创建数组：<br>var colors = new Array();        // 创建一个空数组<br>var colors = new Array(20);      // 创建一个<code>length</code>为20的数组<br>var colors = new Array(“Greg”);  // 创建一个包含 1 项， 即字符串”Greg”的数组</p>
+<p>// 使用数组字面量表示法：<br>var colors = [“red”, “blue”, “green”];<br>var names = [];                 // 创建一个空数组</p>
+<p>// !!!不建议的操作<br>var values = [1, 2, ];       // 这样会创建一个包含 2 或 3 项的数组<br>var options = [ , , , , , ]; // 这样会创建一个包含 5 或 6 项的数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&gt; 在`IE`中，上述`values`会成为一个包含 3 个项且每项的值分别为 1 、 2 和 `undefined` 的数组；在其他浏览器中，`values`会成为一个包含 2 项且值分别为 1 和 2 的数组。原因是在`IE8`及之前版本中的`ECMAScript`实现在数组字面量方面存在`bug`。`IE9`后修复了这个问题。我们强烈建议不要使用这种语法。**与对象一样，在使用数组字面量表示法时，也不会调用`Array`构造函数（Firefox 3 及更早版本除外）**。  </div><div class="line"></div><div class="line">&gt; 数组的项数保存在`length`属性中，这个属性**不是只读的**，可以通过设置这个属性，可以从数组的末尾移除项或向数组中添加新项。  </div><div class="line"></div><div class="line">&gt; 数组最多可以包含 4 294 967 295个项，在创建一个初始大小与这个上限值接近的数组，可能会导致运行时间超长的脚本错误。  </div><div class="line"></div><div class="line">#### 检测数组</div><div class="line">**对于一个网页，或者一个全局作用域而言，使用`instanceof`操作符就能得到当前是否为数组**。  </div><div class="line">**`instanceof`操作符的问题在于，它假定单一的全局执行环境。如果网页中包含多个框架，那实际上就存在两个以上不同的全局执行环境，从而存在两个以上不同版本的`Array`构造函数。如果你从一个框架向另一个框架传入一个数组，那么传入的数组与在第二个框架中原生创建的数组分别具有各自不同的构造函数。为了解决这个问题，`ECMAScript 5`中新增了`Array.isArray()`方法。** </div><div class="line"></div><div class="line">&gt; 支持`Array.isArray()`方法的浏览器有`IE9+、Firefox 4+、Safari 5+、Opera 10.5+和Chrome`。  </div><div class="line"></div><div class="line">#### 转换方法</div><div class="line">调用数组的`toString()`方法会返回由数组中每个值的字符串形式拼接而成的一个以逗号分隔的字符串。而调用`valueOf()`返回的还是数组。**实际上，为了创建这个字符串会调用数组每一项的`toString()`方法。**  </div><div class="line">**当调用数组的`toLocaleString()`方法时，它也会创建一个数组值的以逗号分隔的字符串。而与前两个方法唯一的不同之处在于，这一次为了取得每一项的值，调用的是每一项的`toLocaleString()`方法。**  </div><div class="line">**使用`join()`方法可以使用不同的分隔符来构建这个字符串。`join()`方法只接收一个参数，即用作分隔符的字符串，然后返回包含所有数组项的字符串。** </div><div class="line">**如果不给`join()`方法传入任何职，或者给它传入`undefined`，则使用逗号作为分隔符。*`IE7`及更早版本会错误的使用字符串&quot;undefined&quot;作为分隔符*。**  </div><div class="line"></div><div class="line">&gt; 如果数组中的某一项的值是`null`或者`undefined`，那么该值在`join()、toLocaleString()、toString()和valueOf()`方法返回的结果中以*空字符串*表示。  </div><div class="line"></div><div class="line">#### 栈方法</div><div class="line">LIFO(Last-In-First-Out，后进先出)，`ECMAScript`提供了`push()`和`pop()`方法。  </div><div class="line">`push()`方法可以接收任意数量的参数，将它们逐个添加到数组末尾，并返回修改后数组的长度。而`pop()`方法则从数组末尾移除最后一项，减少数组的`length`值，然后返回移除的项。</div><div class="line"></div><div class="line">#### 队列方法</div><div class="line">FIFO(First-In-First-Out，先进先出)，结合使用`shift()`和`push()`方法，可以像使用队列一样使用数组。  </div><div class="line">`ECMAScript`还为数组提供了一个`unshift()`方法，它能在数组前端添加任意个项并返回新数组的长度。同时使用`unshift()`和`pop()`方法，可以从相反的方向来模拟队列。  </div><div class="line"></div><div class="line">&gt; `IE7`及更早版本对`JavaScript`的实现中存在一个偏差，其`unshift()`方法总是返回`undefined`而不是数组的新长度。`IE8`在非兼容模式下会返回正确的长度值。  </div><div class="line"></div><div class="line">#### 重排序方法</div><div class="line">`reverse()`反转数组项的顺序。  </div><div class="line">`sort()`最小值位于最前面，其会调用每个数组项的`toString()`转型方法，然后比较得到的字符串，以确定如何排序。**即使数组中的每一项都是数组，`sort()`方法比较的也是字符串**。  </div><div class="line">`sort()`可以接收一个比较函数作为参数，以便我们指定哪个值位于哪个值的前面。 </div><div class="line">**比较函数接收两个参数，如果第一个参数应该位于第二个之前则返回一个负数，如果两个参数相等则返回 0 ，如果第一个参数应该位于第二个之后则返回一个正数。** </div><div class="line"></div><div class="line">&gt; `reverse()和sort()`方法的返回值是经过排序之后的数组。  </div><div class="line"></div><div class="line">#### 操作方法</div><div class="line">`concat()`方法可以基于当前数组中的所有项创建一个新数组，具体来说，这个方法会先创建当前数组的一个副本，然后将接收到的参数添加到这个副本的末尾，最后返回新构建的数组。**在没有给`concat()`方法传递参数的情况下，它只是复制当前的数组并返回副本。如果传递给`concat()`方法的是一个或多个数组，则该方法会将这些数组中的每一项都添加到结果数组中。如果传递的值不是数组，这些值就会被简单地添加到结果数组的末尾**。  </div><div class="line"></div><div class="line">`slice()`方法，它能够基于当前数组中的一或多个项创建一个新数组。`slice()`方法可以接受一个或两个参数，即**要返回项的起始位置和结束位置**。在只有一个参数的情况下，`slice()`方法返回从该参数指定的位置开始到当前数组末尾的所有项。如果有两个参数，该方法返回起始和结束位置的项。**`slice()`操作并不会影响到原始数组**。  </div><div class="line"></div><div class="line">&gt; 如果`slice()`方法的参数中有一个负数，则用数组长度加上该数来确定相应的位置。例如，在一个包含 5 项的数组上调用`slice(-2, -1)`与调用`slice(3, 4)`得到的结果相同。如果结束为止小于起始位置，则返回空数组。  </div><div class="line"></div><div class="line">除此以外，`slice()`可以做到如下方法，它恐怕要算是最强大的数组方法了：</div><div class="line">* **删除**：可以删除任意数量的项，只需要指定 2 个参数：要删除的第一项的位置和要删除的项数。</div><div class="line">* **插入**：可以向指定位置插入任意数量的项，只需要提供 3 个参数：起始位置、 0 （要删除的项数）和要插入的项，如果要插入多个项，可以再传入第四、第五，以至任意多个项。 </div><div class="line">* **替换**：可以向指定位置插入任意数量的项，但同时删除任意数量的项，只需指定 3 个参数：起始位置、要删除的橡树和要插入的任意数量的项。*插入的项数不必与删除的项数相等*。  </div><div class="line"></div><div class="line">&gt; `slice()`方法始终都会返回一个数组，该数组中包含从原始数组中删除的项（如果没有删除任何项，则返回一个空数组）。  </div><div class="line"></div><div class="line">#### 位置方法</div><div class="line">`indexOf()`从数组的开头开始向后查找，`lastIndexOf()`从数组的末尾开始向前查找。这两个方法都返回要查找的项在数组中的位置，或者在没有找到的情况下返回 -1.**在比较时，会使用全等操作符**。</div><div class="line"></div><div class="line">&gt; `IE8`及更早版本并不支持。</div><div class="line"></div><div class="line">#### 迭代方法</div><div class="line">`ECMAScript 5`为数组定义了 5 个迭代方法。每个方法都接收两个参数：要在每一项上运行的函数和（可选的）运行该函数的作用域对象——影响`this`的值。传入这些方法中的函数会接收三个参数：**数组想的值、该值在数组项中的位置和数组对象本身**。  </div><div class="line">* `every()`：对数组中的每一项运行给定函数，如果该函数对每一项都返回`true`，则返回`true`。</div><div class="line">* `filter()`：对数组中的每一项运行给定函数，返回该函数会返回`true`的项所组成的数组。</div><div class="line">* `forEach()`：对数组中的每一项运行给定函数。这个方法没有返回值。</div><div class="line">* `map()`：对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组。</div><div class="line">* `some()`：对数组中的每一项运行给定函数，如果该函数对任一项返回`true`，则返回`true`。  </div><div class="line"></div><div class="line">&gt; `IE8`及更早版本并不支持。  </div><div class="line"></div><div class="line">#### 缩小方法</div><div class="line">缩小方法都会迭代数组的所有项，然后构建一个最终返回的值。  </div><div class="line">`reduce()`从数组的第一项开始，`reduceRight()`从数组的最后一项开始，遍历整个数组。  </div><div class="line">这两个方法都接收两个参数：一个在每一项上调用的函数和（可选的）作为**缩小基础的初始值**。 传给`reduce()`和`reduceRight()`的函数接收 4 个参数：**前一个值、当前值、项的索引和数组对象**。这个函数返回的任何值都会作为第一个参数自动传给下一项。**第一次迭代发生在数组的第二项上，因此第一个参数是数组的第一项，第二个参数就是数组的第二项。**  </div><div class="line"></div><div class="line">&gt; `IE8`及更早版本并不支持。  </div><div class="line"></div><div class="line">### `Date`类型</div><div class="line">在调用`Date`构造函数而不传递参数的情况下，新创建的对象自动获得当前日期和时间。**如果项根据特定的日期和时间创建日期对象，必须传入该日期的毫秒数，为了简化这一计算过程，`ECMAScript`提供了两个方法：`Date.aprse()`和`Date.UTC()`。**  </div><div class="line">`Date.parse()`方法接收一个表示日期的字符串参数，然后尝试根据这个字符串返回相应日期的毫秒数，通常所接收的为下列日期格式：</div><div class="line">* &quot;月/日/年&quot;，如 6/13/2017;</div><div class="line">* &quot;英文月名 日,年&quot;，如 January 12,2017;</div><div class="line">* &quot;英文星期几 英文月名 日 年 时:分:秒 时区&quot;，如 Tue May 25 2017 00:00:00 GMT-0700。</div><div class="line">* ISO 8610 扩展个事 YYYY-MM-DDTHH:mm:ss.sssZ(例如 2017-05-25T00:00:00)。**只有兼容`ECMAScript 5**的实现支持这种格式。  </div><div class="line"></div><div class="line">**如果传入`Date.parse()`方法的字符串不能表示日期，那么它会返回`NaN`。**</div></pre></td></tr></table></figure></p>
+<p>// 以下是等价的，在直接传入构造函数的时候，也会在后台调用<code>Date.parse()</code><br>var someDate = new Date(Date.parse(“May 25, 2017”));<br>var someDate = new Date(“May 25, 2017”);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">`Date.UTC()`方法同样也返回表示日期的毫秒数，它的参数分别是年份、基于 0 的月份、月中的哪一天、小时数、分钟、秒以及毫秒数。**只有前两个参数（年和月）是必须的。如果没有提供月中的天数，则假设天数为 1；如果省略其他参数，则统统假设为 0.**</div></pre></td></tr></table></figure></p>
+<p>// 以下也是等价的<br>var y2k = new Date(Date.UTC(2017, 0));<br>var y2k = new Date(2017, 0);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">`ECMAScript 5`中添加了`Date.now()`方法，返回表示调用这个方法时的日期和时间毫秒数。  </div><div class="line">在不支持它的浏览器中，使用 + 操作符把`Data`对象转换成字符串，也可以达到同样的目的。</div><div class="line"></div><div class="line">#### 继承的方法</div><div class="line">`Date`类型的`valueOf()`方法，则根本不返回字符串，而是返回日期的毫秒表示。  </div><div class="line">`toLocaleString()`和`toString()`在不同浏览器下返回的日期和时间格式是不同的。  </div><div class="line"></div><div class="line">#### 日期格式化方法</div><div class="line">* `toDateString()`——以特定于实现的格式显示星期几、月、日和年；</div><div class="line">* `toTimeString()`——以特定于实现的格式显示时、分、秒和时区；</div><div class="line">* `toLocaleDateString()`——以特定于地区的格式显示星期几、月、日和年；</div><div class="line">* `toLocaleTimeString()`——以特定于地区实现的格式显示时、分、秒；</div><div class="line">* `toUTCString()`——以特定于实现的格式完整的UTC日期。 </div><div class="line"></div><div class="line">### `RegExp`类型</div><div class="line">`RegExp` = Regular Expression  正则表达式</div><div class="line">`ECMAScript`通过`RegExp`类型来支持正则表达式，语法：</div></pre></td></tr></table></figure></p>
+<p>var expression = / pattern / flags<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">其中的模式(pattern)部分可以是任何简单或复杂的正则表达式，可以包含字符类、限定符、分组、向前查找以及反向引用。每个正则表达式都可带有一或多个标志（flags），用以标明正则表达式的行为。正则表达式的匹配模式支持下列 3 个标志。  </div><div class="line">* `g`：表示全局（global）模式，即模式将被应用于所有字符串，而非在发现第一个匹配项时立即停止；</div><div class="line">* `i`：表示不区分大小写（case-insensitive）模式，即在确定匹配项时忽略模式与字符串的大小写；</div><div class="line">* `m`：表示多行（multiline）模式，即在到达一行文本末尾时还会继续查找下一行中是否存在与模式匹配的项。</div><div class="line"></div><div class="line">正则表达式的元字符包括：</div><div class="line">`( [ &#123; \ ^ $ | ) ? * + . ] &#125;`  </div><div class="line"></div><div class="line">定义正则表达式可以使用字面量或者使用`RegExp`构造函数，使用构造函数时，它接收两个参数：一个是要匹配的字符串模式，另一个是可选的标志字符串。</div></pre></td></tr></table></figure></p>
+<p>// 以下两种定义方式是等价的<br>var pattern1 = /[bc]at/i;<br>var pattern2 = new RegExp(“[bc]at”, “i”);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">**需要注意的是，传递给`RegExp`构造函数的两个参数都是字符串（不能把正则表达式字面量传递给`RegExp`构造函数）。由于`RegExp`构造函数的模式参数是字符串，所以在某些情况下要对字符进行 *双重转义* 。所有元字符都必须双重转义，那些已经转义过的字符也是如此，例如`\n`（字符`\`在字符串中通常被转义为`\\`，而在正则表达式字符串中就会变成`\\\\`）** 。  </div><div class="line"></div><div class="line">&gt; 在`ECMAScript 3`中，正则表达式字面量始终会共享同一个`RegExp`实例，而使用构造函数创建的每一个新`RegExp`实例都是一个新实例。`ECMAScript 5`明确规定，使用正则表达式字面量必须像直接调用`RegExp`构造函数一样，每次都创建新的`RegExp`实例。 **——P105**  </div><div class="line"></div><div class="line">#### `RegExp`实例属性</div><div class="line">`RegExp`每个实例都具有下列属性：</div><div class="line">* `global`：布尔值，表示是否设置了`g`标志。</div><div class="line">* `ignoreCase`：布尔值，表示是否设置了`i`标志。</div><div class="line">* `lastIndex`：整数，表示开始搜索下一匹配项的字符位置，从 0 算起。</div><div class="line">* `multiline`：布尔值，表示是否设置了`m`标志。</div><div class="line">* `source`：正则表达式的字符串表示，按照字面量形式而非传入构造函数中的字符串模式返回。即`source`保存的是规范形式的字符串，即字面量形式所使用的字符串。</div><div class="line"></div><div class="line">#### `RegExp`实例方法</div><div class="line">`RegExp`对象的主要方法是`exec()`，该方法是专门为捕获组而设计的。`exec()`接受一个参数，即要应用模式的字符串，然后返回包含第一个匹配项信息的数组；或者在没有匹配项的情况下返回`null`。返回的数组虽然是`Array`的实例，但是包含两个额外的属性：`index`和`input`。其中，**`index`表示匹配项在字符串中的位置，而`input`表示应用正则表达式的字符串。在数组中，第一项是与整个模式匹配的字符串，其他项是与模式中的捕获组匹配的字符串（如果模式中没有捕获组，则该数组只包含一项）。</div><div class="line"></div><div class="line">&gt; 对于`exec()`方法而言，即使在模式中设置了全局标志(`g`)，它每次也只会返回一个匹配项。在不设置全局标志的情况下，在同一个字符串上多次调用`exec()`将始终返回第一个匹配项的信息。而在设置全局标志的情况下，每次调用`exec()`则都会在字符串中继续查找新匹配项。此外，还应注意模式的`lastIndex`属性的变化情况，在全局匹配模式下，`lastIndex`的值在每次调用`exec()`后都会增加，而在非全局模式下始终保持不变。  </div><div class="line"></div><div class="line">第二个方法是`test()`，它接受一个字符串参数。在模式与该参数匹配的情况下返回`true`；否则，返回`false`。**在只想知道目标字符串与某个模式是否匹配，但不需要知道其文本内容的情况下，使用这个方法非常方便**。  </div><div class="line"></div><div class="line">**`RegExp`实例继承的`toLocaleString()`和`toString()`方法都会返回正则表达式的字面量，与创建正则表达式的方式无关。** </div><div class="line"></div><div class="line">&gt; **正则表达式的`valueOf()`方法返回正则表达式本身。**  </div><div class="line"></div><div class="line">#### `RegExp`构造函数属性 </div><div class="line">`RegExp`构造函数包含的属性基于所执行的最近一次正则表达式操作而变化。这些属性分别有一个长属性名和一个短属性名（Opera是例外，它不支持短属性名（最新的是支持的，因为已经更换为了`webkit`内核））。   </div><div class="line"></div><div class="line">|长属性名|短属性名|说明|</div><div class="line">|------|-------|---|</div><div class="line">|`input`|$_|最近一次要匹配的字符串|</div><div class="line">|`lastMatch`|$&amp;|最近一次的匹配项|</div><div class="line">|`lastParen`|$+|最近一次匹配的捕获组|</div><div class="line">|`leftContext`|$`|`input`字符串中`lastMatch`之前的文本|</div><div class="line">|`multiline`|$*|布尔值，表示是否所有表达式都使用多行模式。|</div><div class="line">|`rightContext`|$&apos;|`input`字符串中`lastMatch`之后的文本| </div><div class="line"></div><div class="line">&gt; 虽然长属性名都可以使用短属性名来代替，只不过，由于这些短属性名大都不是有效的`ECMAScript`标识符，因此必须通过方括号语法来访问它们。**除此之外，还有多达 9 个用于存储捕获组的构造函数属性，访问这些属性的语法是：`RegExp.$1`、`RegExp.$2`…`RegExp.$9`分别用于存储第一、第二……第九个匹配的捕获组，在调用 *`exec()`或`test()`* 方法时，这些属性都会被自动填充**。  </div><div class="line"></div><div class="line">&gt; 关于模式的局限性，请查阅 **——P109**  </div><div class="line"></div><div class="line">&gt; 更多关于正则表达式的信息，请查阅[regular-expressions.info](http://www.regular-expressions.info/)</div><div class="line"></div><div class="line">#### `Function`类型</div><div class="line">函数实际上是对象，每个函数都是`Function`类型的实例，而且都与其他引用类型一样具有属性和方法。由于函数是对象，因此**函数名实际上也是一个指向函数对象的指针，不会与某个函数绑定**。  </div><div class="line"></div><div class="line">三种定义函数的方法：</div></pre></td></tr></table></figure></p>
+<p>function sum (num1, num2) {<br>    return num1 + num2;<br>}</p>
+<p>var sum = function(num1, num2) {<br>    return num1 + num2;<br>};</p>
+<p>var sum = new Function(“num1”, “num2”, “return num1 + num2”); //不推荐<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">第三种从技术角度讲，是一个函数表达式，并不推荐，因为这种语法会导致解析两次代码（第一次是解析常规`ECMAScript代码，第二次是解析传入构造函数中的字符串），从而影响性能。</div><div class="line"></div><div class="line">#### **没有重载**</div><div class="line"></div><div class="line">#### 函数声明与函数表达式</div><div class="line">**解析器在向执行环境中加载数据时，解析器会率先读取函数声明，并使其在执行任何代码前可用（可以访问）；至于函数表达式，则必须等到解析器执行到它所在的代码行，才会真正被解释执行**。  </div><div class="line"></div><div class="line">**函数声明提升（function declaration hoisting）**：`JavaScript`引擎在第一遍会声明函数并将它们放到源代码树的顶部。</div><div class="line"></div><div class="line">#### 作为值的函数</div><div class="line">因为`ECMAScript`中的函数名本身就是变量，所以函数也可以作为值来使用。也就是说，不仅可以像传递参数一样把一个函数传递给另一个函数，而且可以将一个函数作为另一个函数的结果返回。  </div><div class="line"></div><div class="line">#### 函数内部属性</div><div class="line">在函数内部，有两个特殊的对象：`arguments`和`this`。  </div><div class="line">`arguments`是一个类数组对象，包含着传入函数中的所有参数。虽然`arguments`的主要用途是保存函数参数，但这个对象还有一个名叫`callee`的属性，该属性是一个指针，指向拥有这个`arguments`对象的函数。  </div><div class="line">**使用`arguments.callee`可以消除函数的执行与函数名耦合的问题。 ——P114**  </div><div class="line"></div><div class="line">函数内部的另一个特殊对象是`this`，`this`引用的是函数**据以执行的环境对象**。</div><div class="line"></div><div class="line">&gt; 函数的名字仅仅是一个包含指针的变量而已。  </div><div class="line"></div><div class="line">`ECMAScript 5`也规范化了另一个函数对象的属性：`caller`，这个属性中保存着调用当前函数的函数的引用，如果是在全局作用域中调用当前函数，他的值为`null`。也可以通过`arguments.callee.caller`来访问相同的信息。  </div><div class="line"></div><div class="line">&gt; 在严格模式下，访问`arguments.callee`会导致错误。`ECMAScript 5`还定义了`arguments.caller`属性，但在严格模式下访问它也会导致错误，**而在非严格模式下这个属性始终为`undefined`**。定义这个属性是为了分清`arguments.caller`和函数的`caller`属性。**严格模式下不能为函数的`caller`属性赋值，否则会导致错误。**  </div><div class="line"></div><div class="line">#### 函数属性和方法</div><div class="line">每个函数都包含两个属性`length`和`prototype`，其中**`length`属性表示函数希望接收的命名参数的个数**。  </div><div class="line">**对于`ECMAScript`中的引用类型而言，`prototype`是保存它们所有实例方法的真正所在。在创建自定义引用类型以及实现继承时，`prototype`属性是极为重要的。在`ECMAScript 5`中，`prototype`属性是不可枚举的**。  </div><div class="line"></div><div class="line">每个函数都包含两个非继承而来的方法：`apply()`和`call()`。**这两个方法的用途都是在特定的作用域中调用函数，实际上等于设置函数体内`this`对象的值**。  </div><div class="line">`apply()`接收两个参数：一个是在其中运行函数的作用域，另一个是参数数组。**第二个参数可以是`Array`的实例，也可以是`arguments`对象**  </div><div class="line"></div><div class="line">&gt; ？在严格模式下，未指定环境对象而调用函数，则`this`值不会转型为`window`。除非明确把函数添加到某个对象或者调用`apply()`或`call()`，否则`this`值将是`undefined`。</div></pre></td></tr></table></figure></p>
+<p>“use strict”</p>
+<p>function sum(num1, num2){<br>  console.log(this);<br>  return num1 + num2;<br>}</p>
+<p>function callSum1(num1, num2) {<br>  return sum.apply(this, arguments);<br>}</p>
+<p>function callSum2(num1, num2) {<br>  return sum.apply(this, [num1, num2]);<br>}</p>
+<p>console.log(sum(10, 10));<br>console.log(callSum1(10, 10));<br>console.log(callSum2(10, 10));<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">在严格模式下会输出以下结果：</div><div class="line">![](./JavaScript引用类型/严格模式.png)</div><div class="line"></div><div class="line">而在非严格模式下会输出以下结果：</div><div class="line">![](./JavaScript引用类型/非严格模式.png)  </div><div class="line">&gt; （测试环境在`Node`下，所以不会打印出`window`对象而是`global`对象，当使用`Chrome`开发者工具进行测试时会打印出`window`对象）  </div><div class="line"></div><div class="line">`call()`方法与`apply()`方法的作用相同，它们的区别仅仅在于接收参数的方式不同。对于`call()`方法而言，第一个参数是`this`值没有变化，**变化的是其余参数都直接传递给函数，即在使用`call()`方法时，传递给函数的参数必须逐个列举出来**。  </div><div class="line"></div><div class="line">&gt; 如果你打算直接传入`arguments`对象，或者包含函数中先接收到的也是一个数组，那么使用`apply()`肯定更方便，否则使用`call()`更合适。  </div><div class="line"></div><div class="line">&gt; `apply()`和`call()`真正强大的地方是能够扩充函数赖以运行的作用域，使用`call()`（或`apply()`）来扩充作用域的最大好处，就是对象不需要与方法有任何耦合关系。**`ECMAScript 5`中还定义了一个`bind()`方法，这个方法会创建一个函数的实例，其`this`值会被绑定到传给`bind()`函数的值。**  </div><div class="line"></div><div class="line">&gt; 每个函数继承的`toLocaleString()`和`toString()`方法始终都返回函数的代码。`valueOf()`方法同样也只返回函数代码。  </div><div class="line"></div><div class="line">### 基本包装类型  </div><div class="line">**引用类型与基本包装类型的主要区别就是对象的生存期。使用`new`操作符创建的引用类型的实例，在执行流离开当前作用域之前都一直保存在内存中。而自动创建的基本包装类型的对象，则在存在于一行代码的执行瞬间，然后立即被销毁。这意味着我们不能在运行时为基本类型值添加属性和方法。**  </div><div class="line"></div><div class="line">#### `Boolean`类型</div><div class="line">&gt; 永远不要使用`Boolean`对象。</div><div class="line"></div><div class="line">#### `Number`类型</div><div class="line">`Number`类型提供了一些用于将数值格式化为字符串的方法。其中`toFixed()`方法会按照指定的小数位返回数值的字符串表示。如果数值本身包含的小数位比指定的还多，那么接近指定的最大小数位的值就会舍入。  </div><div class="line"></div><div class="line">&gt; 不同浏览器给这个方法设定的舍入规则可能会有所不同，在给`toFixed()`传入 0 的情况下，`IE8`及之前版本不能正确舍入范围在`&#123;(-0.94,-0.5],[0.5,0.94)&#125;`之间的值。对于这个范围内的值，`IE`会返回 0 ，而不是 -1 或 1；其他浏览器都能返回正确的值。`IE9`修复了这个问题。</div><div class="line"></div><div class="line">`toExponential()`返回指数表示法（也称之为 e 表示法），表示的数值的字符串形式。与`toFixed()`一样，`toExponential()`也接收一个参数，而且该参数同样也是指定输出结果中的小数位数。  </div><div class="line">对于一个数值来说，`toPrecision()`方法可能会返回固定大小（`fixed`）格式，也可能返回指数（`exponential`)格式，该方法接收一个参数，即表示数值的所有数字的位数（不包括指数部分）。 </div><div class="line"></div><div class="line">#### `String`类型  </div><div class="line"></div><div class="line">&gt; `String`类型的每个实例都有一个`length`属性，表示字符串中包含多个字符，应该注意的是，**即使字符串中包含双字节字符，每个字符也仍然算一个字符**。  </div><div class="line"></div><div class="line">##### 字符方法  </div><div class="line">两个用于访问字符串中特定字符的方法是`charAt()`和`charCodeAt()`，这两个方法都接收一个参数，即基于 0 的字符位置。其中，`charAt()`方法以单字符字符串的形式返回给定位置的那个字符（`ECMAScript`中没有字符类型）。如果想得到当前给定位置的单个字符的字符编码，就需要使用`charCodeAt()`。  </div><div class="line"></div><div class="line">&gt; 使用方括号访问个别字符的语法得到了`IE8+`等浏览器的支持，但在`IE7`及更早的版本中使用这种语法，会返回`undefined`值。  </div><div class="line"></div><div class="line">##### 字符串操作方法 </div><div class="line">`concat()`将一或多个字符串拼接起来，返回拼接得到的新字符串。**实际中使用加号操作符（+）更常见**  </div><div class="line"></div><div class="line">`ECMAScript`还提供了三个基于字符串创建新字符串的方法：`slice()`、`substr()`和`substring()`。这三个方法都会返回被操作字符串的一个子字符串，而且也都接受一个或两个参数。第一个参数指定子字符串的开始位置，第二个参数（在指定的情况下）表示子字符串到哪里结束。具体来说，`slice()`和`substring()`的第二个参数指定的是子字符串最后一个字符后面的位置。而`substr()`的第二个参数指定的则是返回的字符个数。如果没有给这些方法传递第二个参数，则将字符串的长度作为结束位置。**与`concat()`方法一样，`slice()`、`substr()`和`substring()`也不会修改字符串本身的值——它们只是返回一个基本类型的字符串值，对原始字符串没有任何影响。  </div><div class="line"></div><div class="line">##### 字符串位置方法</div><div class="line">从字符串中查找子字符串的方法：`indexOf()`和`lastIndexOf()`。这两个方法都是从一个字符串中搜索给定的子字符串，然后返回子字符串的位置（**如果没有找到，则返回 -1**）。</div><div class="line"></div><div class="line">##### `trim()`方法</div><div class="line">`ECMAScript 5`为所有字符串定义了`trim()`方法，这个方法会创建一个字符串的副本，删除前置及后缀的所有空格，然后返回结果。  </div><div class="line"></div><div class="line">&gt; `IE9+`支持，详情查看 [Can I use](http://caniuse.com/#search=trim)  </div><div class="line"></div><div class="line">##### 字符串大小写转换方法</div><div class="line">`toLowerCase()`、`toLocaleLowerCase()`、`toUpperCase()`、`toLocaleUpperCase()`。**一般来说，在不知道自己的代码将在哪种语言环境中运行的情况下，还是使用针对地区的方法更稳妥**  </div><div class="line"></div><div class="line">##### 字符串的模式匹配方法</div><div class="line">`match()`与调用`RegExp`的`exec()`方法相同。  </div><div class="line">`search()`这个方法的唯一参数与`match()`方法的参数相同：由字符串或`RegExp`对象指定的一个正则表达式。`search()`方法返回字符串中第一个匹配项的索引；如果没有找到匹配项，则返回 -1 。  </div><div class="line"></div><div class="line">`replace()`方法，接受两个参数：第一个参数可以是一个`RegExp`对象或者一个字符串（这个字符串不会被转换成正则表达式），第二个参数可以使一个字符串或者一个函数。**如果第一个参数是字符串，那么只会替换第一个子字符串，要想替换所有子字符串，唯一的办法是提供一个正则表达式，而且要指定全局（g）标志。    </div><div class="line">`replace()`方法的第二个参数也可以是一个函数，在只有一个匹配项（即与模式匹配的字符串）的情况下，会向这个函数传递 3 个参数：**模式的匹配项、模式匹配项在字符串中的位置和原始字符串**。在正则表达式中定义了多个捕获组的情况下，传递给函数的参数依次是 **模式的匹配项、第一个捕获组的匹配项、第二个捕获组的匹配项……，但最后两个参数仍然分别是模式的匹配项在字符串中的位置和原是字符串**。  </div><div class="line"></div><div class="line">`split()`方法可以基于指定的分隔符将一个字符串分割成多个字符串，并将结果放在一个数组中。分隔符可以是字符串，也可以是一个`RegExp`对象（这个方法不会将字符串看成正则表达式），**`split()`可以接受可选的第二个参数，用于指定数组的大小，以便确保返回的数组不会超过既定大小**。  </div><div class="line"></div><div class="line">##### `localeCompare()`方法</div><div class="line">此方法用于比较两个字符串，并返回下列值中的一个：</div><div class="line">* 如果字符串在字母表中应该排在字符串参数之前，则返回一个负数（大多数情况下是 -1，具体的值要视实现而定）；</div><div class="line">* 如果字符串等于字符串参数，则返回 0；</div><div class="line">* 如果字符串在字母表中应该排在字符串参数之后，则返回一个正数（大多数情况下是 1，具体的值同样要视实现而定）；  </div><div class="line"></div><div class="line">&gt; `localeCompare()`方法比较与众不同的地方，就是实现所支持的地区（国家和语言）决定了这个方法的行为。  </div><div class="line"></div><div class="line">##### `fromCharCode()`方法</div><div class="line">静态方法，用于接收一或多个字符编码，然后将它们转换成一个字符串。 与`charCodeAt()`执行的是相反的操作。  </div><div class="line"></div><div class="line">### 单体内置对象</div><div class="line">`ECMA-262`对内置对象的定义是：&quot;由`ECMAScript`实现提供的、不依赖于宿主环境的对象，这些对象在`ECMAScript`程序执行之前就已经存在了。&quot;也就是说，不必显式地实例化内置对象，因为它们已经实例化了。除了`Object`、`Array`和`String`，`ECMA-262`还定义了两个单体内置对象：`Global`和`Math`。    </div><div class="line"></div><div class="line">#### `Global`对象</div><div class="line">`Global`全局对象在某种意义上是作为一个终极的“兜底儿对象”，其不属于任何其他对象的属性和方法，最终都是它的属性和方法。**事实上，没有全局变量或全局函数；所有在全局作用域中定义的属性和函数，都是`Global`对象的属性**。除了诸如`isNaN() | isFinite() | parseInt() | parseFloat()`外，还包括：  </div><div class="line">##### `URI`编码方法 </div><div class="line">`encodeURI()`和`encodeURIComponent()`方法可以对`URI`进行编码，它们用特殊的**UTF-8**编码替换所有无效的字符，从而让浏览器能够接受和理解。  </div><div class="line">`encodeURI()`主要用于整个URI，而`encodeURIComponent()`主要用于对URI中的某一段进行编码。主要区别是：**`encodeURI()`不会对本身属于URI的特殊字符进行编码，例如冒号、正斜杠、问号和井字号；而`encodeURIComponent()`则会对它发现的任何非标准字符进行编码**。  </div><div class="line"></div><div class="line">&gt; 一般来说，我们使用`encodeURIComponent()`方法的时候要比用`encodeURI()`更多，因为在实践中更常见的是对查询字符串参数而不是对基础URI进行编码。  </div><div class="line"></div><div class="line">与`encodeURI()`和`encodeURIComponent()`方法对应的两个方法分别是`decodeURI()`和`decodeURIComponent()`。  </div><div class="line"></div><div class="line">##### `eval()`方法</div><div class="line">当解析器发现代码中调用`eval()`方法时，它会将传入的参数当做实际的`ECMAScript`语句来解析，然后把执行结果插入到原位置。通过`eval()`执行的代码被认为是包含该次调用的执行环境的一部分，因此被执行的代码具有与该执行环境相同的作用域链，这就意味着通过`eval()`执行的代码可以引用在包含环境中定义的变量。   </div><div class="line">**在`eval()`中创建的任何变量和函数都不会被提升，因为在解析代码的时候，它们被包含在一个字符串中；它们旨在`eval()`执行的时候创建。严格模式下，在外部访问不到`eval()`中创建的任何变量和函数**。  </div><div class="line"></div><div class="line">##### `Global`对象的属性</div><div class="line">![](./JavaScript引用类型/Global对象的属性.png)  </div><div class="line"></div><div class="line">##### `window`对象</div><div class="line">`Web`浏览器都是将`Global`这个全局对象作为`window`对象的一部分加以实现的，因此在全局作用域中声明的所有变量和函数，都成为了`window`对象的属性。  </div><div class="line"></div><div class="line">#### `Math`对象</div><div class="line">##### `Math`对象的属性</div><div class="line"></div><div class="line">|属性|说明|</div><div class="line">|---|---|</div><div class="line">|Math.E|自然对数的底数，即常量 e 的值|</div><div class="line">|Math.LN10|10 的自然对数|</div><div class="line">|Math.LN2|2 的自然对数|</div><div class="line">|Math.LOG2E|以 2 为底 e 的对数|</div><div class="line">|Math.LOG10E|以 10 为底 e 的对数|</div><div class="line">|Math.PI|π 的值|</div><div class="line">|Math.SQRT1_2|1/2 的平方根（即2的平方根的倒数）|</div><div class="line">|Math.SQRT2|2 的平方根|  </div><div class="line"></div><div class="line">##### `min()`和`max()`方法</div><div class="line">用于确定一组数值中的最小值和最大值，这两个方法都可以接收任意多个数值参数。   </div><div class="line">要找到数组中的最大值或最小值，可以像下面这样使用`apply()`方法:</div></pre></td></tr></table></figure></p>
+<p>var values = [1, 2, 3, 4, 5, 6, 7, 8];<br>var max = Math.max.apply(Math, values);<br>var min = Math.min.apply(Math, values);<br>```</p>
+<h5 id="舍入方法"><a href="#舍入方法" class="headerlink" title="舍入方法"></a>舍入方法</h5><ul>
+<li><code>Math.ceil()</code>向上舍入</li>
+<li><code>Math.floor()</code>向下舍入</li>
+<li><code>Math.round()</code>标准舍入（四舍五入）</li>
+</ul>
+<h5 id="random-方法"><a href="#random-方法" class="headerlink" title="random()方法"></a><code>random()</code>方法</h5><p><code>Math.random()</code>返回介于 0 和 1 之间的一个随机数，不包括 0 和 1.</p>
+<h5 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h5><p><img src="/2017/08/17/JavaScript引用类型/Math中的其他方法.png" alt="">  </p>
+
+	
+	
+	
+	
+</div>
+				
+				
+
+                <!-- Post Comments -->
+                
+    <!-- 使用多说评论 -->
+    <link rel="stylesheet" href="/css/duoshuo.min.css">
+<style>
+    #ds-thread #ds-reset .ds-post-button{
+        background-color: #0097A7 !important;
+    }
+    #ds-wrapper #ds-reset .ds-icons-32{
+        background-color: #0097A7 !important;
+    }
+    #ds-reset .ds-highlight {
+        color: #0097A7 !important;
+    }
+</style>
+<div id="comments">
+    <!-- 多说评论框 start -->
+        <div class="ds-thread" 
+            data-thread-key="2017/08/17/JavaScript引用类型/" 
+            data-url="https://jackerjay.github.io/2017/08/17/JavaScript引用类型/"
+            data-title="JavaScript引用类型"></div>
+    <!-- 多说评论框 end -->
+</div>
+
+
+
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/08/13/JavaScript变量、作用域和内存问题/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+        </div>
+    </div>
+
+				
+				
+					<!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay "></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored  sidebar-fixed-left" role="navigation">
+	<div id="sidebar-main">
+	    <!-- Sidebar Header -->
+		<div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+    <i class="material-icons">clear_all</i>
+    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="JackerJay's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        jackerjay@hotmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+		<!-- Sidebar Navigation  -->
+		<ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+			
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+						<i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+             主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+<!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+-->
+
+	
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">4</span></a>
+        </ul>
+    </li>
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+             文章总数
+             <span class="sidebar-badge">20</span>
+        </a>
+    </li>
+</ul>
+
+		<!-- Sidebar Divider -->
+		<div class="sidebar-divider"></div>
+
+		<!-- Sidebar Footer -->
+		<!-- 
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持。 :) 
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+	<div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		主题 - Material
+		<span class="sidebar-badge badge-circle">i</span>
+	</div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		sidebar.help
+		<span class="mdl-button__ripple-container">
+			<span class="mdl-ripple"></span>
+		</span>
+	</div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+	</div>
+    
+    <!-- Sidebar Sponsor -->
+    
+
+
+</aside>
+
+				
+				
+				
+					<!-- Footer Top Button -->
+					<div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+				
+				
+				<!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+	
+	
+		<!-- Paradox Footer Left Section -->
+		<div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+    
+    
+    <!-- Facebook -->
+    
+    
+    
+    <!-- Google + -->
+    
+    
+    
+    <!-- Weibo -->
+    
+    
+    
+    <!-- Instagram -->
+    
+    
+    
+    <!-- Tumblr -->
+    
+    
+    
+    <!-- Github -->
+    
+    <a href="http://github.com/jackerjay" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+        <span class="visuallyhidden">Github</span>
+    </button></a>
+    
+</div>
+
+
+		<!--Copyright-->
+		<div id="copyright">Copyright&nbsp;©&nbsp;<script type="text/javascript">var fd = new Date();document.write(fd.getFullYear());</script>&nbsp;JackerJay杂记</div>
+
+		<!-- Paradox Footer Right Section -->
+
+		<!-- 
+		I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+		It will not impact the appearance and can give developers a lot of support :)
+
+		很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+		它不会影响美观并可以给开发者很大的支持。 :) 
+		-->
+
+		<div class="mdl-mini-footer--right-section">
+			<div>
+				<div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+				<div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+			</div>
+		</div>
+	
+    
+</footer>
+                
+				<!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+    <!-- 多说公共 js 代码 start -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = 'https://static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+             || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <!-- 多说公共 js 代码 end -->
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $(".post-toc-wrap").parent(".mdl-menu__container").css("position", "fixed");
+    });
+</script>
+
+<!-- MathJax Load-->
+
+            </main>
+        </div>
+		
+    </body>
+		
+	
+</html>
