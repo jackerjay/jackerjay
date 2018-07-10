@@ -338,12 +338,12 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
 	
-		<h3 id="window-open-方法"><a href="#window-open-方法" class="headerlink" title="window.open 方法"></a>window.open 方法</h3><p><code>window.open()</code>方法用于打开一个新的浏览器窗口或查找一个已命名的窗口。<br>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var windowObjectReference = </div><div class="line">window.open(strUrl, strWindowName, [strWindowFeatures]);</div></pre></td></tr></table></figure></p>
-<p>详细的参数介绍可以移步<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/open" target="_blank" rel="external">MDN window.open</a>。<br>在此处记录一个关于其参数<code>location</code>的问题：<br>在古老IE年代，设置<code>location=no</code>的情况下是不会显示地址栏的，但是现代浏览器中，此属性已经在基于安全性的情况下被忽略，但如果设置<code>location=no</code>的情况下，地址栏是<code>只读</code>状态，不可编辑。<br>以下摘自<a href="http://stackoverflow.com/questions/2909645/open-new-popup-window-without-address-bars-in-firefox-ie" target="_blank" rel="external"><code>stackoverflow-Open new popup window without address bars in firefox &amp; IE</code></a>  </p>
+		<h3 id="window-open-方法"><a href="#window-open-方法" class="headerlink" title="window.open 方法"></a>window.open 方法</h3><p><code>window.open()</code>方法用于打开一个新的浏览器窗口或查找一个已命名的窗口。<br>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var windowObjectReference = </span><br><span class="line">window.open(strUrl, strWindowName, [strWindowFeatures]);</span><br></pre></td></tr></table></figure></p>
+<p>详细的参数介绍可以移步<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/open" target="_blank" rel="noopener">MDN window.open</a>。<br>在此处记录一个关于其参数<code>location</code>的问题：<br>在古老IE年代，设置<code>location=no</code>的情况下是不会显示地址栏的，但是现代浏览器中，此属性已经在基于安全性的情况下被忽略，但如果设置<code>location=no</code>的情况下，地址栏是<code>只读</code>状态，不可编辑。<br>以下摘自<a href="http://stackoverflow.com/questions/2909645/open-new-popup-window-without-address-bars-in-firefox-ie" target="_blank" rel="noopener"><code>stackoverflow-Open new popup window without address bars in firefox &amp; IE</code></a>  </p>
 <ul>
 <li>Firefox<br>In Firefox 3, dom.disable_window_open_feature.location now defaults to true, forcing the presence of the Location Bar much like in IE7. See bug 337344 for more information.</li>
 <li>Internet Explorer 7 and later<br>In Internet Explorer 6, location specifies whether to display the Address Bar.</li>
-<li>Chrome/Chromium<br>Those toolbar hiding parameters are ignored in Chrome. You will also notice that modern browsers are moving towards not hiding it as security / anti phishing measures. Also see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=337344" target="_blank" rel="external">https://bugzilla.mozilla.org/show_bug.cgi?id=337344</a></li>
+<li>Chrome/Chromium<br>Those toolbar hiding parameters are ignored in Chrome. You will also notice that modern browsers are moving towards not hiding it as security / anti phishing measures. Also see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=337344" target="_blank" rel="noopener">https://bugzilla.mozilla.org/show_bug.cgi?id=337344</a></li>
 </ul>
 
 	
@@ -487,7 +487,7 @@
         </a>
         <ul class="dropdown-menu">
             <li>
-            <a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">4</span></a>
+            <a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">4</span></a>
         </ul>
     </li>
 
@@ -502,7 +502,7 @@
     <li>
         <a href="/archives">
              文章总数
-             <span class="sidebar-badge">21</span>
+             <span class="sidebar-badge">22</span>
         </a>
     </li>
 </ul>

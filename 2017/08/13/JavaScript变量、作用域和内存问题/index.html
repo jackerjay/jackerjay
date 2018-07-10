@@ -348,13 +348,13 @@
 <h4 id="动态的属性"><a href="#动态的属性" class="headerlink" title="动态的属性"></a>动态的属性</h4><p>只能给引用类型值动态地添加属性。</p>
 <h4 id="复制变量值"><a href="#复制变量值" class="headerlink" title="复制变量值"></a>复制变量值</h4><p>基本类型在复制变量值的时候，会在变量对象上创建一个新值，然后把该值复制到为新变量分配的位置上。<br><img src="/2017/08/13/JavaScript变量、作用域和内存问题/基本类型复制.png" alt=""><br>当从一个变量向另一个变量复制引用类型的值时，同样也会将存储在变量对象中的值复制一份放到为新变量分配的空间中。不同的是，这个值的副本实际上是一个指针，而这个指针指向存储在堆中的一个对象。复制操作结束后，两个变量实际上将引用同一个对象。因此，改变其中一个变量，就会影响另一个变量。<br><img src="/2017/08/13/JavaScript变量、作用域和内存问题/引用类型复制.png" alt="">  </p>
 <h4 id="传递参数"><a href="#传递参数" class="headerlink" title="传递参数"></a>传递参数</h4><p><code>ECMAScript</code>中所有函数的参数都是按值传递的。<strong>也就是说，把函数外部的值复制给函数内部的参数，就和把值从一个变量复制到另一个变量一样（参考上述<code>复制变量值</code>）</strong><br>主要部分是关于对象的<strong>按值</strong>传递：<br>例子：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function setName(obj) &#123;</div><div class="line">    obj.name = &apos;Nicholas&apos;;</div><div class="line">    obj = new Object();</div><div class="line">    obj.name = &quot;Greg&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var person = new Object();</div><div class="line">setName(person);</div><div class="line">alert(person.name); // &quot;Nicholas&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function setName(obj) &#123;</span><br><span class="line">    obj.name = &apos;Nicholas&apos;;</span><br><span class="line">    obj = new Object();</span><br><span class="line">    obj.name = &quot;Greg&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var person = new Object();</span><br><span class="line">setName(person);</span><br><span class="line">alert(person.name); // &quot;Nicholas&quot;</span><br></pre></td></tr></table></figure>
 <p>如果<code>person</code>是按照引用传递的，那么<code>person</code>就会自动被修改为指向其<code>name</code>属性值为”Greg”的新对象。但是，当接下来再访问<code>person.name</code>时，显示的值仍然是”Nicholas”。这说明即使在函数内部修改了参数的值，但原始的引用仍然保持未变。<strong>实际上，当在函数内部重写<code>obj</code>时，这个变量引用的就是一个局部对象了。而这个局部对象会在函数执行完毕后立即被销毁</strong>。</p>
 <blockquote>
 <p>可以把<code>ECMAScript</code>函数的参数想象成局部变量。  </p>
 </blockquote>
 <h4 id="检测类型"><a href="#检测类型" class="headerlink" title="检测类型"></a>检测类型</h4><p><code>typeof</code>操作符是确定一个变量是字符串、数值、布尔值，还是<code>undefined</code>的最佳工具。如果变量的值是一个对象或<code>null</code>，则<code>typeof</code>操作符会返回”object”。<br>在检测基本数据类型时<code>typeof</code>是非常得力的助手，但是在检测引用类型的值时，我们需要使用<code>instanceof</code>操作符：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result = variable instanceof constructor</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = variable instanceof constructor</span><br></pre></td></tr></table></figure>
 <p><strong>根据规定，所有引用类型的值都是<code>Object</code>的实例，因此在检测一个引用类型值和<code>Object</code>构造函数时，<code>instanceof</code>操作符始终会返回<code>true</code>。当然，如果使用<code>instanceof</code>操作符检测基本类型的值，则该操作符始终会返回<code>false</code>，因为基本类型不是对象。</strong>  </p>
 <blockquote>
 <p>使用<code>typeof</code>操作符检测函数时，该操作符会返回<code>function</code>。在<code>Safari 5</code>及之前版本和<code>Chrome 7</code>以及之前版本中使用<code>typeof</code>检测正则表达式时，由于规范的原因，这个操作符也返回<code>function</code>。<code>ECMA-262</code>规定任何在内部实现<code>[[Call]]</code>方法的对象都应该在应用<code>typeof</code>操作符时返回<code>function</code>。如今现代浏览器返回的都是<code>object</code>  </p>
@@ -380,11 +380,11 @@
 <h5 id="查询标识符"><a href="#查询标识符" class="headerlink" title="查询标识符"></a>查询标识符</h5><p>当在某个环境中为了读取或写入而引入一个标识符时，必须通过搜索来确定该标识符实际代表什么。搜索过程从作用域链的前端开始，向上逐级查询与给定名字匹配的标识符。如果在局部环境中找到了该标识符，搜索过程停止，变量就绪。如果在局部环境中没有找到该变量名，则继续沿作用域链向上搜索。搜索过程将一直追溯到全局环境的变量对象。如果在全局环境中也没有找到这个标识符，则意味着该变量尚未声明。  </p>
 <blockquote>
 <p><em>作用于查找会在找到第一个匹配的标识符时停止。在多层的嵌套作用于中可以定义同名的标识符，这叫做“遮蔽效应”。间接地通过对全局对象属性的引用来访问那些被同名变量所遮蔽的全局变量。但非全局变量如果被遮蔽了，无论如何都无法被访问到</em>。  </p>
-<h4 id="垃圾收集"><a href="#垃圾收集" class="headerlink" title="垃圾收集"></a>垃圾收集</h4><p>垃圾收集器会按照固定的时间间隔（或代码执行中预定的收集时间），周期性地执行回收操作。垃圾回收机制的实现策略：</p>
 </blockquote>
+<h4 id="垃圾收集"><a href="#垃圾收集" class="headerlink" title="垃圾收集"></a>垃圾收集</h4><p>垃圾收集器会按照固定的时间间隔（或代码执行中预定的收集时间），周期性地执行回收操作。垃圾回收机制的实现策略：</p>
 <h5 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h5><p><code>JavaScript</code>中最常用的垃圾收集方式是标记清除（mark-and-sweep）。当变量进入环境时，就将这个变量标记为“进入环境”。从逻辑上讲，永远不能释放进入环境的变量所占用的内存，因为只要执行流进入相应的环境，就可能会用到它们。而当变量离开环境时，则将其标记为“离开环境”。<br>垃圾收集器在运行的时候会给存储在内存中的所有变量都加上标记。然后它会去掉环境中的变量以及被环境中的变量引用的变量的标记。而在此之后再被加上标记的变量将被视为准备删除的变量，原因是环境中的变量已经无法访问到这些变量了。最后，垃圾收集器完成内存清除工作，销毁那些带标记的值并回收它们所占用的内存空间。  </p>
 <h5 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h5><p>另一种不太常见的垃圾收集策略叫做引用计数（reference counting）。引用计数的含义是跟踪记录每个值被引用的次数。当声明了一个变量并将一个引用类型值赋给该变量时，则这个值的引用次数就是 1。如果同一个值又被赋给另一个变量，则该值的次数加 1.相反，如果包含对这个值引用的变量又取得了另外一个值，则这个值的引用次数减 1.当这个值的引用次数变成 0 时，则说明没有办法再访问到这个值了，因而就可以将其占用的内存空间回收回来。这样，当垃圾收集器下次再运行时，它就会释放那些引用次数为零的值所占用的内存。<br>在下述这个例子中，永远不会被回收：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function problem() &#123;</div><div class="line">    var objectA = new Object();</div><div class="line">    var objectB = new Object();</div><div class="line">    </div><div class="line">    objectA.someOtherObject = objectB;</div><div class="line">    objectB.anotherObject = objectA;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function problem() &#123;</span><br><span class="line">    var objectA = new Object();</span><br><span class="line">    var objectB = new Object();</span><br><span class="line">    </span><br><span class="line">    objectA.someOtherObject = objectB;</span><br><span class="line">    objectB.anotherObject = objectA;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>objectA</code>和<code>objectB</code>相互引用，这样两个对象的引用次数都是2.一直都不会被清除。</p>
 <blockquote>
 <p><code>IE8</code>及之前由于其<code>BOM</code>和<code>DOM</code>中的对象是使用C++以<code>COM</code>（Component Object Model，组件对象模型）对象形式实现的，而<code>COM</code>对象的垃圾收集机制采用的就是应用计数策略，因此<code>IE</code>中使用<code>BOM</code>和<code>DOM</code>时要注意此问题，为了避免循环引用问题，最好是在不使用它们的时候手工断开原生<code>JavaScript</code>对象与<code>DOM</code>元素之间的连接。将变量设置为<code>null</code>意味着切断变量与它此前引用的值之间的连接。<code>IE9</code>之后问题得以修复。  </p>
@@ -532,7 +532,7 @@
         </a>
         <ul class="dropdown-menu">
             <li>
-            <a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">4</span></a>
+            <a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">4</span></a>
         </ul>
     </li>
 
@@ -547,7 +547,7 @@
     <li>
         <a href="/archives">
              文章总数
-             <span class="sidebar-badge">21</span>
+             <span class="sidebar-badge">22</span>
         </a>
     </li>
 </ul>
