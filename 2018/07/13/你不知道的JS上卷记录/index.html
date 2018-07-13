@@ -4,7 +4,7 @@
     <!-- Title -->
     
     <title>
-        标签: babel | JackerJay杂记
+        你不知道的JS上卷记录 | JackerJay杂记
     </title>
     
     <!-- Favicons -->
@@ -40,7 +40,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://jackerjay.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="标签: babel | JackerJay杂记">
+    <meta property="og:title" content="你不知道的JS上卷记录 | JackerJay杂记">
     <meta property="og:description" content="学习成长路">
     
      <!--[if lte IE 9]>
@@ -205,198 +205,226 @@
                 </button>
 				
 				
-                <!-- Index Module -->
-<div class="material-index mdl-grid">
-	
-		<!-- Paradox Header -->
-		<!-- Daily pic -->
-<div class="mdl-card daily-pic mdl-cell mdl-cell--8-col index-top-block">
-    
-    <!-- Pic & Slogan -->
-    <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/daily_pic.png)">
-        <p class="index-top-block-slogan"><a href="#">Hi, nice to meet you</a></p>
-    </div>
+                
+	<!-- Back Button -->
+<!--
+	<div class="material-back" id="backhome-div" tabindex="0">
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
+			<i class="material-icons" role="presentation">arrow_back</i>
+			<span class="mdl-button__ripple-container">
+				<span class="mdl-ripple"></span>
+			</span>
+		</a>
+	</div>			
+-->
+	<!-- Left aligned menu below button -->
+	<button id="post-toc-trigger-btn"
+			class="mdl-button mdl-js-button mdl-button--icon">
+	  <i class="material-icons">format_list_numbered</i>
+	</button>
 
-    <!-- Avatar & Name -->
-    <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-        <!-- Author Avatar -->
-        <div id="author-avatar">
-            <img src="/img/avatar.png" width="32px" height="32px" alt="avatar">
-        </div>
-        <div>
-            <strong>JackerJay</strong>
-        </div>
-    </div>
-</div>
-
-		<!-- Blog info -->
-<div class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop index-top-block">
-	
-    <!-- Search -->
-	
-	<!-- Google -->
-	<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable" method="post" action="">
-		<label id="search-label" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent mdl-shadow--4dp" for="search">
-			<i class="material-icons mdl-color-text--white" role="presentation">search</i>
-		</label>
-
-		<form id="search-form" method="get" action="//google.com/search" accept-charset="UTF-8" class="mdl-textfield__expandable-holder" target="_blank">
-			<input class="mdl-textfield__input search-input" type="search" name="q" id="search" placeholder="">
-			<label id="search-form-label" class="mdl-textfield__label" for="search"></label>
+	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+		for="post-toc-trigger-btn">
 			
-			<input type="hidden" name="sitesearch" value="https://jackerjay.github.io">
-		</form>
-	</div>
-
-
-
-
-
-
-    <!-- LOGO -->
-    <div class="something-else-logo mdl-color--white mdl-color-text--grey-600">
-        <a href="null">
-            <img src="/img/logo.png" alt="logo" />
-        </a>
-    </div>
-
-    <!-- Infomation -->
-    <div class="mdl-card__supporting-text meta meta--fill mdl-color-text--grey-600">
-        <!-- Blog Title -->
-        <div>
-            <strong>JackerJay杂记</strong>
-        </div>
-        <div class="section-spacer"></div>
-        
-        <!-- Pages -->
-        <button id="show-pages-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-            <i class="material-icons" role="presentation">view_carousel</i>
-            <span class="visuallyhidden">Pages</span>
-        </button>
-        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="show-pages-button">
-            
-        </ul>
-        
-        <!-- Menu -->
-        <button id="menubtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-            <i class="material-icons" role="presentation">more_vert</i>
-            <span class="visuallyhidden">show menu</span>
-        </button>
-        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="menubtn">
-            
-            <a class="index_share-link" href="null">
-                <li class="mdl-menu__item mdl-js-ripple-effect">
-                    文章 RSS
-                </li>
-            </a>
-            <a class="index_share-link" href="https://twitter.com/intent/tweet?text=JackerJay杂记&url=https://jackerjay.github.io/&via=JackerJay" target="_blank">
-                <li class="mdl-menu__item mdl-js-ripple-effect">
-                    分享到 Twitter
-                </li>
-            </a>
-            <a class="index_share-link" href="https://plus.google.com/share?url=https://jackerjay.github.io/" target="_blank">
-                <li class="mdl-menu__item mdl-js-ripple-effect">
-                    分享到 Google+
-                </li>
-            </a>
-            <a class="index_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=JackerJay杂记&url=https://jackerjay.github.io/&pic=&searchPic=false&style=simple" target="_blank">
-                <li class="mdl-menu__item mdl-js-ripple-effect">
-                    分享到微博
-                </li>
-            </a>
-        </ul>
-    </div>
-</div>
-
-	
-    
-    
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第一章"><span class="post-toc-number">1.</span> <span class="post-toc-text">第一章</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#作用域"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">作用域</span></a></li></ol></li></ol>
 		
-			<!-- Paradox Thumbnail -->
-        	<div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    
-    <!-- Post Thumbnail -->
+<!--			<li class="mdl-menu__item">Some Action</li>-->
+	</ul>
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+		
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+	<!-- Paradox Post Header -->
 	
 		
 			<!-- Random Thumbnail -->
 			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-		
-	
-				
-		<!-- Post Title -->
-		<p class="article-headline-p"><a href="/2018/07/12/Webpack-Tree-shaking-loader-的基本实现/">Webpack Tree-shaking-loader 的基本实现</a></p>
-	</div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-          
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/07/12/Webpack-Tree-shaking-loader-的基本实现/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="JackerJay's avatar">
-            </div>
-            <div>
-                <strong>JackerJay</strong>
-                <span>7月 12, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/webpack/">webpack</a>
-            </span>
-            
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span class="ds-thread-count" data-thread-key="2018/07/12/Webpack-Tree-shaking-loader-的基本实现/" data-count-type="comments"></span>
-                </span>
-            
-            
-            <!-- Post Views -->
-            <span class="post_entry-views">
-                
-            </span>
-        </div>
-    </div>
-            
-</div>
-
-		
-		
-    
-    
-	
-		<script>
+				<script>
     
     var randomNum;
+    randomNum = Math.floor(Math.random() * 5 + 1);
     
-    var locatePost = $(".something-else").next();
-    for(var i=0; i < 10; i++){
-        
-        randomNum = Math.floor(Math.random() * 5 + 1);
-        
-        locatePost.children(".post_thumbnail-random").attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')')
-        
-        locatePost = locatePost.next();
-    }
+    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
     
 </script>
 
+		
+	
+        <p class="article-headline-p">
+            你不知道的JS上卷记录
+        </p>
+    </div>
+
 	
 
+				
+				
+					<!-- Paradox Post Info -->
+					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+    
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>JackerJay</strong>
+        <span>7月 13, 2018</span>
+    </div>
+    
+    <div class="section-spacer"></div>
+	
+    <!-- Favorite -->
+<!--
+    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+        <i class="material-icons" role="presentation">favorite</i>
+        <span class="visuallyhidden">favorites</span>
+    </button>
+-->
+    
+    <!-- Tags (bookmark) -->
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/你不知道的JS/">你不知道的JS</a>
+    </ul>
+    
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    
+    
+    
+    
+    <!-- Share Twitter -->
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=你不知道的JS上卷记录&url=https://jackerjay.github.io//2018/07/13/你不知道的JS上卷记录/index.html&via=JackerJay" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Twitter
+        </li>
+    </a>
+    
+    <!-- Share Google+ -->
+    <a class="post_share-link" href="https://plus.google.com/share?url=https://jackerjay.github.io//2018/07/13/你不知道的JS上卷记录/index.html" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Google+
+        </li>
+    </a>
+    
+    <!-- Share Weibo -->
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=你不知道的JS上卷记录&url=https://jackerjay.github.io//2018/07/13/你不知道的JS上卷记录/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <li class="mdl-menu__item">
+            分享到微博
+        </li>
+    </a>
+</ul>
 </div>
+				
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+	
+		<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>1、分词(tokenizing)和词法分析(Lexing)之间的区别是非常微妙、晦涩的，主要差异在于词法单元的识别是通过<em>有状态</em>还是<em>无状态</em>的方式进行的。简单来说，如果词法单元生成器在判断 a 是一个独立的词法单元还是其他词法单元的一部分时，调用的时有状态的解析规则，那么这个过程就被称为<em>词法分析</em>。</p>
+<p>2、严格模式的程序中， eval(..) 在运行时有其自己的词法作用域，意味着其中的声明无法修改所在的作用域。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line"><span class="meta">    "use strict"</span></span><br><span class="line">    <span class="built_in">eval</span>(str);</span><br><span class="line">    <span class="built_in">console</span>.log(a); <span class="comment">// ReferenceError: a is not defined</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(<span class="string">"var a = 2"</span>);</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>setTimeout(..) 和 setInterval(..) 的第一个参数<em>可以</em>是字符串，字符串的内容可以被解释为一段动态生成的函数代码。 new Function(..) 函数的行为也很类似，<em>最后</em>一个参数可以接受代码字符串，并将其转化为动态生成的函数(前面的参数是这个新生成的函数的形参)。这种构造函数的语法比 eval(..) 略微安全一些，但也要尽量避免使用。  </p>
+</blockquote>
+<p>3、with 可以将一个没有或多个属性的对象处理为一个完全隔离的词法作用域，因此这个对象的属性也会被处理为<strong>定义在这个作用域中的词法标识符</strong>。所以当在当前中没有找到目标词法标识符的情况下，会把声明的标识符泄露到全局作用域上去。 另外，尽管 with 块可以将一个对象处理为词法作用域，但是这个块内部正常的 var 声明并不会被限制在这个块的作用域中，而是被添加到 with 所处的函数作用域中。  </p>
+<blockquote>
+<p>eval(..)函数如果接受了含有一个或多个声明的代码，就会修改其所处的词法作用域，而 with 声明实际上是根据你传递给它的对象凭空创建了一个<strong>全新的词法作用域</strong>。  </p>
+</blockquote>
+<p>4、函数作用域的含义是指，属于这个函数的全部变量都可以在整个函数的范围内使用及复用(事实上在嵌套的作用域中也可以使用)。</p>
+<blockquote>
+<p>最小特权原则引申出来的，也叫<strong>最小授权</strong>或最小暴露原则，这个原则是指在软件设计中，应该最小限度地暴露必要内容，而将其他内部内容都“隐藏”起来，比如某个模块或对象的 API 设计。  </p>
+</blockquote>
+<p>5、区分函数声明和表达式最简单的方法是看 function 关键字出现在声明中的位置（不仅仅是一行代码，而是整个声明中的位置）。如果 function 是声明中的第一个词，那么就是一个函数声明，否则就是一个函数表达式。  </p>
+<blockquote>
+<p>函数声明和函数表达式之间最重要的区别是它们的名称标识符将会绑定在何处。<br><strong>始终给函数表达式命名是一个最佳实践</strong></p>
+</blockquote>
+<blockquote>
+<p>引申：先不考虑浏览器的 let 声明，那有没有思考过，在 babel 中转到 ES5 代码的时候，是怎样对 let 声明进行转换的呢？<br>好奇驱使着我打开了 babeljs.io，好的我们看下截图：<br><img src="http://ogvu8e1ii.bkt.clouddn.com//youdonotknowjs/chapter1/let.PNG" alt=""><br>是不是很神奇？归根结底还是使用 var 关键字进行变量声明，只不过babel 帮我们识别了在块级作用域中声明的变量是否在外部作用域是否对其进行了引用，如果有引用存在，则将块级作用域中的变量更名。  </p>
+</blockquote>
+<p>6、提升：</p>
+<blockquote>
+<p>函数会首先被提升，然后才是变量  </p>
+</blockquote>
+<p>7、闭包</p>
+<blockquote>
+<p>对某一作用域的引用，这个引用即为闭包</p>
+</blockquote>
+
+	
+	
+	
+	
+</div>
+				
+				
+
+                <!-- Post Comments -->
+                
+    <!-- 使用多说评论 -->
+    <link rel="stylesheet" href="/css/duoshuo.min.css">
+<style>
+    #ds-thread #ds-reset .ds-post-button{
+        background-color: #0097A7 !important;
+    }
+    #ds-wrapper #ds-reset .ds-icons-32{
+        background-color: #0097A7 !important;
+    }
+    #ds-reset .ds-highlight {
+        color: #0097A7 !important;
+    }
+</style>
+<div id="comments">
+    <!-- 多说评论框 start -->
+        <div class="ds-thread" 
+            data-thread-key="2018/07/13/你不知道的JS上卷记录/" 
+            data-url="https://jackerjay.github.io/2018/07/13/你不知道的JS上卷记录/"
+            data-title="你不知道的JS上卷记录"></div>
+    <!-- 多说评论框 end -->
+</div>
+
+
+
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/07/12/Webpack-Tree-shaking-loader-的基本实现/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+        </div>
+    </div>
 
 				
 				
